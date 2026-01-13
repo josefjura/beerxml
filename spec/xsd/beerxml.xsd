@@ -186,11 +186,11 @@
       <xs:element name="ORIGIN" type="xs:string" minOccurs="0"/>
       <xs:element name="SUPPLIER" type="xs:string" minOccurs="0"/>
       <xs:element name="NOTES" type="xs:string" minOccurs="0"/>
-      <xs:element name="COARSE_FINE_DIFF" type="decimalType" minOccurs="0"/>
-      <xs:element name="MOISTURE" type="decimalType" minOccurs="0"/>
-      <xs:element name="DIASTATIC_POWER" type="decimalType" minOccurs="0"/>
-      <xs:element name="DISASTATIC_POWER" type="decimalType" minOccurs="0"/>
-      <xs:element name="PROTEIN" type="decimalType" minOccurs="0"/>
+      <xs:element name="COARSE_FINE_DIFF" type="xs:string" minOccurs="0"/>
+      <xs:element name="MOISTURE" type="xs:string" minOccurs="0"/>
+      <xs:element name="DIASTATIC_POWER" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISASTATIC_POWER" type="xs:string" minOccurs="0"/>
+      <xs:element name="PROTEIN" type="xs:string" minOccurs="0"/>
       <xs:element name="MAX_IN_BATCH" type="decimalType" minOccurs="0"/>
       <xs:element name="RECOMMEND_MASH" type="booleanType" minOccurs="0"/>
       <xs:element name="IBU_GAL_PER_LB" type="decimalType" minOccurs="0"/>
@@ -283,7 +283,7 @@
 
   <xs:complexType name="WatersType">
     <xs:sequence>
-      <xs:element name="WATER" type="WaterType" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="WATER" type="WaterType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -463,12 +463,12 @@
       <xs:element name="EST_OG" type="xs:string" minOccurs="0"/>
       <xs:element name="EST_FG" type="xs:string" minOccurs="0"/>
       <xs:element name="EST_COLOR" type="xs:string" minOccurs="0"/>
-      <xs:element name="IBU" type="decimalType" minOccurs="0"/>
-      <xs:element name="IBUS" type="decimalType" minOccurs="0"/>
+      <xs:element name="IBU" type="xs:string" minOccurs="0"/>
+      <xs:element name="IBUS" type="xs:string" minOccurs="0"/>
       <xs:element name="IBU_METHOD" type="ibuMethodType" minOccurs="0"/>
-      <xs:element name="EST_ABV" type="decimalType" minOccurs="0"/>
-      <xs:element name="ABV" type="decimalType" minOccurs="0"/>
-      <xs:element name="ACTUAL_EFFICIENCY" type="decimalType" minOccurs="0"/>
+      <xs:element name="EST_ABV" type="xs:string" minOccurs="0"/>
+      <xs:element name="ABV" type="xs:string" minOccurs="0"/>
+      <xs:element name="ACTUAL_EFFICIENCY" type="xs:string" minOccurs="0"/>
       <xs:element name="CALORIES" type="xs:string" minOccurs="0"/>
       <xs:element name="DISPLAY_BATCH_SIZE" type="xs:string" minOccurs="0"/>
       <xs:element name="DISPLAY_BOIL_SIZE" type="xs:string" minOccurs="0"/>
@@ -485,7 +485,7 @@
 
   <xs:complexType name="RecipesType">
     <xs:sequence>
-      <xs:element name="RECIPE" type="RecipeType" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="RECIPE" type="RecipeType" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
