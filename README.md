@@ -13,13 +13,17 @@ This repository aims to:
 
 *   `spec/`: The specification documents.
     *   `v1.0.md`: Markdown version of the BeerXML 1.0 spec (Auto-generated).
-    *   `xsd/`: The XML Schema Definition.
-    *   `legacy/`: Original documentation files.
+    *   `xsd/`: The XML Schema Definition for v1.0.
+    *   `legacy/`: Original documentation files from beerxml.com.
+    *   `v1.1/`: **BeerXML 1.1 (Draft)** - Modern "Clean XML" evolution.
+        *   `RFC_01_goals.md`: Design goals for v1.1.
+        *   `beerxml-1.1.xsd`: Strict schema for v1.1.
 *   `lib/`: Python reference library for parsing and validation.
 *   `tests/`: Validation scripts and test runners.
 *   `samples/`:
-    *   `original/`: The original samples from beerxml.com (Note: Some contain strict validation errors).
-    *   `corrected/`: Fixed versions of the original samples that pass strict validation.
+    *   `v1.1_sample.xml`: Example of the new modern XML format.
+    *   `original/`: The original samples from beerxml.com.
+    *   `corrected/`: Fixed versions of the original samples.
     *   `brewtlery_unetice_realworld_sample.xml`: A real-world example from modern software.
 *   `scripts/`: Utility scripts.
 
@@ -29,17 +33,17 @@ This repository aims to:
 *   Python 3
 
 ### Running Tests
-To validate all samples against the XSD:
+To validate all samples (Detects v1.0 vs v1.1 automatically):
 
 ```bash
 export PYTHONPATH=$PYTHONPATH:.
 python3 tests/validate_samples.py
 ```
 
-*Note: Expect `samples/original/recipes.xml` to fail validation due to historical non-compliance (units in numeric fields, etc.). usage of `samples/corrected/recipes.xml` is recommended for reference.*
-
 ## Specification
-See [BeerXML 1.0 Specification](spec/v1.0.md) for the detailed tag reference.
+*   [BeerXML 1.0 Specification](spec/v1.0.md)
+*   **BeerXML 1.1 Goals**: See [RFC 01](spec/v1.1/RFC_01_goals.md)
+
 
 ## License
 Original BeerXML standard is copyright its respective authors.

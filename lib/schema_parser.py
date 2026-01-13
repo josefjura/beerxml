@@ -11,6 +11,8 @@ def parse_xsd(xsd_path):
         'xs:string': 'text',
         'xs:int': 'integer',
         'xs:decimal': 'float',
+        'xs:date': 'date',
+        'xs:boolean': 'boolean',
         'booleanType': 'boolean',
         'decimalType': 'float',
         'temperatureType': 'float',
