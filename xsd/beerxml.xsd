@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="booleanType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TRUE"/>
+      <xs:enumeration value="FALSE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="decimalType">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="temperatureType">
+    <xs:restriction base="xs:decimal"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="timeType">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="hopUseType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Boil"/>
+      <xs:enumeration value="Dry Hop"/>
+      <xs:enumeration value="Mash"/>
+      <xs:enumeration value="First Wort"/>
+      <xs:enumeration value="Aroma"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="hopTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Bittering"/>
+      <xs:enumeration value="Aroma"/>
+      <xs:enumeration value="Both"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="hopFormType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Pellet"/>
+      <xs:enumeration value="Plug"/>
+      <xs:enumeration value="Leaf"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="fermentableType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Grain"/>
+      <xs:enumeration value="Sugar"/>
+      <xs:enumeration value="Extract"/>
+      <xs:enumeration value="Dry Extract"/>
+      <xs:enumeration value="Adjunct"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="yeastType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ale"/>
+      <xs:enumeration value="Lager"/>
+      <xs:enumeration value="Wheat"/>
+      <xs:enumeration value="Wine"/>
+      <xs:enumeration value="Champagne"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="yeastFormType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Liquid"/>
+      <xs:enumeration value="Dry"/>
+      <xs:enumeration value="Slant"/>
+      <xs:enumeration value="Culture"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="yeastFlocculationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Low"/>
+      <xs:enumeration value="Medium"/>
+      <xs:enumeration value="High"/>
+      <xs:enumeration value="Very High"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="miscType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Spice"/>
+      <xs:enumeration value="Fining"/>
+      <xs:enumeration value="Water Agent"/>
+      <xs:enumeration value="Herb"/>
+      <xs:enumeration value="Flavor"/>
+      <xs:enumeration value="Other"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="miscUseType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Boil"/>
+      <xs:enumeration value="Mash"/>
+      <xs:enumeration value="Primary"/>
+      <xs:enumeration value="Secondary"/>
+      <xs:enumeration value="Bottling"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="styleType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Lager"/>
+      <xs:enumeration value="Ale"/>
+      <xs:enumeration value="Mead"/>
+      <xs:enumeration value="Wheat"/>
+      <xs:enumeration value="Mixed"/>
+      <xs:enumeration value="Cider"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="mashStepType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Infusion"/>
+      <xs:enumeration value="Temperature"/>
+      <xs:enumeration value="Decoction"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="recipeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Extract"/>
+      <xs:enumeration value="Partial Mash"/>
+      <xs:enumeration value="All Grain"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ibuMethodType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Rager"/>
+      <xs:enumeration value="Tinseth"/>
+      <xs:enumeration value="Garetz"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="HopType">
+    <xs:all>
+      <xs:element name="NAME" type="xs:string"/>
+      <xs:element name="VERSION" type="xs:int"/>
+      <xs:element name="ALPHA" type="decimalType"/>
+      <xs:element name="AMOUNT" type="decimalType"/>
+      <xs:element name="USE" type="hopUseType"/>
+      <xs:element name="TIME" type="timeType"/>
+      <xs:element name="NOTES" type="xs:string" minOccurs="0"/>
+      <xs:element name="TYPE" type="hopTypeType" minOccurs="0"/>
+      <xs:element name="FORM" type="hopFormType" minOccurs="0"/>
+      <xs:element name="BETA" type="decimalType" minOccurs="0"/>
+      <xs:element name="HSI" type="decimalType" minOccurs="0"/>
+      <xs:element name="ORIGIN" type="xs:string" minOccurs="0"/>
+      <xs:element name="SUBSTITUTES" type="xs:string" minOccurs="0"/>
+      <xs:element name="HUMULENE" type="decimalType" minOccurs="0"/>
+      <xs:element name="CARYOPHYLLENE" type="decimalType" minOccurs="0"/>
+      <xs:element name="COHUMULONE" type="decimalType" minOccurs="0"/>
+      <xs:element name="MYRCENE" type="decimalType" minOccurs="0"/>
+      <xs:element name="DISPLAY_AMOUNT" type="xs:string" minOccurs="0"/>
+      <xs:element name="INVENTORY" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_TIME" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="HopsType">
+    <xs:sequence>
+      <xs:element name="HOP" type="HopType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="FermentableType">
+    <xs:all>
+      <xs:element name="NAME" type="xs:string"/>
+      <xs:element name="VERSION" type="xs:int"/>
+      <xs:element name="TYPE" type="fermentableType"/>
+      <xs:element name="AMOUNT" type="decimalType"/>
+      <xs:element name="YIELD" type="decimalType"/>
+      <xs:element name="COLOR" type="decimalType"/>
+      <xs:element name="ADD_AFTER_BOIL" type="booleanType" minOccurs="0"/>
+      <xs:element name="ORIGIN" type="xs:string" minOccurs="0"/>
+      <xs:element name="SUPPLIER" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOTES" type="xs:string" minOccurs="0"/>
+      <xs:element name="COARSE_FINE_DIFF" type="decimalType" minOccurs="0"/>
+      <xs:element name="MOISTURE" type="decimalType" minOccurs="0"/>
+      <xs:element name="DIASTATIC_POWER" type="decimalType" minOccurs="0"/>
+      <xs:element name="DISASTATIC_POWER" type="decimalType" minOccurs="0"/>
+      <xs:element name="PROTEIN" type="decimalType" minOccurs="0"/>
+      <xs:element name="MAX_IN_BATCH" type="decimalType" minOccurs="0"/>
+      <xs:element name="RECOMMEND_MASH" type="booleanType" minOccurs="0"/>
+      <xs:element name="IBU_GAL_PER_LB" type="decimalType" minOccurs="0"/>
+      <xs:element name="IBU_GAL_PER_POUND" type="decimalType" minOccurs="0"/>
+      <xs:element name="DISPLAY_AMOUNT" type="xs:string" minOccurs="0"/>
+      <xs:element name="POTENTIAL" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="INVENTORY" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_COLOR" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="FermentablesType">
+    <xs:sequence>
+      <xs:element name="FERMENTABLE" type="FermentableType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="YeastType">
+    <xs:all>
+      <xs:element name="NAME" type="xs:string"/>
+      <xs:element name="VERSION" type="xs:int"/>
+      <xs:element name="TYPE" type="yeastType"/>
+      <xs:element name="FORM" type="yeastFormType"/>
+      <xs:element name="AMOUNT" type="decimalType"/>
+      <xs:element name="AMOUNT_IS_WEIGHT" type="booleanType" minOccurs="0"/>
+      <xs:element name="LABORATORY" type="xs:string" minOccurs="0"/>
+      <xs:element name="PRODUCT_ID" type="xs:string" minOccurs="0"/>
+      <xs:element name="MIN_TEMPERATURE" type="temperatureType" minOccurs="0"/>
+      <xs:element name="MAX_TEMPERATURE" type="temperatureType" minOccurs="0"/>
+      <xs:element name="FLOCCULATION" type="yeastFlocculationType" minOccurs="0"/>
+      <xs:element name="ATTENUATION" type="decimalType" minOccurs="0"/>
+      <xs:element name="NOTES" type="xs:string" minOccurs="0"/>
+      <xs:element name="BEST_FOR" type="xs:string" minOccurs="0"/>
+      <xs:element name="TIMES_CULTURED" type="xs:int" minOccurs="0"/>
+      <xs:element name="MAX_REUSE" type="xs:int" minOccurs="0"/>
+      <xs:element name="ADD_TO_SECONDARY" type="booleanType" minOccurs="0"/>
+      <xs:element name="DISPLAY_AMOUNT" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISP_MIN_TEMP" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISP_MAX_TEMP" type="xs:string" minOccurs="0"/>
+      <xs:element name="INVENTORY" type="xs:string" minOccurs="0"/>
+      <xs:element name="CULTURE_DATE" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="YeastsType">
+    <xs:sequence>
+      <xs:element name="YEAST" type="YeastType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MiscType">
+    <xs:all>
+      <xs:element name="NAME" type="xs:string"/>
+      <xs:element name="VERSION" type="xs:int"/>
+      <xs:element name="TYPE" type="miscType"/>
+      <xs:element name="USE" type="miscUseType"/>
+      <xs:element name="TIME" type="timeType"/>
+      <xs:element name="AMOUNT" type="decimalType"/>
+      <xs:element name="AMOUNT_IS_WEIGHT" type="booleanType" minOccurs="0"/>
+      <xs:element name="USE_FOR" type="xs:string" minOccurs="0"/>
+      <xs:element name="NOTES" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_AMOUNT" type="xs:string" minOccurs="0"/>
+      <xs:element name="INVENTORY" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_TIME" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="MiscsType">
+    <xs:sequence>
+      <xs:element name="MISC" type="MiscType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="WaterType">
+    <xs:all>
+      <xs:element name="NAME" type="xs:string"/>
+      <xs:element name="VERSION" type="xs:int"/>
+      <xs:element name="AMOUNT" type="decimalType"/>
+      <xs:element name="CALCIUM" type="decimalType" minOccurs="0"/>
+      <xs:element name="BICARBONATE" type="decimalType" minOccurs="0"/>
+      <xs:element name="SULFATE" type="decimalType" minOccurs="0"/>
+      <xs:element name="CHLORIDE" type="decimalType" minOccurs="0"/>
+      <xs:element name="SODIUM" type="decimalType" minOccurs="0"/>
+      <xs:element name="MAGNESIUM" type="decimalType" minOccurs="0"/>
+      <xs:element name="PH" type="decimalType" minOccurs="0"/>
+      <xs:element name="NOTES" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_AMOUNT" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="WatersType">
+    <xs:sequence>
+      <xs:element name="WATER" type="WaterType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="EquipmentType">
+    <xs:all>
+      <xs:element name="NAME" type="xs:string"/>
+      <xs:element name="VERSION" type="xs:int"/>
+      <xs:element name="BOIL_SIZE" type="decimalType"/>
+      <xs:element name="BATCH_SIZE" type="decimalType"/>
+      <xs:element name="TUN_VOLUME" type="decimalType" minOccurs="0"/>
+      <xs:element name="TUN_WEIGHT" type="decimalType" minOccurs="0"/>
+      <xs:element name="TUN_SPECIFIC_HEAT" type="decimalType" minOccurs="0"/>
+      <xs:element name="TOP_UP_WATER" type="decimalType" minOccurs="0"/>
+      <xs:element name="TRUB_CHILLER_LOSS" type="decimalType" minOccurs="0"/>
+      <xs:element name="EVAP_RATE" type="decimalType" minOccurs="0"/>
+      <xs:element name="BOIL_TIME" type="timeType" minOccurs="0"/>
+      <xs:element name="CALC_BOIL_VOLUME" type="booleanType" minOccurs="0"/>
+      <xs:element name="LAUTER_DEADSPACE" type="decimalType" minOccurs="0"/>
+      <xs:element name="TOP_UP_KETTLE" type="decimalType" minOccurs="0"/>
+      <xs:element name="HOP_UTILIZATION" type="decimalType" minOccurs="0"/>
+      <xs:element name="NOTES" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_BOIL_SIZE" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_BATCH_SIZE" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_TUN_VOLUME" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_TUN_WEIGHT" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_TOP_UP_WATER" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_TRUB_CHILLER_LOSS" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_LAUTER_DEADSPACE" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_TOP_UP_KETTLE" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="EquipmentsType">
+    <xs:sequence>
+      <xs:element name="EQUIPMENT" type="EquipmentType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="StyleType">
+    <xs:all>
+      <xs:element name="NAME" type="xs:string"/>
+      <xs:element name="CATEGORY" type="xs:string"/>
+      <xs:element name="VERSION" type="xs:int"/>
+      <xs:element name="TYPE" type="styleType"/>
+      <xs:element name="OG_MIN" type="xs:decimal"/>
+      <xs:element name="OG_MAX" type="xs:decimal"/>
+      <xs:element name="FG_MIN" type="xs:decimal"/>
+      <xs:element name="FG_MAX" type="xs:decimal"/>
+      <xs:element name="IBU_MIN" type="decimalType"/>
+      <xs:element name="IBU_MAX" type="decimalType"/>
+      <xs:element name="COLOR_MIN" type="decimalType"/>
+      <xs:element name="COLOR_MAX" type="decimalType"/>
+      <xs:element name="CATEGORY_NUMBER" type="xs:string" minOccurs="0"/>
+      <xs:element name="STYLE_LETTER" type="xs:string" minOccurs="0"/>
+      <xs:element name="STYLE_GUIDE" type="xs:string" minOccurs="0"/>
+      <xs:element name="CARB_MIN" type="decimalType" minOccurs="0"/>
+      <xs:element name="CARB_MAX" type="decimalType" minOccurs="0"/>
+      <xs:element name="ABV_MIN" type="decimalType" minOccurs="0"/>
+      <xs:element name="ABV_MAX" type="decimalType" minOccurs="0"/>
+      <xs:element name="NOTES" type="xs:string" minOccurs="0"/>
+      <xs:element name="PROFILE" type="xs:string" minOccurs="0"/>
+      <xs:element name="INGREDIENTS" type="xs:string" minOccurs="0"/>
+      <xs:element name="EXAMPLES" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_OG_MIN" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_OG_MAX" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_FG_MIN" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_FG_MAX" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_COLOR_MIN" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_COLOR_MAX" type="xs:string" minOccurs="0"/>
+      <xs:element name="OG_RANGE" type="xs:string" minOccurs="0"/>
+      <xs:element name="FG_RANGE" type="xs:string" minOccurs="0"/>
+      <xs:element name="IBU_RANGE" type="xs:string" minOccurs="0"/>
+      <xs:element name="CARB_RANGE" type="xs:string" minOccurs="0"/>
+      <xs:element name="COLOR_RANGE" type="xs:string" minOccurs="0"/>
+      <xs:element name="ABV_RANGE" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="StylesType">
+    <xs:sequence>
+      <xs:element name="STYLE" type="StyleType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MashStepType">
+    <xs:all>
+      <xs:element name="NAME" type="xs:string"/>
+      <xs:element name="VERSION" type="xs:int"/>
+      <xs:element name="TYPE" type="mashStepType"/>
+      <xs:element name="INFUSE_AMOUNT" type="decimalType" minOccurs="0"/>
+      <xs:element name="STEP_TEMP" type="temperatureType"/>
+      <xs:element name="STEP_TIME" type="timeType"/>
+      <xs:element name="RAMP_TIME" type="timeType" minOccurs="0"/>
+      <xs:element name="END_TEMP" type="temperatureType" minOccurs="0"/>
+      <xs:element name="DESCRIPTION" type="xs:string" minOccurs="0"/>
+      <xs:element name="WATER_GRAIN_RATIO" type="xs:string" minOccurs="0"/>
+      <xs:element name="DECOCTION_AMT" type="xs:string" minOccurs="0"/>
+      <xs:element name="INFUSE_TEMP" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_STEP_TEMP" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_INFUSE_AMT" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="MashStepsType">
+    <xs:sequence>
+      <xs:element name="MASH_STEP" type="MashStepType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MashType">
+    <xs:all>
+      <xs:element name="NAME" type="xs:string"/>
+      <xs:element name="VERSION" type="xs:int"/>
+      <xs:element name="GRAIN_TEMP" type="temperatureType"/>
+      <xs:element name="MASH_STEPS" type="MashStepsType"/>
+      <xs:element name="NOTES" type="xs:string" minOccurs="0"/>
+      <xs:element name="TUN_TEMP" type="temperatureType" minOccurs="0"/>
+      <xs:element name="SPARGE_TEMP" type="temperatureType" minOccurs="0"/>
+      <xs:element name="PH" type="decimalType" minOccurs="0"/>
+      <xs:element name="TUN_WEIGHT" type="decimalType" minOccurs="0"/>
+      <xs:element name="TUN_SPECIFIC_HEAT" type="decimalType" minOccurs="0"/>
+      <xs:element name="EQUIP_ADJUST" type="booleanType" minOccurs="0"/>
+      <xs:element name="DISPLAY_GRAIN_TEMP" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_TUN_TEMP" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_SPARGE_TEMP" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_TUN_WEIGHT" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="MashsType">
+    <xs:sequence>
+      <xs:element name="MASH" type="MashType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RecipeType">
+    <xs:all>
+      <xs:element name="NAME" type="xs:string"/>
+      <xs:element name="VERSION" type="xs:int"/>
+      <xs:element name="TYPE" type="recipeType"/>
+      <xs:element name="BREWER" type="xs:string"/>
+      <xs:element name="ASST_BREWER" type="xs:string" minOccurs="0"/>
+      <xs:element name="BATCH_SIZE" type="decimalType"/>
+      <xs:element name="BOIL_SIZE" type="decimalType"/>
+      <xs:element name="BOIL_TIME" type="timeType"/>
+      <xs:element name="EFFICIENCY" type="decimalType" minOccurs="0"/>
+      <xs:element name="STYLE" type="StyleType" minOccurs="0"/>
+      <xs:element name="EQUIPMENT" type="EquipmentType" minOccurs="0"/>
+      <xs:element name="HOPS" type="HopsType" minOccurs="0"/>
+      <xs:element name="FERMENTABLES" type="FermentablesType" minOccurs="0"/>
+      <xs:element name="MISCS" type="MiscsType" minOccurs="0"/>
+      <xs:element name="YEASTS" type="YeastsType" minOccurs="0"/>
+      <xs:element name="WATERS" type="WatersType" minOccurs="0"/>
+      <xs:element name="MASH" type="MashType" minOccurs="0"/>
+      <xs:element name="NOTES" type="xs:string" minOccurs="0"/>
+      <xs:element name="TASTE_NOTES" type="xs:string" minOccurs="0"/>
+      <xs:element name="TASTE_RATING" type="decimalType" minOccurs="0"/>
+      <xs:element name="RATING" type="decimalType" minOccurs="0"/>
+      <xs:element name="OG" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="FG" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="FERMENTATION_STAGES" type="xs:int" minOccurs="0"/>
+      <xs:element name="PRIMARY_AGE" type="decimalType" minOccurs="0"/>
+      <xs:element name="PRIMARY_TEMP" type="temperatureType" minOccurs="0"/>
+      <xs:element name="SECONDARY_AGE" type="decimalType" minOccurs="0"/>
+      <xs:element name="SECONDARY_TEMP" type="temperatureType" minOccurs="0"/>
+      <xs:element name="TERTIARY_AGE" type="decimalType" minOccurs="0"/>
+      <xs:element name="TERTIARY_TEMP" type="temperatureType" minOccurs="0"/>
+      <xs:element name="AGE" type="decimalType" minOccurs="0"/>
+      <xs:element name="AGE_TEMP" type="temperatureType" minOccurs="0"/>
+      <xs:element name="DATE" type="xs:string" minOccurs="0"/>
+      <xs:element name="CARBONATION" type="decimalType" minOccurs="0"/>
+      <xs:element name="FORCED_CARBONATION" type="booleanType" minOccurs="0"/>
+      <xs:element name="PRIMING_SUGAR_NAME" type="xs:string" minOccurs="0"/>
+      <xs:element name="CARBONATION_TEMP" type="temperatureType" minOccurs="0"/>
+      <xs:element name="PRIMING_SUGAR_EQUIV" type="decimalType" minOccurs="0"/>
+      <xs:element name="KEG_PRIMING_FACTOR" type="decimalType" minOccurs="0"/>
+      <xs:element name="EST_OG" type="xs:string" minOccurs="0"/>
+      <xs:element name="EST_FG" type="xs:string" minOccurs="0"/>
+      <xs:element name="EST_COLOR" type="xs:string" minOccurs="0"/>
+      <xs:element name="IBU" type="decimalType" minOccurs="0"/>
+      <xs:element name="IBUS" type="decimalType" minOccurs="0"/>
+      <xs:element name="IBU_METHOD" type="ibuMethodType" minOccurs="0"/>
+      <xs:element name="EST_ABV" type="decimalType" minOccurs="0"/>
+      <xs:element name="ABV" type="decimalType" minOccurs="0"/>
+      <xs:element name="ACTUAL_EFFICIENCY" type="decimalType" minOccurs="0"/>
+      <xs:element name="CALORIES" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_BATCH_SIZE" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_BOIL_SIZE" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_OG" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_FG" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_PRIMARY_TEMP" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_SECONDARY_TEMP" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_TERTIARY_TEMP" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_AGE_TEMP" type="xs:string" minOccurs="0"/>
+      <xs:element name="CARBONATION_USED" type="xs:string" minOccurs="0"/>
+      <xs:element name="DISPLAY_CARB_TEMP" type="xs:string" minOccurs="0"/>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="RecipesType">
+    <xs:sequence>
+      <xs:element name="RECIPE" type="RecipeType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="HOPS" type="HopsType"/>
+  <xs:element name="FERMENTABLES" type="FermentablesType"/>
+  <xs:element name="YEASTS" type="YeastsType"/>
+  <xs:element name="MISCS" type="MiscsType"/>
+  <xs:element name="WATERS" type="WatersType"/>
+  <xs:element name="STYLES" type="StylesType"/>
+  <xs:element name="MASH_STEPS" type="MashStepsType"/>
+  <xs:element name="MASHS" type="MashsType"/>
+  <xs:element name="RECIPES" type="RecipesType"/>
+  <xs:element name="EQUIPMENTS" type="EquipmentsType"/>
+</xs:schema>
