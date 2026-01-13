@@ -12,10 +12,10 @@ BeerXML 1.1 aims to be a **strict, modern, and unambiguous** revision of BeerXML
     *   **Invalid:** `<IBU>34.2 IBU</IBU>`
 
 ### 2. Units of Measurement
-*   **Problem in v1.0:** Units were implicit and fixed (Weights in kg, Volumes in Liters), BUT Appendix A allowed display units to override this in non-standard ways, leading to confusion.
+*   **Problem in v1.0:** Units were implicit (kg, Liters) but Appendix A introduced "Display Fields" (like `DISPLAY_AMOUNT`) which encouraged redundant data and drift. Worse, developers often parsed these string fields instead of the canonical numeric fields, or wrote units directly into numeric fields.
 *   **Solution in v1.1:**
-    *   **Option A (Preferred):** Keep fixed canonical units (kg, Liters, Celsius) for data exchange. Display units are the UI's responsibility, not the data format's.
-    *   **Option B (Alternative):** Allow explicit `unit` attributes. E.g., `<AMOUNT unit="oz">1.5</AMOUNT>`.
+    *   **Strict Canonical Units:** All weights are Kilograms (kg). All volumes are Liters (l). All temperatures are Celsius (C).
+    *   **No Display Hints:** The Data Layer is not the Presentation Layer. It is the responsibility of the consuming application to convert `0.02835 kg` to `1 oz` if the user prefers Imperial units. We explicitly remove all "Display" tags to prevent data drift and ambiguity.
 
 ### 3. Date Format
 *   **Problem in v1.0:** Dates were free-text (e.g., `3 Jan 04`, `Jan 3, 2004`).
