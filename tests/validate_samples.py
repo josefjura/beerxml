@@ -10,8 +10,8 @@ from lib.schema_parser import parse_xsd
 from lib.validator import validate_file
 
 def run_tests():
-    xsd_v10 = "spec/v1.0/beerxml-1.0.xsd"
-    xsd_v11 = "spec/v1.1/beerxml-1.1.xsd"
+    xsd_v10 = "docs/spec/v1.0/beerxml-1.0.xsd"
+    xsd_v11 = "docs/spec/v1.1/beerxml-1.1.xsd"
     samples_dir = "samples"
     
     print("Parsing Schemas...")

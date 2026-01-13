@@ -121,19 +121,19 @@ def generate_markdown(complex_types, title, version):
 
 if __name__ == "__main__":
     # V1.0 Generation
-    v1_xsd = "spec/v1.0/beerxml-1.0.xsd"
+    v1_xsd = "docs/spec/v1.0/beerxml-1.0.xsd"
     if os.path.exists(v1_xsd):
         data = parse_xsd(v1_xsd)
         md_content = generate_markdown(data, "BeerXML 1.0 Specification", "1.0")
-        with open("spec/v1.0/v1.0.md", "w") as f:
+        with open("docs/spec/v1.0/v1.0.md", "w") as f:
             f.write(md_content)
-        print("Generated spec/v1.0/v1.0.md")
+        print("Generated docs/spec/v1.0/v1.0.md")
 
     # V1.1 Generation
-    v11_xsd = "spec/v1.1/beerxml-1.1.xsd"
+    v11_xsd = "docs/spec/v1.1/beerxml-1.1.xsd"
     if os.path.exists(v11_xsd):
         data = parse_xsd(v11_xsd)
         md_content = generate_markdown(data, "BeerXML 1.1 Specification", "1.1")
-        with open("spec/v1.1/v1.1.md", "w") as f:
+        with open("docs/spec/v1.1/v1.1.md", "w") as f:
             f.write(md_content)
-        print("Generated spec/v1.1/v1.1.md")
+        print("Generated docs/spec/v1.1/v1.1.md")
