@@ -1,0 +1,26 @@
+site_name: BeerXML Standard
+site_url: https://josefjura.github.io/beerxml/
+site_description: The open standard for brewing data exchange.
+theme:
+  name: material
+  palette:
+    primary: amber
+    accent: orange
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - content.code.copy
+
+nav:
+  - Home: README.md
+  - Specifications:
+    - 'Version 1.1 (Modern)': spec/v1.1/v1.1.md
+    - 'Version 1.0 (Legacy)': spec/v1.0/v1.0.md
+  - Improvement Proposals: spec/v1.1/RFC_01_goals.md
+  - Contributing: CONTRIBUTING.md
+
+markdown_extensions:
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
