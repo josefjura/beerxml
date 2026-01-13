@@ -7,7 +7,7 @@ This repository aims to:
 1.  **Preserve** the original BeerXML 1.0 standard.
 2.  **Clarify** the specification with readable documentation and reference implementations.
 3.  **Validate** existing and new BeerXML files against the strict standard.
-4.  **Evolve** the standard into a modern, semantic version (xBeerXML) in the future.
+4.  **Evolve** the standard into a modern, semantic version (BeerXML v2.0) in the future.
 
 ## Directory Structure
 
