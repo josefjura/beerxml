@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 import sys
 import os
+import argparse
 
 def parse_xsd(xsd_path):
     tree = ET.parse(xsd_path)
@@ -11,11 +12,13 @@ def parse_xsd(xsd_path):
     type_mapping = {
         'xs:string': 'Text',
         'xs:int': 'Integer',
-        'xs:decimal': 'Floating Point',
+        'xs:decimal': 'Decimal',
+        'xs:boolean': 'Boolean',
+        'xs:date': 'Date (YYYY-MM-DD)',
         'booleanType': 'Boolean',
-        'decimalType': 'Floating Point',
-        'temperatureType': 'Temperature',
-        'timeType': 'Time',
+        'decimalType': 'Decimal',
+        'temperatureType': 'Temperature (C)',
+        'timeType': 'Time (min)',
         'percentageType': 'Percentage'
     }
 
@@ -33,11 +36,14 @@ def parse_xsd(xsd_path):
             if base == 'xs:string' and not enumeration_values:
                 type_mapping[name] = 'Text'
             elif base == 'xs:decimal':
-                type_mapping[name] = 'Floating Point'
+                type_mapping[name] = 'Decimal'
 
     complex_types = {}
     for complex_type in root.findall('xs:complexType', ns):
         name = complex_type.get('name')
+        if not name:
+            continue
+            
         # Remove "Type" suffix for cleaner names if present
         if name.endswith('Type'):
             clean_name = name[:-4]
@@ -54,29 +60,42 @@ def parse_xsd(xsd_path):
             for element in container.findall('xs:element', ns):
                 field_name = element.get('name')
                 field_type = element.get('type')
-                min_occurs = element.get('minOccurs', '1') # Default is 1
                 
+                # Handle minOccurs
+                min_occurs = element.get('minOccurs', '1') # Default is 1
                 required = "Yes" if min_occurs != '0' else "No"
+                
+                # Handle fixed values (like VERSION)
+                fixed_val = element.get('fixed')
                 
                 # Check if type is an enum
                 readable_type = type_mapping.get(field_type, field_type)
+                
+                # Clean up prefixes if still present
+                if readable_type and readable_type.startswith('xs:'):
+                     readable_type = type_mapping.get(readable_type, readable_type[3:].title())
+
                 enum_values = enums.get(field_type)
                 
                 fields.append({
                     'name': field_name,
                     'type': readable_type,
                     'required': required,
-                    'enum': enum_values
+                    'enum': enum_values,
+                    'fixed': fixed_val
                 })
         
         complex_types[clean_name] = fields
 
     return complex_types
 
-def generate_markdown(complex_types):
+def generate_markdown(complex_types, title, version):
     md = []
-    md.append("# BeerXML 1.0 Specification")
-    md.append("\n*Generated from beerxml.xsd*")
+    md.append(f"# {title}")
+    md.append(f"\n*Auto-generated from BeerXML {version} XSD*")
+    
+    if version == "1.1":
+        md.append("\n**Note:** All numeric values must be raw numbers (no units). All Dates must be ISO-8601.")
     
     # Order of presentation (logical order)
     order = ['Recipe', 'Style', 'Hop', 'Fermentable', 'Yeast', 'Misc', 'Water', 'Equipment', 'Mash', 'MashStep']
@@ -88,23 +107,33 @@ def generate_markdown(complex_types):
             md.append("| :--- | :--- | :--- | :--- |")
             
             for field in complex_types[name]:
-                desc = ""
+                desc = []
+                if field['fixed']:
+                    desc.append(f"Fixed Value: **{field['fixed']}**")
                 if field['enum']:
-                    desc = f"Values: {', '.join(field['enum'])}"
+                    desc.append(f"Values: {', '.join(field['enum'])}")
                 
-                md.append(f"| {field['name']} | {field['type']} | {field['required']} | {desc} |")
+                desc_str = "<br>".join(desc)
+                
+                md.append(f"| {field['name']} | {field['type']} | {field['required']} | {desc_str} |")
                 
     return "\n".join(md)
 
 if __name__ == "__main__":
-    xsd_path = "spec/xsd/beerxml.xsd"
-    if not os.path.exists(xsd_path):
-        print(f"Error: {xsd_path} not found")
-        sys.exit(1)
-        
-    data = parse_xsd(xsd_path)
-    md_content = generate_markdown(data)
-    
-    with open("spec/v1.0.md", "w") as f:
-        f.write(md_content)
-    print("Generated spec/v1.0.md")
+    # V1.0 Generation
+    v1_xsd = "spec/xsd/beerxml.xsd"
+    if os.path.exists(v1_xsd):
+        data = parse_xsd(v1_xsd)
+        md_content = generate_markdown(data, "BeerXML 1.0 Specification", "1.0")
+        with open("spec/v1.0.md", "w") as f:
+            f.write(md_content)
+        print("Generated spec/v1.0.md")
+
+    # V1.1 Generation
+    v11_xsd = "spec/v1.1/beerxml-1.1.xsd"
+    if os.path.exists(v11_xsd):
+        data = parse_xsd(v11_xsd)
+        md_content = generate_markdown(data, "BeerXML 1.1 Specification", "1.1")
+        with open("spec/v1.1/v1.1.md", "w") as f:
+            f.write(md_content)
+        print("Generated spec/v1.1/v1.1.md")
