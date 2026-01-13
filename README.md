@@ -41,10 +41,25 @@ python3 tests/validate_samples.py
 ```
 
 ## Specification
-*   [BeerXML 1.0 Specification](spec/v1.0.md)
+
+*   [BeerXML 1.0 Spec](spec/v1.0.md)
+
+*   [BeerXML 1.1 Spec (Draft)](spec/v1.1/v1.1.md)
+
 *   **BeerXML 1.1 Goals**: See [RFC 01](spec/v1.1/RFC_01_goals.md)
 
 
+
+## Contributing
+
+We welcome community contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to propose changes (BIPs) or improve the tooling.
+
+
+
 ## License
+
 Original BeerXML standard is copyright its respective authors.
-This repository structure and tooling are provided under MIT License (to be confirmed).
+
+This repository structure and tooling are provided under MIT License.
+
+
