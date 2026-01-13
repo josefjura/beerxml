@@ -1,6 +1,8 @@
 site_name: BeerXML Standard
 site_url: https://josefjura.github.io/beerxml/
 site_description: The open standard for brewing data exchange.
+docs_dir: .
+site_dir: _site
 theme:
   name: material
   palette:
