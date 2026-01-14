@@ -1,11 +1,7 @@
 import os
 import sys
-from lib.schema_parser import parse_xsd
-from lib.validator import validate_file
-
-import os
-import sys
 import xml.etree.ElementTree as ET
+
 from lib.schema_parser import parse_xsd
 from lib.validator import validate_file
 
