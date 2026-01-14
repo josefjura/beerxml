@@ -3,6 +3,8 @@
 Reviving and maintaining the BeerXML standard for brewing recipes and data.
 
 ## Project Goal
+**Live Documentation:** [https://josefjura.github.io/beerxml/](https://josefjura.github.io/beerxml/)
+
 This repository aims to:
 1.  **Preserve** the original BeerXML 1.0 standard.
 2.  **Clarify** the specification with readable documentation and reference implementations.
