@@ -92,10 +92,8 @@ def parse_xsd(xsd_path):
 def generate_markdown(complex_types, title, version):
     md = []
     md.append(f"# {title}")
-    md.append(f"\n*Auto-generated from BeerXML {version} XSD*")
     
     if version == "1.1":
-        md.append("\n**Note:** All numeric values must be raw numbers (no units). All Dates must be ISO-8601.")
         md.append("\n## Changes from v1.0")
         md.append("\nThe following changes have been made to modernize and clarify the standard:")
         md.append("\n1.  **Namespace:** All v1.1 files must use the namespace `http://beerxml.com/v1.1`.")
@@ -108,6 +106,7 @@ def generate_markdown(complex_types, title, version):
         md.append("    *   *Rationale:* Formatting for display is the responsibility of the application, not the data interchange format.")
         md.append("6.  **Removal of Ranges:** `_RANGE` fields (e.g., `OG_RANGE`) in Styles have been removed where `_MIN` and `_MAX` fields already exist.")
     
+    md.append(f"\n*Auto-generated from BeerXML {version} XSD*")
     # Order of presentation (logical order)
     order = ['Recipe', 'Style', 'Hop', 'Fermentable', 'Yeast', 'Misc', 'Water', 'Equipment', 'Mash', 'MashStep']
     
