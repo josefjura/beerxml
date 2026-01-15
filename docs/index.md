@@ -1,67 +1,37 @@
-# BeerXML Standard
+# BeerXML Recipe Standard
 
-Reviving and maintaining the BeerXML standard for brewing recipes and data.
+## Purpose
+BeerXML is a free, fully defined XML data description designed for the exchange of beer brewing recipes and other brewing data. Tables of recipes as well as other records such as hops can be represented using BeerXML for use by brewing programs. It is our hope that BeerXML allows the open exchange of recipes between different brewing software packages.
 
-## Project Goal
-This repository aims to:
-1.  **Preserve** the original BeerXML 1.0 standard.
-2.  **Clarify** the specification with readable documentation and reference implementations.
-3.  **Validate** existing and new BeerXML files against the strict standard.
-4.  **Evolve** the standard into a modern, semantic version (BeerXML v2.0) in the future.
+## Download / View BeerXML Version 1.0
+- Spec (Markdown): [BeerXML 1.0 Standard](spec/v1.0/v1.0.md)
+- Schema (XSD): [beerxml-1.0.xsd](spec/v1.0/beerxml-1.0.xsd)
 
-## Directory Structure
+## Software-Generated Examples
+Right click and choose Save As to download. Each example includes a raw download and a GitHub file view.
 
-*   `spec/`: The specification documents.
-    *   `v1.0/`: **BeerXML 1.0 (Legacy)**
-        *   `v1.0.md`: Markdown specification.
-        *   `beerxml-1.0.xsd`: Original XSD.
-    *   `v1.1/`: **BeerXML 1.1 (Draft)** - Modern "Clean XML" evolution.
-        *   `RFC_01_goals.md`: Design goals for v1.1.
-        *   `beerxml-1.1.xsd`: Strict schema for v1.1.
-        *   `v1.1.md`: Markdown specification.
-    *   `legacy/`: Original documentation files from beerxml.com.
-*   `lib/`: Python reference library for parsing and validation.
-*   `tests/`: Validation scripts and test runners.
-*   `samples/`:
-    *   `v1.1_sample.xml`: Example of the new modern XML format.
-    *   `original/`: The original samples from beerxml.com.
-    *   `corrected/`: Fixed versions of the original samples.
-    *   `brewtlery_unetice_realworld_sample.xml`: A real-world example from modern software.
-*   `scripts/`: Utility scripts.
+- Recipes: [raw](https://raw.githubusercontent.com/josefjura/beerxml/main/samples/original/recipes.xml) | [view](https://github.com/josefjura/beerxml/blob/main/samples/original/recipes.xml)
+- Hops: [raw](https://raw.githubusercontent.com/josefjura/beerxml/main/samples/original/hops.xml) | [view](https://github.com/josefjura/beerxml/blob/main/samples/original/hops.xml)
+- Fermentables: [raw](https://raw.githubusercontent.com/josefjura/beerxml/main/samples/original/grain.xml) | [view](https://github.com/josefjura/beerxml/blob/main/samples/original/grain.xml)
+- Misc: [raw](https://raw.githubusercontent.com/josefjura/beerxml/main/samples/original/misc.xml) | [view](https://github.com/josefjura/beerxml/blob/main/samples/original/misc.xml)
+- Styles: [raw](https://raw.githubusercontent.com/josefjura/beerxml/main/samples/original/style.xml) | [view](https://github.com/josefjura/beerxml/blob/main/samples/original/style.xml)
+- Water: [raw](https://raw.githubusercontent.com/josefjura/beerxml/main/samples/original/water.xml) | [view](https://github.com/josefjura/beerxml/blob/main/samples/original/water.xml)
+- Yeast: [raw](https://raw.githubusercontent.com/josefjura/beerxml/main/samples/original/yeast.xml) | [view](https://github.com/josefjura/beerxml/blob/main/samples/original/yeast.xml)
+- Equipment: [raw](https://raw.githubusercontent.com/josefjura/beerxml/main/samples/original/equipment.xml) | [view](https://github.com/josefjura/beerxml/blob/main/samples/original/equipment.xml)
+- Mash: [raw](https://raw.githubusercontent.com/josefjura/beerxml/main/samples/original/mash.xml) | [view](https://github.com/josefjura/beerxml/blob/main/samples/original/mash.xml)
 
-## Usage
+## Contributors to BeerXML 1.0 Development
+- Brad Smith, author of [BeerSmith](https://www.beersmith.com)
+- Drew Avis, author of [Strangebrew](http://www.strangebrew.ca)
+- Michael Taylor, author of [SUDS](http://www.oldlib.com/suds/index.html)
+- Andrew Perron, author of Drewbrew
+- David Johnson, author of [QBrew](http://www.usermode.org/code.html)
 
-### Prerequisites
-*   Python 3
+## BeerXML Converters
+- BeerXML v1.0 to v1.1 migration script: [`scripts/migrate_v1_to_v1.1.py`](../scripts/migrate_v1_to_v1.1.py)
 
-### Running Tests
-To validate all samples (Detects v1.0 vs v1.1 automatically):
+## About This Site
+This page mirrors the structure of the original BeerXML homepage while hosting updated, maintained references to the standard, schemas, and examples.
 
-```bash
-export PYTHONPATH=$PYTHONPATH:.
-python3 tests/validate_samples.py
-```
-
-## Specification
-
-*   [BeerXML 1.0 Spec](spec/v1.0/v1.0.md)
-
-*   [BeerXML 1.1 Spec (Draft)](spec/v1.1/v1.1.md)
-
-*   **BeerXML 1.1 Goals**: See [RFC 01](spec/v1.1/RFC_01_goals.md)
-
-
-
-## Contributing
-
-We welcome community contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to propose changes (BIPs) or improve the tooling.
-
-
-
-## License
-
-Original BeerXML standard is copyright its respective authors.
-
-This repository structure and tooling are provided under MIT License.
-
-
+## Future Development
+This repository maintains and documents BeerXML with community input. For changes to the standard or improvements to tooling, please see [CONTRIBUTING.md](contributing.md).

@@ -96,6 +96,17 @@ def generate_markdown(complex_types, title, version):
     
     if version == "1.1":
         md.append("\n**Note:** All numeric values must be raw numbers (no units). All Dates must be ISO-8601.")
+        md.append("\n## Changes from v1.0")
+        md.append("\nThe following changes have been made to modernize and clarify the standard:")
+        md.append("\n1.  **Namespace:** All v1.1 files must use the namespace `http://beerxml.com/v1.1`.")
+        md.append("2.  **Strict Numeric Types:** Fields that represent numbers (e.g., `AMOUNT`, `TEMPERATURE`) must now be pure XML decimals or integers. They **cannot** contain units (e.g., use `5.5` not `5.5 kg`).")
+        md.append("    *   *Rationale:* This simplifies parsing and removes ambiguity. Units are strictly defined by the standard (kg, Liters, Celsius, etc.).")
+        md.append("3.  **Strict Date Format:** All dates must be in ISO-8601 format (`YYYY-MM-DD`).")
+        md.append("    *   *Rationale:* v1.0 allowed loose text dates which caused interoperability issues.")
+        md.append("4.  **Booleans:** Boolean fields must be `true` or `false` (lowercase recommended, though XML Schema allows `1`/`0`).")
+        md.append("5.  **Removal of Display Tags:** All `DISPLAY_*` fields (e.g., `DISPLAY_AMOUNT`, `DISPLAY_TIME`) have been removed.")
+        md.append("    *   *Rationale:* Formatting for display is the responsibility of the application, not the data interchange format.")
+        md.append("6.  **Removal of Ranges:** `_RANGE` fields (e.g., `OG_RANGE`) in Styles have been removed where `_MIN` and `_MAX` fields already exist.")
     
     # Order of presentation (logical order)
     order = ['Recipe', 'Style', 'Hop', 'Fermentable', 'Yeast', 'Misc', 'Water', 'Equipment', 'Mash', 'MashStep']
