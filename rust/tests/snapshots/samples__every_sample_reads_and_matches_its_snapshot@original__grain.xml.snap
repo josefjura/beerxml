@@ -6,6 +6,279 @@ Read {
     document: Document {
         recipes: [],
         hops: [],
+        fermentables: [
+            Fermentable {
+                name: "Acid Malt",
+                kind: Some(
+                    Grain,
+                ),
+                amount: Some(
+                    Kilograms(
+                        0.0,
+                    ),
+                ),
+                yield_: Some(
+                    Percent(
+                        58.7,
+                    ),
+                ),
+                color: Some(
+                    Srm(
+                        3.0,
+                    ),
+                ),
+                add_after_boil: Some(
+                    false,
+                ),
+                origin: Some(
+                    "Germany",
+                ),
+                supplier: None,
+                notes: Some(
+                    "Acid malt contains acids from natural lactic acids. Used by German brewers to adjust malt\n\t\t\tPH without chemicals to adhere to German purity laws. Also enhances the head retention.",
+                ),
+                coarse_fine_diff: Some(
+                    Percent(
+                        1.5,
+                    ),
+                ),
+                moisture: Some(
+                    Percent(
+                        4.0,
+                    ),
+                ),
+                diastatic_power: Some(
+                    Lintner(
+                        0.0,
+                    ),
+                ),
+                protein: Some(
+                    Percent(
+                        6.0,
+                    ),
+                ),
+                max_in_batch: Some(
+                    Percent(
+                        10.0,
+                    ),
+                ),
+                recommend_mash: Some(
+                    true,
+                ),
+                ibu_gal_per_lb: Some(
+                    0.0,
+                ),
+                potential: Some(
+                    SpecificGravity(
+                        1.027,
+                    ),
+                ),
+            },
+            Fermentable {
+                name: "Brown Malt",
+                kind: Some(
+                    Grain,
+                ),
+                amount: Some(
+                    Kilograms(
+                        0.0,
+                    ),
+                ),
+                yield_: Some(
+                    Percent(
+                        70.0,
+                    ),
+                ),
+                color: Some(
+                    Srm(
+                        65.0,
+                    ),
+                ),
+                add_after_boil: Some(
+                    false,
+                ),
+                origin: Some(
+                    "United Kingdom",
+                ),
+                supplier: None,
+                notes: Some(
+                    "Imparts a dry, biscuit flavor. Used in nut brown ales, porters and some Belgian ales.",
+                ),
+                coarse_fine_diff: Some(
+                    Percent(
+                        1.5,
+                    ),
+                ),
+                moisture: Some(
+                    Percent(
+                        4.0,
+                    ),
+                ),
+                diastatic_power: Some(
+                    Lintner(
+                        0.0,
+                    ),
+                ),
+                protein: Some(
+                    Percent(
+                        0.0,
+                    ),
+                ),
+                max_in_batch: Some(
+                    Percent(
+                        10.0,
+                    ),
+                ),
+                recommend_mash: Some(
+                    true,
+                ),
+                ibu_gal_per_lb: Some(
+                    0.0,
+                ),
+                potential: Some(
+                    SpecificGravity(
+                        1.032,
+                    ),
+                ),
+            },
+            Fermentable {
+                name: "Munich Malt",
+                kind: Some(
+                    Grain,
+                ),
+                amount: Some(
+                    Kilograms(
+                        0.0,
+                    ),
+                ),
+                yield_: Some(
+                    Percent(
+                        80.0,
+                    ),
+                ),
+                color: Some(
+                    Srm(
+                        9.0,
+                    ),
+                ),
+                add_after_boil: Some(
+                    false,
+                ),
+                origin: Some(
+                    "Germany",
+                ),
+                supplier: None,
+                notes: Some(
+                    "Malty-sweet flavor characteristic and adds a reddish amber color to the beer. Does not\n\t\t\tcontribute signficantly to body or head retention. Use for: Bock, Porter, Marzen, Oktoberfest\n\t\t\tbeers",
+                ),
+                coarse_fine_diff: Some(
+                    Percent(
+                        1.3,
+                    ),
+                ),
+                moisture: Some(
+                    Percent(
+                        5.0,
+                    ),
+                ),
+                diastatic_power: Some(
+                    Lintner(
+                        72.0,
+                    ),
+                ),
+                protein: Some(
+                    Percent(
+                        11.5,
+                    ),
+                ),
+                max_in_batch: Some(
+                    Percent(
+                        80.0,
+                    ),
+                ),
+                recommend_mash: Some(
+                    true,
+                ),
+                ibu_gal_per_lb: Some(
+                    0.0,
+                ),
+                potential: Some(
+                    SpecificGravity(
+                        1.037,
+                    ),
+                ),
+            },
+            Fermentable {
+                name: "Pale Malt (2 Row) UK",
+                kind: Some(
+                    Grain,
+                ),
+                amount: Some(
+                    Kilograms(
+                        0.0,
+                    ),
+                ),
+                yield_: Some(
+                    Percent(
+                        78.0,
+                    ),
+                ),
+                color: Some(
+                    Srm(
+                        3.0,
+                    ),
+                ),
+                add_after_boil: Some(
+                    false,
+                ),
+                origin: Some(
+                    "United Kingdom",
+                ),
+                supplier: None,
+                notes: Some(
+                    "Base malt for all English beer styles Lower diastatic power than American 2 Row Pale Malt",
+                ),
+                coarse_fine_diff: Some(
+                    Percent(
+                        1.5,
+                    ),
+                ),
+                moisture: Some(
+                    Percent(
+                        4.0,
+                    ),
+                ),
+                diastatic_power: Some(
+                    Lintner(
+                        45.0,
+                    ),
+                ),
+                protein: Some(
+                    Percent(
+                        10.1,
+                    ),
+                ),
+                max_in_batch: Some(
+                    Percent(
+                        100.0,
+                    ),
+                ),
+                recommend_mash: Some(
+                    true,
+                ),
+                ibu_gal_per_lb: Some(
+                    0.0,
+                ),
+                potential: Some(
+                    SpecificGravity(
+                        1.036,
+                    ),
+                ),
+            },
+        ],
+        yeasts: [],
+        miscs: [],
+        waters: [],
     },
     version: V1_0,
     warnings: [],

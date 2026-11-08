@@ -147,6 +147,84 @@ impl SpecificGravity {
     }
 }
 
+unit!(
+    /// A temperature in degrees Celsius, the BeerXML unit for temperatures.
+    Celsius,
+    "°C"
+);
+
+impl Celsius {
+    /// The temperature in degrees Fahrenheit.
+    #[must_use]
+    pub fn fahrenheit(self) -> f64 {
+        self.0 * 9.0 / 5.0 + 32.0
+    }
+}
+
+unit!(
+    /// A colour in SRM (Standard Reference Method), the BeerXML unit for
+    /// colours.
+    Srm,
+    "SRM"
+);
+
+impl Srm {
+    /// The colour in EBC, by the common approximation `EBC = SRM × 1.97`.
+    #[must_use]
+    pub fn ebc(self) -> f64 {
+        self.0 * 1.97
+    }
+
+    /// The colour in degrees Lovibond, by the common approximation
+    /// `SRM = 1.3546 × °L − 0.76`.
+    #[must_use]
+    pub fn lovibond(self) -> f64 {
+        (self.0 + 0.76) / 1.3546
+    }
+}
+
+unit!(
+    /// A concentration in parts per million (mg/L), the BeerXML unit for
+    /// water minerals. In water, ppm and mg/L are the same.
+    Ppm,
+    "ppm"
+);
+
+unit!(
+    /// Diastatic power in degrees Lintner.
+    Lintner,
+    "°Lintner"
+);
+
+impl Lintner {
+    /// The diastatic power in degrees Windisch-Kolbach, by the common
+    /// approximation `°WK = 3.5 × °L − 16`.
+    #[must_use]
+    pub fn windisch_kolbach(self) -> f64 {
+        self.0 * 3.5 - 16.0
+    }
+}
+
+/// An amount that is a weight or a volume, as chosen by the record's
+/// `AMOUNT_IS_WEIGHT` flag (used by Misc and Yeast records).
+#[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
+pub enum Amount {
+    /// `AMOUNT_IS_WEIGHT` is `TRUE`: the amount is in kilograms.
+    Weight(Kilograms),
+    /// `AMOUNT_IS_WEIGHT` is `FALSE` or absent (the spec's default): the
+    /// amount is in litres.
+    Volume(Litres),
+}
+
+impl fmt::Display for Amount {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Weight(kg) => fmt::Display::fmt(kg, f),
+            Self::Volume(l) => fmt::Display::fmt(l, f),
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -175,6 +253,27 @@ mod tests {
         assert!(close(Minutes::new(4320.0).days(), 3.0));
         assert!(close(Percent::new(75.0).fraction(), 0.75));
         assert!(close(SpecificGravity::new(1.043).points(), 43.0));
+    }
+
+    #[test]
+    fn temperature_colour_mineral_and_diastatic_conversions() {
+        assert!(close(Celsius::new(100.0).fahrenheit(), 212.0));
+        assert!(close(Celsius::new(-40.0).fahrenheit(), -40.0));
+        assert!(close(Celsius::new(20.0).fahrenheit(), 68.0));
+        assert!(close(Srm::new(10.0).ebc(), 19.7));
+        assert!(close(Srm::new(1.3546 * 4.0 - 0.76).lovibond(), 4.0));
+        assert_eq!(Ppm::new(295.0).to_string(), "295 ppm");
+        assert!(close(Lintner::new(100.0).windisch_kolbach(), 334.0));
+    }
+
+    #[test]
+    fn amount_displays_its_unit() {
+        assert_eq!(Amount::Weight(Kilograms::new(0.5)).to_string(), "0.5 kg");
+        assert_eq!(
+            format!("{:.2}", Amount::Volume(Litres::new(0.035))),
+            "0.04 L"
+        );
+        assert_eq!(format!("{:.1}", Celsius::new(18.26)), "18.3 °C");
     }
 
     #[test]

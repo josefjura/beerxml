@@ -6,6 +6,146 @@ Read {
     document: Document {
         recipes: [],
         hops: [],
+        fermentables: [],
+        yeasts: [],
+        miscs: [
+            Misc {
+                name: "Apricot Extract",
+                kind: Some(
+                    Flavor,
+                ),
+                usage: Some(
+                    Bottling,
+                ),
+                time: Some(
+                    Minutes(
+                        5.0,
+                    ),
+                ),
+                amount: Some(
+                    Volume(
+                        Litres(
+                            0.192229,
+                        ),
+                    ),
+                ),
+                use_for: Some(
+                    "Fruit Beer",
+                ),
+                notes: Some(
+                    "Apricot flavor extract. Mix into beer just before bottling. Adds apricot flavor to light\n\t\t\tales and wheat beers. Use low hop rate to allow sweet flavor through.",
+                ),
+            },
+            Misc {
+                name: "Calcium Chloride",
+                kind: Some(
+                    WaterAgent,
+                ),
+                usage: Some(
+                    Mash,
+                ),
+                time: Some(
+                    Minutes(
+                        60.0,
+                    ),
+                ),
+                amount: Some(
+                    Weight(
+                        Kilograms(
+                            0.005,
+                        ),
+                    ),
+                ),
+                use_for: Some(
+                    "Water Agent",
+                ),
+                notes: Some(
+                    "Alters water profile and pH of mash. Use the BeerSmith Water Profile tool to determine\n\t\t\tamount to add.",
+                ),
+            },
+            Misc {
+                name: "Ginger Root",
+                kind: Some(
+                    Herb,
+                ),
+                usage: Some(
+                    Boil,
+                ),
+                time: Some(
+                    Minutes(
+                        12.0,
+                    ),
+                ),
+                amount: Some(
+                    Volume(
+                        Litres(
+                            0.029574,
+                        ),
+                    ),
+                ),
+                use_for: Some(
+                    "Holiday Beer",
+                ),
+                notes: Some(
+                    "Adds distinctive ginger flavor for Ginger Ales, Holiday Beers. Fresh grated ginger root\n\t\t\tfrom the grocer is best. As little as 1/2 ounce per 5 gallons is noticable, but up to 4 oz can\n\t\t\tbe used for ginger ales.",
+                ),
+            },
+            Misc {
+                name: "Irish Moss",
+                kind: Some(
+                    Fining,
+                ),
+                usage: Some(
+                    Boil,
+                ),
+                time: Some(
+                    Minutes(
+                        10.0,
+                    ),
+                ),
+                amount: Some(
+                    Volume(
+                        Litres(
+                            0.001232,
+                        ),
+                    ),
+                ),
+                use_for: Some(
+                    "Clarity",
+                ),
+                notes: Some(
+                    "Fining agent that aids in the post-boil protein break. Reduces protein chill haze and\n\t\t\timproves beer clarity.",
+                ),
+            },
+            Misc {
+                name: "Orange Peel, Bitter",
+                kind: Some(
+                    Spice,
+                ),
+                usage: Some(
+                    Boil,
+                ),
+                time: Some(
+                    Minutes(
+                        5.0,
+                    ),
+                ),
+                amount: Some(
+                    Volume(
+                        Litres(
+                            0.02218,
+                        ),
+                    ),
+                ),
+                use_for: Some(
+                    "Belgian Wit",
+                ),
+                notes: Some(
+                    "Made from the Curaco Orange Peel, peels are green-gray in color. Used to add a\n\t\t\tdistinctive flavor to Belgian Wits and White beers.",
+                ),
+            },
+        ],
+        waters: [],
     },
     version: V1_0,
     warnings: [],

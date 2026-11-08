@@ -19,8 +19,17 @@ pub enum WarningKind {
         /// The full original text of the field.
         text: String,
     },
-    /// A numeric field had no leading number and was read as missing.
+    /// A numeric field had no leading number and was read as missing. An
+    /// integer field (e.g. `MAX_REUSE`) that is not exactly a whole,
+    /// non-negative number, such as `2.5`, `-1` or `3 times`, is reported
+    /// the same way.
     UnreadableNumber {
+        /// The full original text of the field.
+        text: String,
+    },
+    /// A boolean field is neither `TRUE` nor `FALSE` (in any case) and was
+    /// read as missing.
+    UnreadableBoolean {
         /// The full original text of the field.
         text: String,
     },

@@ -231,6 +231,358 @@ Read {
                         myrcene: None,
                     },
                 ],
+                fermentables: [
+                    Fermentable {
+                        name: "Pale Malt (2 Row) UK",
+                        kind: Some(
+                            Grain,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                3.628736,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                78.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                2.5,
+                            ),
+                        ),
+                        add_after_boil: Some(
+                            false,
+                        ),
+                        origin: Some(
+                            "United Kingdom",
+                        ),
+                        supplier: None,
+                        notes: Some(
+                            "Base malt for all English beer styles Lower diastatic power than American 2 Row Pale\n\t\t\t\t\tMalt",
+                        ),
+                        coarse_fine_diff: Some(
+                            Percent(
+                                1.5,
+                            ),
+                        ),
+                        moisture: Some(
+                            Percent(
+                                4.0,
+                            ),
+                        ),
+                        diastatic_power: Some(
+                            Lintner(
+                                45.0,
+                            ),
+                        ),
+                        protein: Some(
+                            Percent(
+                                10.1,
+                            ),
+                        ),
+                        max_in_batch: Some(
+                            Percent(
+                                100.0,
+                            ),
+                        ),
+                        recommend_mash: Some(
+                            false,
+                        ),
+                        ibu_gal_per_lb: Some(
+                            0.0,
+                        ),
+                        potential: Some(
+                            SpecificGravity(
+                                1.036,
+                            ),
+                        ),
+                    },
+                    Fermentable {
+                        name: "Caramel/Crystal Malt - 20L",
+                        kind: Some(
+                            Grain,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.453592,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                75.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                20.0,
+                            ),
+                        ),
+                        add_after_boil: Some(
+                            false,
+                        ),
+                        origin: Some(
+                            "US",
+                        ),
+                        supplier: None,
+                        notes: Some(
+                            "Adds body, color and improves head retention. Also called \"Crystal\" malt.",
+                        ),
+                        coarse_fine_diff: Some(
+                            Percent(
+                                1.5,
+                            ),
+                        ),
+                        moisture: Some(
+                            Percent(
+                                4.0,
+                            ),
+                        ),
+                        diastatic_power: Some(
+                            Lintner(
+                                0.0,
+                            ),
+                        ),
+                        protein: Some(
+                            Percent(
+                                13.2,
+                            ),
+                        ),
+                        max_in_batch: Some(
+                            Percent(
+                                20.0,
+                            ),
+                        ),
+                        recommend_mash: Some(
+                            false,
+                        ),
+                        ibu_gal_per_lb: Some(
+                            0.0,
+                        ),
+                        potential: Some(
+                            SpecificGravity(
+                                1.035,
+                            ),
+                        ),
+                    },
+                    Fermentable {
+                        name: "Brown Sugar, Light",
+                        kind: Some(
+                            Sugar,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.453592,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                100.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                8.0,
+                            ),
+                        ),
+                        add_after_boil: Some(
+                            false,
+                        ),
+                        origin: Some(
+                            "US",
+                        ),
+                        supplier: None,
+                        notes: Some(
+                            "Imparts a rich sweet flavor. Used in Scottish ales, holiday ales and some old ales.",
+                        ),
+                        coarse_fine_diff: None,
+                        moisture: None,
+                        diastatic_power: None,
+                        protein: None,
+                        max_in_batch: Some(
+                            Percent(
+                                10.0,
+                            ),
+                        ),
+                        recommend_mash: Some(
+                            false,
+                        ),
+                        ibu_gal_per_lb: Some(
+                            0.0,
+                        ),
+                        potential: Some(
+                            SpecificGravity(
+                                1.046,
+                            ),
+                        ),
+                    },
+                ],
+                yeasts: [
+                    Yeast {
+                        name: "Burton Ale",
+                        kind: Some(
+                            Ale,
+                        ),
+                        form: Some(
+                            Liquid,
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.035013,
+                                ),
+                            ),
+                        ),
+                        laboratory: Some(
+                            "White Labs",
+                        ),
+                        product_id: Some(
+                            "WLP023",
+                        ),
+                        min_temperature: Some(
+                            Celsius(
+                                20.0,
+                            ),
+                        ),
+                        max_temperature: Some(
+                            Celsius(
+                                22.7778,
+                            ),
+                        ),
+                        flocculation: Some(
+                            Medium,
+                        ),
+                        attenuation: Some(
+                            Percent(
+                                72.0,
+                            ),
+                        ),
+                        notes: Some(
+                            "Burton-on-trent yeast produces a complex character. Flavors include apple, pear, and\n\t\t\t\t\tclover honey.",
+                        ),
+                        best_for: Some(
+                            "All English styles including Pale Ale, IPA, Porter, Stout and Bitters.",
+                        ),
+                        times_cultured: Some(
+                            0,
+                        ),
+                        max_reuse: Some(
+                            5,
+                        ),
+                        add_to_secondary: Some(
+                            false,
+                        ),
+                        culture_date: Some(
+                            RecordDate {
+                                text: "7/6/2003",
+                                iso: None,
+                            },
+                        ),
+                    },
+                ],
+                miscs: [
+                    Misc {
+                        name: "Irish Moss",
+                        kind: Some(
+                            Fining,
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                10.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.001232,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Clarity",
+                        ),
+                        notes: Some(
+                            "Fining agent that aids in the post-boil protein break. Reduces protein chill haze and\n\t\t\t\t\timproves beer clarity.",
+                        ),
+                    },
+                    Misc {
+                        name: "Polyclar",
+                        kind: Some(
+                            Fining,
+                        ),
+                        usage: Some(
+                            Secondary,
+                        ),
+                        time: Some(
+                            Minutes(
+                                1440.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.007393,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Chill Haze",
+                        ),
+                        notes: Some(
+                            "Plastic powder that reduces chill haze by removing tannins and proteins. Add to\n\t\t\t\t\tsecondary after yeast has settled. Amounts vary by manufacturer -- check instructions\n\t\t\t\t\tbefore adding. Do not boil.",
+                        ),
+                    },
+                ],
+                waters: [
+                    Water {
+                        name: "Burton On Trent, UK",
+                        amount: Some(
+                            Litres(
+                                18.927168,
+                            ),
+                        ),
+                        calcium: Some(
+                            Ppm(
+                                295.0,
+                            ),
+                        ),
+                        bicarbonate: Some(
+                            Ppm(
+                                300.0,
+                            ),
+                        ),
+                        sulfate: Some(
+                            Ppm(
+                                725.0,
+                            ),
+                        ),
+                        chloride: Some(
+                            Ppm(
+                                25.0,
+                            ),
+                        ),
+                        sodium: Some(
+                            Ppm(
+                                55.0,
+                            ),
+                        ),
+                        magnesium: Some(
+                            Ppm(
+                                45.0,
+                            ),
+                        ),
+                        ph: Some(
+                            8.0,
+                        ),
+                        notes: Some(
+                            "Distinctive pale ales strongly hopped. Very hard water accentuates the hops flavor.\n\t\t\t\t\tExample: Bass Ale",
+                        ),
+                    },
+                ],
             },
             Recipe {
                 name: "Dry Stout",
@@ -312,6 +664,374 @@ Read {
                         caryophyllene: None,
                         cohumulone: None,
                         myrcene: None,
+                    },
+                ],
+                fermentables: [
+                    Fermentable {
+                        name: "Pale Malt (2 Row) UK",
+                        kind: Some(
+                            Grain,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                2.26796,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                78.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                2.5,
+                            ),
+                        ),
+                        add_after_boil: Some(
+                            false,
+                        ),
+                        origin: Some(
+                            "United Kingdom",
+                        ),
+                        supplier: None,
+                        notes: Some(
+                            "Base malt for all English beer styles Lower diastatic power than American 2 Row Pale\n\t\t\t\t\tMalt",
+                        ),
+                        coarse_fine_diff: Some(
+                            Percent(
+                                1.5,
+                            ),
+                        ),
+                        moisture: Some(
+                            Percent(
+                                4.0,
+                            ),
+                        ),
+                        diastatic_power: Some(
+                            Lintner(
+                                45.0,
+                            ),
+                        ),
+                        protein: Some(
+                            Percent(
+                                10.1,
+                            ),
+                        ),
+                        max_in_batch: Some(
+                            Percent(
+                                100.0,
+                            ),
+                        ),
+                        recommend_mash: Some(
+                            false,
+                        ),
+                        ibu_gal_per_lb: Some(
+                            0.0,
+                        ),
+                        potential: Some(
+                            SpecificGravity(
+                                1.036,
+                            ),
+                        ),
+                    },
+                    Fermentable {
+                        name: "Barley, Flaked",
+                        kind: Some(
+                            Grain,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.907184,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                70.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                1.7,
+                            ),
+                        ),
+                        add_after_boil: Some(
+                            false,
+                        ),
+                        origin: Some(
+                            "US",
+                        ),
+                        supplier: None,
+                        notes: Some(
+                            "Adds significant body to Porters and Stouts. High haze producing protein prevents use\n\t\t\t\t\tin light beers.",
+                        ),
+                        coarse_fine_diff: Some(
+                            Percent(
+                                1.5,
+                            ),
+                        ),
+                        moisture: Some(
+                            Percent(
+                                9.0,
+                            ),
+                        ),
+                        diastatic_power: Some(
+                            Lintner(
+                                0.0,
+                            ),
+                        ),
+                        protein: Some(
+                            Percent(
+                                13.5,
+                            ),
+                        ),
+                        max_in_batch: Some(
+                            Percent(
+                                20.0,
+                            ),
+                        ),
+                        recommend_mash: Some(
+                            true,
+                        ),
+                        ibu_gal_per_lb: Some(
+                            0.0,
+                        ),
+                        potential: Some(
+                            SpecificGravity(
+                                1.032,
+                            ),
+                        ),
+                    },
+                    Fermentable {
+                        name: "Black Barley (Stout)",
+                        kind: Some(
+                            Grain,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.453592,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                55.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                500.0,
+                            ),
+                        ),
+                        add_after_boil: Some(
+                            false,
+                        ),
+                        origin: Some(
+                            "US",
+                        ),
+                        supplier: None,
+                        notes: Some(
+                            "Unmalted barley roasted at high temperature to create a dry, coffee like flavor.\n\t\t\t\t\tImparts a sharp acrid flavor characteristic of dry stouts. Gives \"dryness\" to a stout or\n\t\t\t\t\tporter -- much more so than regular Roasted Barley",
+                        ),
+                        coarse_fine_diff: Some(
+                            Percent(
+                                1.5,
+                            ),
+                        ),
+                        moisture: Some(
+                            Percent(
+                                5.0,
+                            ),
+                        ),
+                        diastatic_power: Some(
+                            Lintner(
+                                0.0,
+                            ),
+                        ),
+                        protein: Some(
+                            Percent(
+                                13.2,
+                            ),
+                        ),
+                        max_in_batch: Some(
+                            Percent(
+                                10.0,
+                            ),
+                        ),
+                        recommend_mash: Some(
+                            false,
+                        ),
+                        ibu_gal_per_lb: Some(
+                            0.0,
+                        ),
+                        potential: Some(
+                            SpecificGravity(
+                                1.025,
+                            ),
+                        ),
+                    },
+                ],
+                yeasts: [
+                    Yeast {
+                        name: "Irish Ale",
+                        kind: Some(
+                            Ale,
+                        ),
+                        form: Some(
+                            Liquid,
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.125048,
+                                ),
+                            ),
+                        ),
+                        laboratory: Some(
+                            "Wyeast Labs",
+                        ),
+                        product_id: Some(
+                            "1084",
+                        ),
+                        min_temperature: Some(
+                            Celsius(
+                                16.6667,
+                            ),
+                        ),
+                        max_temperature: Some(
+                            Celsius(
+                                22.2222,
+                            ),
+                        ),
+                        flocculation: Some(
+                            Medium,
+                        ),
+                        attenuation: Some(
+                            Percent(
+                                73.0,
+                            ),
+                        ),
+                        notes: Some(
+                            "Dry diacetyl, fruity flavor characteristic of stouts. Full bodied, dry, clean flavor.",
+                        ),
+                        best_for: Some(
+                            "Irish Dry Stouts, Porter, Scottish Ale, Brown Ale, Imperial Stout, Barley Wine",
+                        ),
+                        times_cultured: Some(
+                            0,
+                        ),
+                        max_reuse: Some(
+                            5,
+                        ),
+                        add_to_secondary: Some(
+                            false,
+                        ),
+                        culture_date: Some(
+                            RecordDate {
+                                text: "7/6/2003",
+                                iso: None,
+                            },
+                        ),
+                    },
+                ],
+                miscs: [
+                    Misc {
+                        name: "Irish Moss",
+                        kind: Some(
+                            Fining,
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                10.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.001232,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Clarity",
+                        ),
+                        notes: Some(
+                            "Fining agent that aids in the post-boil protein break. Reduces protein chill haze and\n\t\t\t\t\timproves beer clarity.",
+                        ),
+                    },
+                    Misc {
+                        name: "Gypsum (Calcium Sulfate)",
+                        kind: Some(
+                            WaterAgent,
+                        ),
+                        usage: Some(
+                            Mash,
+                        ),
+                        time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Weight(
+                                Kilograms(
+                                    0.01,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Water Agent",
+                        ),
+                        notes: Some(
+                            "Reduces PH of water for mashing and sparging. Alters water profile -- used to harden\n\t\t\t\t\tsoft water. Use the BeerSmith Water Profile tool to determine amount to add.",
+                        ),
+                    },
+                ],
+                waters: [
+                    Water {
+                        name: "Dublin, Ireland",
+                        amount: Some(
+                            Litres(
+                                18.927168,
+                            ),
+                        ),
+                        calcium: Some(
+                            Ppm(
+                                115.0,
+                            ),
+                        ),
+                        bicarbonate: Some(
+                            Ppm(
+                                200.0,
+                            ),
+                        ),
+                        sulfate: Some(
+                            Ppm(
+                                55.0,
+                            ),
+                        ),
+                        chloride: Some(
+                            Ppm(
+                                19.0,
+                            ),
+                        ),
+                        sodium: Some(
+                            Ppm(
+                                12.0,
+                            ),
+                        ),
+                        magnesium: Some(
+                            Ppm(
+                                4.0,
+                            ),
+                        ),
+                        ph: Some(
+                            8.0,
+                        ),
+                        notes: Some(
+                            "Irish ale water - used for dark, malty strong ales with medium bitterness. Famous for\n\t\t\t\t\tdry stouts.",
+                        ),
                     },
                 ],
             },
@@ -397,6 +1117,463 @@ Read {
                         myrcene: None,
                     },
                 ],
+                fermentables: [
+                    Fermentable {
+                        name: "Pale Malt (2 Row) Bel",
+                        kind: Some(
+                            Grain,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                3.628736,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                80.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                3.2,
+                            ),
+                        ),
+                        add_after_boil: Some(
+                            false,
+                        ),
+                        origin: Some(
+                            "Belgium",
+                        ),
+                        supplier: None,
+                        notes: Some(
+                            "Base malt for all beer styles Higher potential yield than US, English equivalent pale\n\t\t\t\t\tale malts",
+                        ),
+                        coarse_fine_diff: Some(
+                            Percent(
+                                1.5,
+                            ),
+                        ),
+                        moisture: Some(
+                            Percent(
+                                4.0,
+                            ),
+                        ),
+                        diastatic_power: Some(
+                            Lintner(
+                                60.0,
+                            ),
+                        ),
+                        protein: Some(
+                            Percent(
+                                10.5,
+                            ),
+                        ),
+                        max_in_batch: Some(
+                            Percent(
+                                100.0,
+                            ),
+                        ),
+                        recommend_mash: Some(
+                            false,
+                        ),
+                        ibu_gal_per_lb: Some(
+                            0.0,
+                        ),
+                        potential: Some(
+                            SpecificGravity(
+                                1.037,
+                            ),
+                        ),
+                    },
+                    Fermentable {
+                        name: "Black (Patent) Malt",
+                        kind: Some(
+                            Grain,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.453592,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                55.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                500.0,
+                            ),
+                        ),
+                        add_after_boil: Some(
+                            false,
+                        ),
+                        origin: Some(
+                            "US",
+                        ),
+                        supplier: None,
+                        notes: Some(
+                            "Dark color and dry roasted flavor characteristic of Stouts and Porters Use for:\n\t\t\t\t\tColoring in small amounts, or flavoring of Stouts and Porters in larger amounts.",
+                        ),
+                        coarse_fine_diff: Some(
+                            Percent(
+                                1.5,
+                            ),
+                        ),
+                        moisture: Some(
+                            Percent(
+                                6.0,
+                            ),
+                        ),
+                        diastatic_power: Some(
+                            Lintner(
+                                0.0,
+                            ),
+                        ),
+                        protein: Some(
+                            Percent(
+                                13.2,
+                            ),
+                        ),
+                        max_in_batch: Some(
+                            Percent(
+                                10.0,
+                            ),
+                        ),
+                        recommend_mash: Some(
+                            false,
+                        ),
+                        ibu_gal_per_lb: Some(
+                            0.0,
+                        ),
+                        potential: Some(
+                            SpecificGravity(
+                                1.025,
+                            ),
+                        ),
+                    },
+                    Fermentable {
+                        name: "Caramel/Crystal Malt - 10L",
+                        kind: Some(
+                            Grain,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.453592,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                75.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                10.0,
+                            ),
+                        ),
+                        add_after_boil: Some(
+                            false,
+                        ),
+                        origin: Some(
+                            "US",
+                        ),
+                        supplier: None,
+                        notes: Some(
+                            "Adds body, color and improves head retention. Also called \"Crystal\" malt.",
+                        ),
+                        coarse_fine_diff: Some(
+                            Percent(
+                                1.5,
+                            ),
+                        ),
+                        moisture: Some(
+                            Percent(
+                                4.0,
+                            ),
+                        ),
+                        diastatic_power: Some(
+                            Lintner(
+                                0.0,
+                            ),
+                        ),
+                        protein: Some(
+                            Percent(
+                                13.2,
+                            ),
+                        ),
+                        max_in_batch: Some(
+                            Percent(
+                                20.0,
+                            ),
+                        ),
+                        recommend_mash: Some(
+                            false,
+                        ),
+                        ibu_gal_per_lb: Some(
+                            0.0,
+                        ),
+                        potential: Some(
+                            SpecificGravity(
+                                1.035,
+                            ),
+                        ),
+                    },
+                    Fermentable {
+                        name: "Chocolate Malt",
+                        kind: Some(
+                            Grain,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.226796,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                60.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                350.0,
+                            ),
+                        ),
+                        add_after_boil: Some(
+                            false,
+                        ),
+                        origin: Some(
+                            "US",
+                        ),
+                        supplier: None,
+                        notes: Some(
+                            "Dark malt that gives a rich red or brown color and nutty flavor. Use for: Brown ales,\n\t\t\t\t\tporters, some stouts Maintains some malty flavor, not as dark as roasted malt.",
+                        ),
+                        coarse_fine_diff: Some(
+                            Percent(
+                                1.5,
+                            ),
+                        ),
+                        moisture: Some(
+                            Percent(
+                                4.0,
+                            ),
+                        ),
+                        diastatic_power: Some(
+                            Lintner(
+                                0.0,
+                            ),
+                        ),
+                        protein: Some(
+                            Percent(
+                                13.2,
+                            ),
+                        ),
+                        max_in_batch: Some(
+                            Percent(
+                                10.0,
+                            ),
+                        ),
+                        recommend_mash: Some(
+                            false,
+                        ),
+                        ibu_gal_per_lb: Some(
+                            0.0,
+                        ),
+                        potential: Some(
+                            SpecificGravity(
+                                1.028,
+                            ),
+                        ),
+                    },
+                    Fermentable {
+                        name: "Munich Malt - 10L",
+                        kind: Some(
+                            Grain,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.226796,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                77.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                10.0,
+                            ),
+                        ),
+                        add_after_boil: Some(
+                            false,
+                        ),
+                        origin: Some(
+                            "US",
+                        ),
+                        supplier: None,
+                        notes: Some(
+                            "Malty-sweet flavor characteristic and adds a slight orange color to the beer. Does\n\t\t\t\t\tnot contribute signficantly to body or head retention. Use for: Bock, Porter, Marzen,\n\t\t\t\t\tOktoberfest beers",
+                        ),
+                        coarse_fine_diff: Some(
+                            Percent(
+                                2.8,
+                            ),
+                        ),
+                        moisture: Some(
+                            Percent(
+                                5.0,
+                            ),
+                        ),
+                        diastatic_power: Some(
+                            Lintner(
+                                50.0,
+                            ),
+                        ),
+                        protein: Some(
+                            Percent(
+                                13.5,
+                            ),
+                        ),
+                        max_in_batch: Some(
+                            Percent(
+                                80.0,
+                            ),
+                        ),
+                        recommend_mash: Some(
+                            false,
+                        ),
+                        ibu_gal_per_lb: Some(
+                            0.0,
+                        ),
+                        potential: Some(
+                            SpecificGravity(
+                                1.035,
+                            ),
+                        ),
+                    },
+                ],
+                yeasts: [
+                    Yeast {
+                        name: "English Ale",
+                        kind: Some(
+                            Ale,
+                        ),
+                        form: Some(
+                            Liquid,
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.035013,
+                                ),
+                            ),
+                        ),
+                        laboratory: Some(
+                            "White Labs",
+                        ),
+                        product_id: Some(
+                            "WLP002",
+                        ),
+                        min_temperature: Some(
+                            Celsius(
+                                18.3333,
+                            ),
+                        ),
+                        max_temperature: Some(
+                            Celsius(
+                                20.0,
+                            ),
+                        ),
+                        flocculation: Some(
+                            VeryHigh,
+                        ),
+                        attenuation: Some(
+                            Percent(
+                                66.5,
+                            ),
+                        ),
+                        notes: Some(
+                            "Classic ESB strain best for English style milds, bitters, porters and English style\n\t\t\t\t\tstouts. Leaves a clear beer with some residual sweetness.",
+                        ),
+                        best_for: Some(
+                            "English Pale Ale, ESB, India Pale Ale, Brown Ale, Porter, Sweet Stouts and Strong\n\t\t\t\t\tAles",
+                        ),
+                        times_cultured: Some(
+                            0,
+                        ),
+                        max_reuse: Some(
+                            5,
+                        ),
+                        add_to_secondary: Some(
+                            false,
+                        ),
+                        culture_date: Some(
+                            RecordDate {
+                                text: "7/6/2003",
+                                iso: None,
+                            },
+                        ),
+                    },
+                ],
+                miscs: [
+                    Misc {
+                        name: "Irish Moss",
+                        kind: Some(
+                            Fining,
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                10.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.001232,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Clarity",
+                        ),
+                        notes: Some(
+                            "Fining agent that aids in the post-boil protein break. Reduces protein chill haze and\n\t\t\t\t\timproves beer clarity.",
+                        ),
+                    },
+                    Misc {
+                        name: "Gypsum (Calcium Sulfate)",
+                        kind: Some(
+                            WaterAgent,
+                        ),
+                        usage: Some(
+                            Mash,
+                        ),
+                        time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Weight(
+                                Kilograms(
+                                    0.01,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Water Agent",
+                        ),
+                        notes: Some(
+                            "Reduces PH of water for mashing and sparging. Alters water profile -- used to harden\n\t\t\t\t\tsoft water. Use the BeerSmith Water Profile tool to determine amount to add.",
+                        ),
+                    },
+                ],
+                waters: [],
             },
             Recipe {
                 name: "Wit",
@@ -480,10 +1657,295 @@ Read {
                         myrcene: None,
                     },
                 ],
+                fermentables: [
+                    Fermentable {
+                        name: "Pale Malt (2 Row) Bel",
+                        kind: Some(
+                            Grain,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                2.041164,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                80.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                3.2,
+                            ),
+                        ),
+                        add_after_boil: Some(
+                            false,
+                        ),
+                        origin: Some(
+                            "Belgium",
+                        ),
+                        supplier: None,
+                        notes: Some(
+                            "Base malt for all beer styles Higher potential yield than US, English equivalent pale\n\t\t\t\t\tale malts",
+                        ),
+                        coarse_fine_diff: Some(
+                            Percent(
+                                1.5,
+                            ),
+                        ),
+                        moisture: Some(
+                            Percent(
+                                4.0,
+                            ),
+                        ),
+                        diastatic_power: Some(
+                            Lintner(
+                                60.0,
+                            ),
+                        ),
+                        protein: Some(
+                            Percent(
+                                10.5,
+                            ),
+                        ),
+                        max_in_batch: Some(
+                            Percent(
+                                100.0,
+                            ),
+                        ),
+                        recommend_mash: Some(
+                            false,
+                        ),
+                        ibu_gal_per_lb: Some(
+                            0.0,
+                        ),
+                        potential: Some(
+                            SpecificGravity(
+                                1.037,
+                            ),
+                        ),
+                    },
+                    Fermentable {
+                        name: "Wheat, Flaked",
+                        kind: Some(
+                            Grain,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                2.041164,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                77.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                1.6,
+                            ),
+                        ),
+                        add_after_boil: Some(
+                            false,
+                        ),
+                        origin: Some(
+                            "US",
+                        ),
+                        supplier: None,
+                        notes: Some(
+                            "Flaked wheat adds to increased body and foam retention Used in place of raw or\n\t\t\t\t\ttorrified wheat for faster conversion and better yield. May be used in small amounts to\n\t\t\t\t\timprove head retention and body Examples: Belgian White beer, Wit",
+                        ),
+                        coarse_fine_diff: Some(
+                            Percent(
+                                1.5,
+                            ),
+                        ),
+                        moisture: Some(
+                            Percent(
+                                9.0,
+                            ),
+                        ),
+                        diastatic_power: Some(
+                            Lintner(
+                                0.0,
+                            ),
+                        ),
+                        protein: Some(
+                            Percent(
+                                16.0,
+                            ),
+                        ),
+                        max_in_batch: Some(
+                            Percent(
+                                40.0,
+                            ),
+                        ),
+                        recommend_mash: Some(
+                            true,
+                        ),
+                        ibu_gal_per_lb: Some(
+                            0.0,
+                        ),
+                        potential: Some(
+                            SpecificGravity(
+                                1.035,
+                            ),
+                        ),
+                    },
+                ],
+                yeasts: [
+                    Yeast {
+                        name: "Belgian Wit Ale",
+                        kind: Some(
+                            Wheat,
+                        ),
+                        form: Some(
+                            Liquid,
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.035013,
+                                ),
+                            ),
+                        ),
+                        laboratory: Some(
+                            "White Labs",
+                        ),
+                        product_id: Some(
+                            "WLP400",
+                        ),
+                        min_temperature: Some(
+                            Celsius(
+                                19.4444,
+                            ),
+                        ),
+                        max_temperature: Some(
+                            Celsius(
+                                23.3333,
+                            ),
+                        ),
+                        flocculation: Some(
+                            Low,
+                        ),
+                        attenuation: Some(
+                            Percent(
+                                76.0,
+                            ),
+                        ),
+                        notes: Some(
+                            "Phenolic and tart. The original yeast used to produce Wit in Belgium.",
+                        ),
+                        best_for: Some(
+                            "Belgian Wit",
+                        ),
+                        times_cultured: Some(
+                            0,
+                        ),
+                        max_reuse: Some(
+                            5,
+                        ),
+                        add_to_secondary: Some(
+                            false,
+                        ),
+                        culture_date: Some(
+                            RecordDate {
+                                text: "7/6/2003",
+                                iso: None,
+                            },
+                        ),
+                    },
+                ],
+                miscs: [
+                    Misc {
+                        name: "Coriander Seed",
+                        kind: Some(
+                            Spice,
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                5.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.02218,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Belgian Wit",
+                        ),
+                        notes: Some(
+                            "Used in Belgian Wit, Whites, and Holiday ales. Very good when used in light wheat\n\t\t\t\t\tales. Often used with Bitter Orange Peel.",
+                        ),
+                    },
+                    Misc {
+                        name: "Orange Peel, Bitter",
+                        kind: Some(
+                            Spice,
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                5.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.02218,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Belgian Wit",
+                        ),
+                        notes: Some(
+                            "Made from the Curaco Orange Peel, peels are green-gray in color. Used to add a\n\t\t\t\t\tdistinctive flavor to Belgian Wits and White beers.",
+                        ),
+                    },
+                ],
+                waters: [],
             },
         ],
         hops: [],
+        fermentables: [],
+        yeasts: [],
+        miscs: [],
+        waters: [],
     },
     version: V1_0,
-    warnings: [],
+    warnings: [
+        Warning {
+            path: "RECIPES/RECIPE[1]/FERMENTABLES/FERMENTABLE[3]/COARSE_FINE_DIFF",
+            kind: UnreadableNumber {
+                text: "-",
+            },
+        },
+        Warning {
+            path: "RECIPES/RECIPE[1]/FERMENTABLES/FERMENTABLE[3]/MOISTURE",
+            kind: UnreadableNumber {
+                text: "-",
+            },
+        },
+        Warning {
+            path: "RECIPES/RECIPE[1]/FERMENTABLES/FERMENTABLE[3]/DIASTATIC_POWER",
+            kind: UnreadableNumber {
+                text: "-",
+            },
+        },
+        Warning {
+            path: "RECIPES/RECIPE[1]/FERMENTABLES/FERMENTABLE[3]/PROTEIN",
+            kind: UnreadableNumber {
+                text: "-",
+            },
+        },
+    ],
 }

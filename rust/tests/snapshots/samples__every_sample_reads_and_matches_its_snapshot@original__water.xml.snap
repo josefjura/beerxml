@@ -6,6 +6,231 @@ Read {
     document: Document {
         recipes: [],
         hops: [],
+        fermentables: [],
+        yeasts: [],
+        miscs: [],
+        waters: [
+            Water {
+                name: "Burton On Trent, UK",
+                amount: Some(
+                    Litres(
+                        18.927168,
+                    ),
+                ),
+                calcium: Some(
+                    Ppm(
+                        295.0,
+                    ),
+                ),
+                bicarbonate: Some(
+                    Ppm(
+                        300.0,
+                    ),
+                ),
+                sulfate: Some(
+                    Ppm(
+                        725.0,
+                    ),
+                ),
+                chloride: Some(
+                    Ppm(
+                        25.0,
+                    ),
+                ),
+                sodium: Some(
+                    Ppm(
+                        55.0,
+                    ),
+                ),
+                magnesium: Some(
+                    Ppm(
+                        45.0,
+                    ),
+                ),
+                ph: Some(
+                    8.0,
+                ),
+                notes: Some(
+                    "Distinctive pale ales strongly hopped. Very hard water accentuates the hops flavor.\n\t\t\tExample: Bass Ale",
+                ),
+            },
+            Water {
+                name: "Distilled Water",
+                amount: Some(
+                    Litres(
+                        18.927168,
+                    ),
+                ),
+                calcium: Some(
+                    Ppm(
+                        0.0,
+                    ),
+                ),
+                bicarbonate: Some(
+                    Ppm(
+                        0.0,
+                    ),
+                ),
+                sulfate: Some(
+                    Ppm(
+                        0.0,
+                    ),
+                ),
+                chloride: Some(
+                    Ppm(
+                        0.0,
+                    ),
+                ),
+                sodium: Some(
+                    Ppm(
+                        0.0,
+                    ),
+                ),
+                magnesium: Some(
+                    Ppm(
+                        0.0,
+                    ),
+                ),
+                ph: Some(
+                    7.0,
+                ),
+                notes: Some(
+                    "Neutral water, may be used as a base for creating desired water profile.",
+                ),
+            },
+            Water {
+                name: "Edinburg, Scotland",
+                amount: Some(
+                    Litres(
+                        18.927168,
+                    ),
+                ),
+                calcium: Some(
+                    Ppm(
+                        120.0,
+                    ),
+                ),
+                bicarbonate: Some(
+                    Ppm(
+                        225.0,
+                    ),
+                ),
+                sulfate: Some(
+                    Ppm(
+                        140.0,
+                    ),
+                ),
+                chloride: Some(
+                    Ppm(
+                        20.0,
+                    ),
+                ),
+                sodium: Some(
+                    Ppm(
+                        55.0,
+                    ),
+                ),
+                magnesium: Some(
+                    Ppm(
+                        25.0,
+                    ),
+                ),
+                ph: Some(
+                    8.0,
+                ),
+                notes: Some(
+                    "Used for dark, malty Brown ales with low bitterness.",
+                ),
+            },
+            Water {
+                name: "Milwaukee, WI",
+                amount: Some(
+                    Litres(
+                        18.927168,
+                    ),
+                ),
+                calcium: Some(
+                    Ppm(
+                        96.0,
+                    ),
+                ),
+                bicarbonate: Some(
+                    Ppm(
+                        107.0,
+                    ),
+                ),
+                sulfate: Some(
+                    Ppm(
+                        26.0,
+                    ),
+                ),
+                chloride: Some(
+                    Ppm(
+                        16.0,
+                    ),
+                ),
+                sodium: Some(
+                    Ppm(
+                        7.0,
+                    ),
+                ),
+                magnesium: Some(
+                    Ppm(
+                        47.0,
+                    ),
+                ),
+                ph: Some(
+                    7.5,
+                ),
+                notes: Some(
+                    "Famous for Pilsners and Lagers.",
+                ),
+            },
+            Water {
+                name: "Pilsen, Czech",
+                amount: Some(
+                    Litres(
+                        18.927168,
+                    ),
+                ),
+                calcium: Some(
+                    Ppm(
+                        7.0,
+                    ),
+                ),
+                bicarbonate: Some(
+                    Ppm(
+                        15.0,
+                    ),
+                ),
+                sulfate: Some(
+                    Ppm(
+                        5.0,
+                    ),
+                ),
+                chloride: Some(
+                    Ppm(
+                        5.0,
+                    ),
+                ),
+                sodium: Some(
+                    Ppm(
+                        2.0,
+                    ),
+                ),
+                magnesium: Some(
+                    Ppm(
+                        2.0,
+                    ),
+                ),
+                ph: Some(
+                    8.0,
+                ),
+                notes: Some(
+                    "Very soft water aids pale color and clean bitterness of Pilsner style.",
+                ),
+            },
+        ],
     },
     version: V1_0,
     warnings: [],
