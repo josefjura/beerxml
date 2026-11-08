@@ -10,6 +10,461 @@ Read {
         yeasts: [],
         miscs: [],
         waters: [],
+        styles: [
+            Style {
+                name: "American Wheat",
+                category: Some(
+                    "Light Ale",
+                ),
+                category_number: Some(
+                    "3",
+                ),
+                style_letter: Some(
+                    "B",
+                ),
+                style_guide: Some(
+                    "BJCP 1999",
+                ),
+                kind: Some(
+                    Mixed,
+                ),
+                og_min: Some(
+                    SpecificGravity(
+                        1.035,
+                    ),
+                ),
+                og_max: Some(
+                    SpecificGravity(
+                        1.055,
+                    ),
+                ),
+                fg_min: Some(
+                    SpecificGravity(
+                        1.008,
+                    ),
+                ),
+                fg_max: Some(
+                    SpecificGravity(
+                        1.015,
+                    ),
+                ),
+                ibu_min: Some(
+                    Ibu(
+                        10.0,
+                    ),
+                ),
+                ibu_max: Some(
+                    Ibu(
+                        30.0,
+                    ),
+                ),
+                color_min: Some(
+                    Srm(
+                        2.0,
+                    ),
+                ),
+                color_max: Some(
+                    Srm(
+                        8.0,
+                    ),
+                ),
+                carb_min: Some(
+                    Co2Volumes(
+                        2.3,
+                    ),
+                ),
+                carb_max: Some(
+                    Co2Volumes(
+                        2.6,
+                    ),
+                ),
+                abv_min: Some(
+                    Percent(
+                        3.7,
+                    ),
+                ),
+                abv_max: Some(
+                    Percent(
+                        5.5,
+                    ),
+                ),
+                notes: Some(
+                    "Wheat beer brewed with standard ale yeast. Light mixed style without the banana or clove\n\t\t\tflavor and aroma of German Weizen. Closer in style to light American ales.",
+                ),
+                profile: Some(
+                    "Light, crisp flavor and body. Low to medium bitterness and hop aroma. Straw to gold\n\t\t\tcolor. No phenolic and low diacetyl character.",
+                ),
+                ingredients: Some(
+                    "Pale malt. Up to 60% wheat malt. American ale or occasionally lager yeast.",
+                ),
+                examples: Some(
+                    "Sam Adam's Summer Wheat, Wheat Hook Ale, Anchor Wheat.",
+                ),
+            },
+            Style {
+                name: "Bohemian Pilsner",
+                category: Some(
+                    "European Pale Lager",
+                ),
+                category_number: Some(
+                    "2",
+                ),
+                style_letter: Some(
+                    "A",
+                ),
+                style_guide: Some(
+                    "BJCP 1999",
+                ),
+                kind: Some(
+                    Lager,
+                ),
+                og_min: Some(
+                    SpecificGravity(
+                        1.044,
+                    ),
+                ),
+                og_max: Some(
+                    SpecificGravity(
+                        1.056,
+                    ),
+                ),
+                fg_min: Some(
+                    SpecificGravity(
+                        1.013,
+                    ),
+                ),
+                fg_max: Some(
+                    SpecificGravity(
+                        1.017,
+                    ),
+                ),
+                ibu_min: Some(
+                    Ibu(
+                        35.0,
+                    ),
+                ),
+                ibu_max: Some(
+                    Ibu(
+                        45.0,
+                    ),
+                ),
+                color_min: Some(
+                    Srm(
+                        3.0,
+                    ),
+                ),
+                color_max: Some(
+                    Srm(
+                        5.0,
+                    ),
+                ),
+                carb_min: Some(
+                    Co2Volumes(
+                        2.3,
+                    ),
+                ),
+                carb_max: Some(
+                    Co2Volumes(
+                        2.6,
+                    ),
+                ),
+                abv_min: Some(
+                    Percent(
+                        4.0,
+                    ),
+                ),
+                abv_max: Some(
+                    Percent(
+                        5.3,
+                    ),
+                ),
+                notes: Some(
+                    "Famous beer from Pilsen, Czech Republic. Brewed with very soft water and high hop rates.",
+                ),
+                profile: Some(
+                    "Light to medium body with some sweetness. Saaz hop flavor and aroma, but no lingering\n\t\t\tbitterness. Clean flavor, low diacetyls. Hoppy and malty with no aftertaste.",
+                ),
+                ingredients: Some(
+                    "Saaz hops, light pilsner malt, pilsner yeast, soft water profile.",
+                ),
+                examples: Some(
+                    "Budvar, Pilsner Urquell, Gambrinus",
+                ),
+            },
+            Style {
+                name: "California Common Beer",
+                category: Some(
+                    "American Pale Ale",
+                ),
+                category_number: Some(
+                    "6",
+                ),
+                style_letter: Some(
+                    "C",
+                ),
+                style_guide: Some(
+                    "BJCP 1999",
+                ),
+                kind: Some(
+                    Mixed,
+                ),
+                og_min: Some(
+                    SpecificGravity(
+                        1.044,
+                    ),
+                ),
+                og_max: Some(
+                    SpecificGravity(
+                        1.055,
+                    ),
+                ),
+                fg_min: Some(
+                    SpecificGravity(
+                        1.011,
+                    ),
+                ),
+                fg_max: Some(
+                    SpecificGravity(
+                        1.014,
+                    ),
+                ),
+                ibu_min: Some(
+                    Ibu(
+                        35.0,
+                    ),
+                ),
+                ibu_max: Some(
+                    Ibu(
+                        45.0,
+                    ),
+                ),
+                color_min: Some(
+                    Srm(
+                        8.0,
+                    ),
+                ),
+                color_max: Some(
+                    Srm(
+                        14.0,
+                    ),
+                ),
+                carb_min: Some(
+                    Co2Volumes(
+                        2.4,
+                    ),
+                ),
+                carb_max: Some(
+                    Co2Volumes(
+                        2.8,
+                    ),
+                ),
+                abv_min: Some(
+                    Percent(
+                        4.0,
+                    ),
+                ),
+                abv_max: Some(
+                    Percent(
+                        5.5,
+                    ),
+                ),
+                notes: Some(
+                    "Also known by the Anchor Brewing Co. Trademark name \"Steam Beer.\" A mixed style, highly\n\t\t\thopped, fermented with lager yeast at ale temperatures and then lagered cold.",
+                ),
+                profile: Some(
+                    "Distinctive hoppy flavor comes from Northern Brewers hops. Clean lager flavor, but\n\t\t\tcharacter of an ale. Dry, with a hint of toasted/caramel flavor. Light to amber color. Low\n\t\t\tfruitiness, ester and diacytl.",
+                ),
+                ingredients: Some(
+                    "Pale and medium crystal malts. Northern brewer hops. Lager yeast fermented at ale\n\t\t\ttemperatures.",
+                ),
+                examples: Some(
+                    "Anchor Steam Beer",
+                ),
+            },
+            Style {
+                name: "Dry Stout (Irish)",
+                category: Some(
+                    "Stout",
+                ),
+                category_number: Some(
+                    "16",
+                ),
+                style_letter: Some(
+                    "A",
+                ),
+                style_guide: Some(
+                    "BJCP 1999",
+                ),
+                kind: Some(
+                    Ale,
+                ),
+                og_min: Some(
+                    SpecificGravity(
+                        1.035,
+                    ),
+                ),
+                og_max: Some(
+                    SpecificGravity(
+                        1.05,
+                    ),
+                ),
+                fg_min: Some(
+                    SpecificGravity(
+                        1.007,
+                    ),
+                ),
+                fg_max: Some(
+                    SpecificGravity(
+                        1.011,
+                    ),
+                ),
+                ibu_min: Some(
+                    Ibu(
+                        30.0,
+                    ),
+                ),
+                ibu_max: Some(
+                    Ibu(
+                        50.0,
+                    ),
+                ),
+                color_min: Some(
+                    Srm(
+                        35.0,
+                    ),
+                ),
+                color_max: Some(
+                    Srm(
+                        200.0,
+                    ),
+                ),
+                carb_min: Some(
+                    Co2Volumes(
+                        1.6,
+                    ),
+                ),
+                carb_max: Some(
+                    Co2Volumes(
+                        2.1,
+                    ),
+                ),
+                abv_min: Some(
+                    Percent(
+                        3.2,
+                    ),
+                ),
+                abv_max: Some(
+                    Percent(
+                        5.5,
+                    ),
+                ),
+                notes: Some(
+                    "Famous Irish Stout (AKA Guiness). Dry roasted almost coffee like flavor. Irish versions\n\t\t\thave low starting gravity. Often mixed with soured, pasturized beer to give a slight acidity\n\t\t\tas well.",
+                ),
+                profile: Some(
+                    "Full body perception from Flaked Barley, thought starting gravity may be low. Dry\n\t\t\troasted flavor. Generous hops, though malt flavor will dominate. Complex fruity flavor. Black\n\t\t\topaque color.",
+                ),
+                ingredients: Some(
+                    "English malt. Roasted Barley and Flaked Barley for all grain. Some chocolate or\n\t\t\tblack patent used in extract recipes. Goldings or Fuggles hops. Low sulfate, high calcium\n\t\t\twater.",
+                ),
+                examples: Some(
+                    "Guiness Stout",
+                ),
+            },
+            Style {
+                name: "Traditional Bock",
+                category: Some(
+                    "Bock",
+                ),
+                category_number: Some(
+                    "14",
+                ),
+                style_letter: Some(
+                    "A",
+                ),
+                style_guide: Some(
+                    "BJCP 1999",
+                ),
+                kind: Some(
+                    Lager,
+                ),
+                og_min: Some(
+                    SpecificGravity(
+                        1.064,
+                    ),
+                ),
+                og_max: Some(
+                    SpecificGravity(
+                        1.072,
+                    ),
+                ),
+                fg_min: Some(
+                    SpecificGravity(
+                        1.013,
+                    ),
+                ),
+                fg_max: Some(
+                    SpecificGravity(
+                        1.02,
+                    ),
+                ),
+                ibu_min: Some(
+                    Ibu(
+                        20.0,
+                    ),
+                ),
+                ibu_max: Some(
+                    Ibu(
+                        35.0,
+                    ),
+                ),
+                color_min: Some(
+                    Srm(
+                        14.0,
+                    ),
+                ),
+                color_max: Some(
+                    Srm(
+                        30.0,
+                    ),
+                ),
+                carb_min: Some(
+                    Co2Volumes(
+                        2.2,
+                    ),
+                ),
+                carb_max: Some(
+                    Co2Volumes(
+                        2.7,
+                    ),
+                ),
+                abv_min: Some(
+                    Percent(
+                        6.0,
+                    ),
+                ),
+                abv_max: Some(
+                    Percent(
+                        7.5,
+                    ),
+                ),
+                notes: Some(
+                    "High gravity lager from Einbeck, Germany. Smooth malty character with some chocolate or\n\t\t\ttoasted edge. Under German law bocks must have a starting gravity of at least 16 plato (1.064)",
+                ),
+                profile: Some(
+                    "Medium to full body, malty flavor with some chocolate aroma. Little to no roast\n\t\t\tcharacter. Low hop aroma and flavor to balance malt. Amber to brown color. Moderate\n\t\t\tcarbonation.",
+                ),
+                ingredients: Some(
+                    "Bulk of flavor and color is from dark Munich malt. Very small amounts of dark or\n\t\t\tchocolate malt. German hops for bittering only. German lager yeast. Moderate water hardness.",
+                ),
+                examples: Some(
+                    "Aass Bock, Einbecker Ur-bock",
+                ),
+            },
+        ],
+        equipments: [],
+        mashes: [],
+        mash_steps: [],
     },
     version: V1_0,
     warnings: [],

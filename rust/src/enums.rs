@@ -175,6 +175,48 @@ lenient_enum!(
     }
 );
 
+lenient_enum!(
+    /// `STYLE/TYPE`: what kind of beverage a style describes.
+    StyleType {
+        Lager => "Lager",
+        Ale => "Ale",
+        Mead => "Mead",
+        Wheat => "Wheat",
+        Mixed => "Mixed",
+        Cider => "Cider",
+    }
+);
+
+lenient_enum!(
+    /// `MASH_STEP/TYPE`: how a mash step reaches its temperature.
+    MashStepType {
+        /// Hot water is added.
+        Infusion => "Infusion",
+        /// The mash is heated directly.
+        Temperature => "Temperature",
+        /// Part of the mash is drawn off, boiled and returned.
+        Decoction => "Decoction",
+    }
+);
+
+lenient_enum!(
+    /// `RECIPE/TYPE`: how a recipe gets its fermentables.
+    RecipeType {
+        Extract => "Extract",
+        PartialMash => "Partial Mash",
+        AllGrain => "All Grain",
+    }
+);
+
+lenient_enum!(
+    /// `RECIPE/IBU_METHOD`: the formula used for the recipe's estimated IBU.
+    IbuMethod {
+        Rager => "Rager",
+        Tinseth => "Tinseth",
+        Garetz => "Garetz",
+    }
+);
+
 #[cfg(test)]
 mod tests {
     use super::{HopForm, HopUse, Lenient};

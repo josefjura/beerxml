@@ -3,11 +3,12 @@ use roxmltree::Node;
 use crate::enums::Lenient;
 use crate::number::{Leading, leading};
 use crate::units::{
-    Amount, Celsius, Kilograms, Lintner, Litres, Minutes, Percent, Ppm, SpecificGravity, Srm,
+    Amount, Celsius, Co2Volumes, Days, Ibu, Kilograms, Lintner, Litres, Minutes, Percent, Ppm,
+    SpecificGravity, Srm,
 };
 use crate::{
-    Document, Fermentable, Hop, Misc, ReadError, Recipe, RecordDate, Version, Warning, WarningKind,
-    Water, Yeast,
+    Document, Equipment, Fermentable, Hop, Mash, MashStep, Misc, ReadError, Recipe, RecordDate,
+    Style, Version, Warning, WarningKind, Water, Yeast,
 };
 
 /// The result of reading a file leniently.
@@ -63,10 +64,15 @@ pub fn read(bytes: &[u8]) -> Result<Read, ReadError> {
         "YEASTS" => document.yeasts = reader.list(root, root_name, record_name, Reader::yeast),
         "MISCS" => document.miscs = reader.list(root, root_name, record_name, Reader::misc),
         "WATERS" => document.waters = reader.list(root, root_name, record_name, Reader::water),
-        // Not modelled yet: still report unknown elements around the records.
-        _ => {
-            reader.list(root, root_name, record_name, |_, _, _| ());
+        "STYLES" => document.styles = reader.list(root, root_name, record_name, Reader::style),
+        "EQUIPMENTS" => {
+            document.equipments = reader.list(root, root_name, record_name, Reader::equipment);
         }
+        "MASHS" => document.mashes = reader.list(root, root_name, record_name, Reader::mash),
+        "MASH_STEPS" => {
+            document.mash_steps = reader.list(root, root_name, record_name, Reader::mash_step);
+        }
+        _ => unreachable!("record_name_of_list accepted {root_name}"),
     }
     Ok(Read {
         document,
@@ -93,7 +99,8 @@ fn record_name_of_list(list: &str) -> Option<&'static str> {
 }
 
 /// Every element a `RECIPE` may contain in the BeerXML 1.1 schema, used to
-/// tell fields that aren't modelled yet from unknown elements.
+/// tell fields that aren't modelled (such as `VERSION`) from unknown
+/// elements.
 const RECIPE_ELEMENTS: &[&str] = &[
     "NAME",
     "VERSION",
@@ -238,6 +245,84 @@ const WATER_ELEMENTS: &[&str] = &[
     "NOTES",
 ];
 
+/// Every element a `STYLE` may contain in the BeerXML 1.1 schema.
+const STYLE_ELEMENTS: &[&str] = &[
+    "NAME",
+    "CATEGORY",
+    "VERSION",
+    "TYPE",
+    "OG_MIN",
+    "OG_MAX",
+    "FG_MIN",
+    "FG_MAX",
+    "IBU_MIN",
+    "IBU_MAX",
+    "COLOR_MIN",
+    "COLOR_MAX",
+    "CATEGORY_NUMBER",
+    "STYLE_LETTER",
+    "STYLE_GUIDE",
+    "CARB_MIN",
+    "CARB_MAX",
+    "ABV_MIN",
+    "ABV_MAX",
+    "NOTES",
+    "PROFILE",
+    "INGREDIENTS",
+    "EXAMPLES",
+];
+
+/// Every element an `EQUIPMENT` may contain in the BeerXML 1.1 schema.
+const EQUIPMENT_ELEMENTS: &[&str] = &[
+    "NAME",
+    "VERSION",
+    "BOIL_SIZE",
+    "BATCH_SIZE",
+    "TUN_VOLUME",
+    "TUN_WEIGHT",
+    "TUN_SPECIFIC_HEAT",
+    "TOP_UP_WATER",
+    "TRUB_CHILLER_LOSS",
+    "EVAP_RATE",
+    "BOIL_TIME",
+    "CALC_BOIL_VOLUME",
+    "LAUTER_DEADSPACE",
+    "TOP_UP_KETTLE",
+    "HOP_UTILIZATION",
+    "NOTES",
+];
+
+/// Every element a `MASH` may contain in the BeerXML 1.1 schema.
+const MASH_ELEMENTS: &[&str] = &[
+    "NAME",
+    "VERSION",
+    "GRAIN_TEMP",
+    "MASH_STEPS",
+    "NOTES",
+    "TUN_TEMP",
+    "SPARGE_TEMP",
+    "PH",
+    "TUN_WEIGHT",
+    "TUN_SPECIFIC_HEAT",
+    "EQUIP_ADJUST",
+];
+
+/// Every element a `MASH_STEP` may contain in the BeerXML 1.1 schema.
+const MASH_STEP_ELEMENTS: &[&str] = &[
+    "NAME",
+    "VERSION",
+    "TYPE",
+    "INFUSE_AMOUNT",
+    "STEP_TEMP",
+    "STEP_TIME",
+    "RAMP_TIME",
+    "END_TEMP",
+    "DESCRIPTION",
+    "WATER_GRAIN_RATIO",
+    "DECOCTION_AMT",
+    "INFUSE_TEMP",
+];
+
 /// A field of a record being read: its element name, text and path.
 struct Field<'a> {
     name: &'a str,
@@ -294,7 +379,8 @@ impl Reader {
     ///
     /// `field` handles a modelled field and returns `true`. Unhandled fields
     /// are skipped when they are `DISPLAY_*` or in `known` (part of the
-    /// schema but not modelled yet), and reported as unknown otherwise.
+    /// schema but not modelled, such as `VERSION`), and reported as unknown
+    /// otherwise.
     fn record(
         &mut self,
         node: Node<'_, '_>,
@@ -329,24 +415,160 @@ impl Reader {
         let mut r = Recipe::default();
         r.name = self.record(node, path, RECIPE_ELEMENTS, |s, f| {
             match f.name {
+                "TYPE" => r.kind = s.enumerated(f),
+                "STYLE" => r.style = Some(s.style(f.node, &f.path)),
+                "EQUIPMENT" => r.equipment = Some(s.equipment(f.node, &f.path)),
+                "BREWER" => r.brewer = text(f),
+                "ASST_BREWER" => r.asst_brewer = text(f),
                 "BATCH_SIZE" => r.batch_size = s.number(f).map(Litres::new),
                 "BOIL_SIZE" => r.boil_size = s.number(f).map(Litres::new),
                 "BOIL_TIME" => r.boil_time = s.number(f).map(Minutes::new),
                 "EFFICIENCY" => r.efficiency = s.number(f).map(Percent::new),
-                "OG" => r.og = s.number(f).map(SpecificGravity::new),
-                "FG" => r.fg = s.number(f).map(SpecificGravity::new),
                 "HOPS" => r.hops = s.list(f.node, &f.path, "HOP", Self::hop),
                 "FERMENTABLES" => {
                     r.fermentables = s.list(f.node, &f.path, "FERMENTABLE", Self::fermentable);
                 }
-                "YEASTS" => r.yeasts = s.list(f.node, &f.path, "YEAST", Self::yeast),
                 "MISCS" => r.miscs = s.list(f.node, &f.path, "MISC", Self::misc),
+                "YEASTS" => r.yeasts = s.list(f.node, &f.path, "YEAST", Self::yeast),
                 "WATERS" => r.waters = s.list(f.node, &f.path, "WATER", Self::water),
+                "MASH" => r.mash = Some(s.mash(f.node, &f.path)),
+                "NOTES" => r.notes = text(f),
+                "TASTE_NOTES" => r.taste_notes = text(f),
+                "TASTE_RATING" => r.taste_rating = s.number(f),
+                "RATING" => r.rating = s.number(f),
+                "OG" => r.og = s.number(f).map(SpecificGravity::new),
+                "FG" => r.fg = s.number(f).map(SpecificGravity::new),
+                "FERMENTATION_STAGES" => r.fermentation_stages = s.integer(f),
+                "PRIMARY_AGE" => r.primary_age = s.number(f).map(Days::new),
+                "PRIMARY_TEMP" => r.primary_temp = s.number(f).map(Celsius::new),
+                "SECONDARY_AGE" => r.secondary_age = s.number(f).map(Days::new),
+                "SECONDARY_TEMP" => r.secondary_temp = s.number(f).map(Celsius::new),
+                "TERTIARY_AGE" => r.tertiary_age = s.number(f).map(Days::new),
+                "TERTIARY_TEMP" => r.tertiary_temp = s.number(f).map(Celsius::new),
+                "AGE" => r.age = s.number(f).map(Days::new),
+                "AGE_TEMP" => r.age_temp = s.number(f).map(Celsius::new),
+                "DATE" => r.date = date(f),
+                "CARBONATION" => r.carbonation = s.number(f).map(Co2Volumes::new),
+                "FORCED_CARBONATION" => r.forced_carbonation = s.boolean(f),
+                "PRIMING_SUGAR_NAME" => r.priming_sugar_name = text(f),
+                "CARBONATION_TEMP" => r.carbonation_temp = s.number(f).map(Celsius::new),
+                "PRIMING_SUGAR_EQUIV" => r.priming_sugar_equiv = s.number(f),
+                "KEG_PRIMING_FACTOR" => r.keg_priming_factor = s.number(f),
+                "CARBONATION_USED" => r.carbonation_used = text(f),
+                "EST_OG" => r.est_og = s.number(f).map(SpecificGravity::new),
+                "EST_FG" => r.est_fg = s.number(f).map(SpecificGravity::new),
+                "EST_COLOR" => r.est_color = s.number(f).map(Srm::new),
+                "IBU" | "IBUS" => r.ibu = s.number(f).map(Ibu::new),
+                "IBU_METHOD" => r.ibu_method = s.enumerated(f),
+                "EST_ABV" => r.est_abv = s.number(f).map(Percent::new),
+                "ABV" => r.abv = s.number(f).map(Percent::new),
+                "ACTUAL_EFFICIENCY" => r.actual_efficiency = s.number(f).map(Percent::new),
+                "CALORIES" => r.calories = s.number(f),
                 _ => return false,
             }
             true
         });
         r
+    }
+
+    fn style(&mut self, node: Node<'_, '_>, path: &str) -> Style {
+        let mut st = Style::default();
+        st.name = self.record(node, path, STYLE_ELEMENTS, |s, f| {
+            match f.name {
+                "CATEGORY" => st.category = text(f),
+                "CATEGORY_NUMBER" => st.category_number = text(f),
+                "STYLE_LETTER" => st.style_letter = text(f),
+                "STYLE_GUIDE" => st.style_guide = text(f),
+                "TYPE" => st.kind = s.enumerated(f),
+                "OG_MIN" => st.og_min = s.number(f).map(SpecificGravity::new),
+                "OG_MAX" => st.og_max = s.number(f).map(SpecificGravity::new),
+                "FG_MIN" => st.fg_min = s.number(f).map(SpecificGravity::new),
+                "FG_MAX" => st.fg_max = s.number(f).map(SpecificGravity::new),
+                "IBU_MIN" => st.ibu_min = s.number(f).map(Ibu::new),
+                "IBU_MAX" => st.ibu_max = s.number(f).map(Ibu::new),
+                "COLOR_MIN" => st.color_min = s.number(f).map(Srm::new),
+                "COLOR_MAX" => st.color_max = s.number(f).map(Srm::new),
+                "CARB_MIN" => st.carb_min = s.number(f).map(Co2Volumes::new),
+                "CARB_MAX" => st.carb_max = s.number(f).map(Co2Volumes::new),
+                "ABV_MIN" => st.abv_min = s.number(f).map(Percent::new),
+                "ABV_MAX" => st.abv_max = s.number(f).map(Percent::new),
+                "NOTES" => st.notes = text(f),
+                "PROFILE" => st.profile = text(f),
+                "INGREDIENTS" => st.ingredients = text(f),
+                "EXAMPLES" => st.examples = text(f),
+                _ => return false,
+            }
+            true
+        });
+        st
+    }
+
+    fn equipment(&mut self, node: Node<'_, '_>, path: &str) -> Equipment {
+        let mut e = Equipment::default();
+        e.name = self.record(node, path, EQUIPMENT_ELEMENTS, |s, f| {
+            match f.name {
+                "BOIL_SIZE" => e.boil_size = s.number(f).map(Litres::new),
+                "BATCH_SIZE" => e.batch_size = s.number(f).map(Litres::new),
+                "TUN_VOLUME" => e.tun_volume = s.number(f).map(Litres::new),
+                "TUN_WEIGHT" => e.tun_weight = s.number(f).map(Kilograms::new),
+                "TUN_SPECIFIC_HEAT" => e.tun_specific_heat = s.number(f),
+                "TOP_UP_WATER" => e.top_up_water = s.number(f).map(Litres::new),
+                "TRUB_CHILLER_LOSS" => e.trub_chiller_loss = s.number(f).map(Litres::new),
+                "EVAP_RATE" => e.evap_rate = s.number(f).map(Percent::new),
+                "BOIL_TIME" => e.boil_time = s.number(f).map(Minutes::new),
+                "CALC_BOIL_VOLUME" => e.calc_boil_volume = s.boolean(f),
+                "LAUTER_DEADSPACE" => e.lauter_deadspace = s.number(f).map(Litres::new),
+                "TOP_UP_KETTLE" => e.top_up_kettle = s.number(f).map(Litres::new),
+                "HOP_UTILIZATION" => e.hop_utilization = s.number(f).map(Percent::new),
+                "NOTES" => e.notes = text(f),
+                _ => return false,
+            }
+            true
+        });
+        e
+    }
+
+    fn mash(&mut self, node: Node<'_, '_>, path: &str) -> Mash {
+        let mut m = Mash::default();
+        m.name = self.record(node, path, MASH_ELEMENTS, |s, f| {
+            match f.name {
+                "GRAIN_TEMP" => m.grain_temp = s.number(f).map(Celsius::new),
+                "MASH_STEPS" => {
+                    m.mash_steps = s.list(f.node, &f.path, "MASH_STEP", Self::mash_step);
+                }
+                "NOTES" => m.notes = text(f),
+                "TUN_TEMP" => m.tun_temp = s.number(f).map(Celsius::new),
+                "SPARGE_TEMP" => m.sparge_temp = s.number(f).map(Celsius::new),
+                "PH" => m.ph = s.number(f),
+                "TUN_WEIGHT" => m.tun_weight = s.number(f).map(Kilograms::new),
+                "TUN_SPECIFIC_HEAT" => m.tun_specific_heat = s.number(f),
+                "EQUIP_ADJUST" => m.equip_adjust = s.boolean(f),
+                _ => return false,
+            }
+            true
+        });
+        m
+    }
+
+    fn mash_step(&mut self, node: Node<'_, '_>, path: &str) -> MashStep {
+        let mut st = MashStep::default();
+        st.name = self.record(node, path, MASH_STEP_ELEMENTS, |s, f| {
+            match f.name {
+                "TYPE" => st.kind = s.enumerated(f),
+                "INFUSE_AMOUNT" => st.infuse_amount = s.number(f).map(Litres::new),
+                "STEP_TEMP" => st.step_temp = s.number(f).map(Celsius::new),
+                "STEP_TIME" => st.step_time = s.number(f).map(Minutes::new),
+                "RAMP_TIME" => st.ramp_time = s.number(f).map(Minutes::new),
+                "END_TEMP" => st.end_temp = s.number(f).map(Celsius::new),
+                "DESCRIPTION" => st.description = text(f),
+                "WATER_GRAIN_RATIO" => st.water_grain_ratio = text(f),
+                "DECOCTION_AMT" => st.decoction_amt = text(f),
+                "INFUSE_TEMP" => st.infuse_temp = text(f),
+                _ => return false,
+            }
+            true
+        });
+        st
     }
 
     fn hop(&mut self, node: Node<'_, '_>, path: &str) -> Hop {

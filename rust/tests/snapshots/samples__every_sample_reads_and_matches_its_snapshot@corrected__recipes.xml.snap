@@ -7,6 +7,174 @@ Read {
         recipes: [
             Recipe {
                 name: "Burton Ale",
+                kind: Some(
+                    AllGrain,
+                ),
+                style: Some(
+                    Style {
+                        name: "English Pale Ale",
+                        category: Some(
+                            "Bitter & English Pale Ale",
+                        ),
+                        category_number: Some(
+                            "1",
+                        ),
+                        style_letter: Some(
+                            "A",
+                        ),
+                        style_guide: Some(
+                            "BJCP 1999",
+                        ),
+                        kind: Some(
+                            Ale,
+                        ),
+                        og_min: Some(
+                            SpecificGravity(
+                                1.043,
+                            ),
+                        ),
+                        og_max: Some(
+                            SpecificGravity(
+                                1.06,
+                            ),
+                        ),
+                        fg_min: Some(
+                            SpecificGravity(
+                                1.01,
+                            ),
+                        ),
+                        fg_max: Some(
+                            SpecificGravity(
+                                1.02,
+                            ),
+                        ),
+                        ibu_min: Some(
+                            Ibu(
+                                20.0,
+                            ),
+                        ),
+                        ibu_max: Some(
+                            Ibu(
+                                40.0,
+                            ),
+                        ),
+                        color_min: Some(
+                            Srm(
+                                6.0,
+                            ),
+                        ),
+                        color_max: Some(
+                            Srm(
+                                12.0,
+                            ),
+                        ),
+                        carb_min: Some(
+                            Co2Volumes(
+                                1.5,
+                            ),
+                        ),
+                        carb_max: Some(
+                            Co2Volumes(
+                                2.4,
+                            ),
+                        ),
+                        abv_min: Some(
+                            Percent(
+                                4.5,
+                            ),
+                        ),
+                        abv_max: Some(
+                            Percent(
+                                5.5,
+                            ),
+                        ),
+                        notes: Some(
+                            "Famous style from Burton-on-Trent. Stronger body than ordinary bitter, but slightly\n\t\t\t\tless bitter. A balanced, easy drinking beer that is malty and strong but not overbearing.",
+                        ),
+                        profile: Some(
+                            "Medium to full body, with medium to high bitterness and hop aroma. Dry with a defined\n\t\t\t\thop flavor. Golden to copper color. Crystal malt evident. Low carbonation for kegs, medium\n\t\t\t\tfor bottled version.",
+                        ),
+                        ingredients: Some(
+                            "English malt. Crystal malt. English hops. Water with high Calcium Sulfate\n\t\t\t\t(gypsum) profile enhances bitterness perception (i.e. famous Burton-on-Trent Water)",
+                        ),
+                        examples: Some(
+                            "Bass Pale Ale, Whitbread Pale Ale, Royal Oak",
+                        ),
+                    },
+                ),
+                equipment: Some(
+                    Equipment {
+                        name: "Brew Pot (6+gal) and Igloo/Gott Cooler (5 Gal)",
+                        boil_size: Some(
+                            Litres(
+                                22.705669,
+                            ),
+                        ),
+                        batch_size: Some(
+                            Litres(
+                                18.927168,
+                            ),
+                        ),
+                        tun_volume: Some(
+                            Litres(
+                                18.927168,
+                            ),
+                        ),
+                        tun_weight: Some(
+                            Kilograms(
+                                1.814368,
+                            ),
+                        ),
+                        tun_specific_heat: Some(
+                            0.3,
+                        ),
+                        top_up_water: Some(
+                            Litres(
+                                0.0,
+                            ),
+                        ),
+                        trub_chiller_loss: Some(
+                            Litres(
+                                0.946358,
+                            ),
+                        ),
+                        evap_rate: Some(
+                            Percent(
+                                9.0,
+                            ),
+                        ),
+                        boil_time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        calc_boil_volume: Some(
+                            false,
+                        ),
+                        lauter_deadspace: Some(
+                            Litres(
+                                0.946358,
+                            ),
+                        ),
+                        top_up_kettle: Some(
+                            Litres(
+                                0.0,
+                            ),
+                        ),
+                        hop_utilization: Some(
+                            Percent(
+                                100.0,
+                            ),
+                        ),
+                        notes: Some(
+                            "Popular all grain setup. 5 Gallon Gott or Igloo cooler as mash tun with false bottom,\n\t\t\t\tand 7-9 gallon brewpot capable of boiling at least 6 gallons of wort. Primarily used for\n\t\t\t\tsingle infusion mashes.",
+                        ),
+                    },
+                ),
+                brewer: Some(
+                    "Brad Smith",
+                ),
+                asst_brewer: None,
                 batch_size: Some(
                     Litres(
                         18.927168,
@@ -25,16 +193,6 @@ Read {
                 efficiency: Some(
                     Percent(
                         72.0,
-                    ),
-                ),
-                og: Some(
-                    SpecificGravity(
-                        1.054,
-                    ),
-                ),
-                fg: Some(
-                    SpecificGravity(
-                        1.015,
                     ),
                 ),
                 hops: [
@@ -434,6 +592,62 @@ Read {
                         ),
                     },
                 ],
+                miscs: [
+                    Misc {
+                        name: "Irish Moss",
+                        kind: Some(
+                            Fining,
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                10.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.001232,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Clarity",
+                        ),
+                        notes: Some(
+                            "Fining agent that aids in the post-boil protein break. Reduces protein chill haze and\n\t\t\t\t\timproves beer clarity.",
+                        ),
+                    },
+                    Misc {
+                        name: "Polyclar",
+                        kind: Some(
+                            Fining,
+                        ),
+                        usage: Some(
+                            Secondary,
+                        ),
+                        time: Some(
+                            Minutes(
+                                1440.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.007393,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Chill Haze",
+                        ),
+                        notes: Some(
+                            "Plastic powder that reduces chill haze by removing tannins and proteins. Add to\n\t\t\t\t\tsecondary after yeast has settled. Amounts vary by manufacturer -- check instructions\n\t\t\t\t\tbefore adding. Do not boil.",
+                        ),
+                    },
+                ],
                 yeasts: [
                     Yeast {
                         name: "Burton Ale",
@@ -497,62 +711,6 @@ Read {
                         ),
                     },
                 ],
-                miscs: [
-                    Misc {
-                        name: "Irish Moss",
-                        kind: Some(
-                            Fining,
-                        ),
-                        usage: Some(
-                            Boil,
-                        ),
-                        time: Some(
-                            Minutes(
-                                10.0,
-                            ),
-                        ),
-                        amount: Some(
-                            Volume(
-                                Litres(
-                                    0.001232,
-                                ),
-                            ),
-                        ),
-                        use_for: Some(
-                            "Clarity",
-                        ),
-                        notes: Some(
-                            "Fining agent that aids in the post-boil protein break. Reduces protein chill haze and\n\t\t\t\t\timproves beer clarity.",
-                        ),
-                    },
-                    Misc {
-                        name: "Polyclar",
-                        kind: Some(
-                            Fining,
-                        ),
-                        usage: Some(
-                            Secondary,
-                        ),
-                        time: Some(
-                            Minutes(
-                                1440.0,
-                            ),
-                        ),
-                        amount: Some(
-                            Volume(
-                                Litres(
-                                    0.007393,
-                                ),
-                            ),
-                        ),
-                        use_for: Some(
-                            "Chill Haze",
-                        ),
-                        notes: Some(
-                            "Plastic powder that reduces chill haze by removing tannins and proteins. Add to\n\t\t\t\t\tsecondary after yeast has settled. Amounts vary by manufacturer -- check instructions\n\t\t\t\t\tbefore adding. Do not boil.",
-                        ),
-                    },
-                ],
                 waters: [
                     Water {
                         name: "Burton On Trent, UK",
@@ -599,9 +757,417 @@ Read {
                         ),
                     },
                 ],
+                mash: Some(
+                    Mash {
+                        name: "Single Infusion, Full Body",
+                        grain_temp: Some(
+                            Celsius(
+                                22.222222,
+                            ),
+                        ),
+                        mash_steps: [
+                            MashStep {
+                                name: "Mash In",
+                                kind: Some(
+                                    Infusion,
+                                ),
+                                infuse_amount: Some(
+                                    Litres(
+                                        10.646532,
+                                    ),
+                                ),
+                                step_temp: Some(
+                                    Celsius(
+                                        70.0,
+                                    ),
+                                ),
+                                step_time: Some(
+                                    Minutes(
+                                        45.0,
+                                    ),
+                                ),
+                                ramp_time: Some(
+                                    Minutes(
+                                        2.0,
+                                    ),
+                                ),
+                                end_temp: Some(
+                                    Celsius(
+                                        70.0,
+                                    ),
+                                ),
+                                description: Some(
+                                    "Add 11.25 qt of water at 170.5 F",
+                                ),
+                                water_grain_ratio: Some(
+                                    "1.25",
+                                ),
+                                decoction_amt: Some(
+                                    "0.00 qt",
+                                ),
+                                infuse_temp: Some(
+                                    "170.5 F",
+                                ),
+                            },
+                            MashStep {
+                                name: "Mash Out",
+                                kind: Some(
+                                    Infusion,
+                                ),
+                                infuse_amount: Some(
+                                    Litres(
+                                        6.81378,
+                                    ),
+                                ),
+                                step_temp: Some(
+                                    Celsius(
+                                        75.555556,
+                                    ),
+                                ),
+                                step_time: Some(
+                                    Minutes(
+                                        10.0,
+                                    ),
+                                ),
+                                ramp_time: Some(
+                                    Minutes(
+                                        2.0,
+                                    ),
+                                ),
+                                end_temp: Some(
+                                    Celsius(
+                                        75.555556,
+                                    ),
+                                ),
+                                description: Some(
+                                    "Add 7.20 qt of water at 185.9 F",
+                                ),
+                                water_grain_ratio: Some(
+                                    "2.05",
+                                ),
+                                decoction_amt: Some(
+                                    "0.00 qt",
+                                ),
+                                infuse_temp: Some(
+                                    "185.9 F",
+                                ),
+                            },
+                        ],
+                        notes: None,
+                        tun_temp: Some(
+                            Celsius(
+                                22.222222,
+                            ),
+                        ),
+                        sparge_temp: Some(
+                            Celsius(
+                                75.555556,
+                            ),
+                        ),
+                        ph: Some(
+                            5.4,
+                        ),
+                        tun_weight: Some(
+                            Kilograms(
+                                1.814368,
+                            ),
+                        ),
+                        tun_specific_heat: Some(
+                            0.3,
+                        ),
+                        equip_adjust: Some(
+                            false,
+                        ),
+                    },
+                ),
+                notes: None,
+                taste_notes: Some(
+                    "A smooth tasting pale ale -- full in body and a great long lasting head. Another\n\t\t\tgreat beer to stock -- favorite with guests. Make's a great black and tan when combined with\n\t\t\tlight bodied Irish stout.",
+                ),
+                taste_rating: Some(
+                    38.0,
+                ),
+                rating: None,
+                og: Some(
+                    SpecificGravity(
+                        1.054,
+                    ),
+                ),
+                fg: Some(
+                    SpecificGravity(
+                        1.015,
+                    ),
+                ),
+                fermentation_stages: Some(
+                    2,
+                ),
+                primary_age: Some(
+                    Days(
+                        4.0,
+                    ),
+                ),
+                primary_temp: Some(
+                    Celsius(
+                        20.0,
+                    ),
+                ),
+                secondary_age: Some(
+                    Days(
+                        7.0,
+                    ),
+                ),
+                secondary_temp: Some(
+                    Celsius(
+                        20.0,
+                    ),
+                ),
+                tertiary_age: Some(
+                    Days(
+                        0.0,
+                    ),
+                ),
+                tertiary_temp: None,
+                age: Some(
+                    Days(
+                        14.0,
+                    ),
+                ),
+                age_temp: Some(
+                    Celsius(
+                        11.111,
+                    ),
+                ),
+                date: Some(
+                    RecordDate {
+                        text: "4/6/2003",
+                        iso: None,
+                    },
+                ),
+                carbonation: Some(
+                    Co2Volumes(
+                        2.4,
+                    ),
+                ),
+                forced_carbonation: None,
+                priming_sugar_name: None,
+                carbonation_temp: None,
+                priming_sugar_equiv: None,
+                keg_priming_factor: None,
+                carbonation_used: Some(
+                    "12 PSI",
+                ),
+                est_og: Some(
+                    SpecificGravity(
+                        1.056,
+                    ),
+                ),
+                est_fg: Some(
+                    SpecificGravity(
+                        1.015,
+                    ),
+                ),
+                est_color: Some(
+                    Srm(
+                        7.0,
+                    ),
+                ),
+                ibu: Some(
+                    Ibu(
+                        32.4,
+                    ),
+                ),
+                ibu_method: Some(
+                    Tinseth,
+                ),
+                est_abv: Some(
+                    Percent(
+                        5.3,
+                    ),
+                ),
+                abv: Some(
+                    Percent(
+                        5.1,
+                    ),
+                ),
+                actual_efficiency: Some(
+                    Percent(
+                        69.7,
+                    ),
+                ),
+                calories: Some(
+                    242.0,
+                ),
             },
             Recipe {
                 name: "Dry Stout",
+                kind: Some(
+                    AllGrain,
+                ),
+                style: Some(
+                    Style {
+                        name: "Dry Stout (Irish)",
+                        category: Some(
+                            "Stout",
+                        ),
+                        category_number: Some(
+                            "1",
+                        ),
+                        style_letter: Some(
+                            "A",
+                        ),
+                        style_guide: Some(
+                            "BJCP 1999",
+                        ),
+                        kind: Some(
+                            Ale,
+                        ),
+                        og_min: Some(
+                            SpecificGravity(
+                                1.036,
+                            ),
+                        ),
+                        og_max: Some(
+                            SpecificGravity(
+                                1.05,
+                            ),
+                        ),
+                        fg_min: Some(
+                            SpecificGravity(
+                                1.007,
+                            ),
+                        ),
+                        fg_max: Some(
+                            SpecificGravity(
+                                1.012,
+                            ),
+                        ),
+                        ibu_min: Some(
+                            Ibu(
+                                30.0,
+                            ),
+                        ),
+                        ibu_max: Some(
+                            Ibu(
+                                50.0,
+                            ),
+                        ),
+                        color_min: Some(
+                            Srm(
+                                35.0,
+                            ),
+                        ),
+                        color_max: Some(
+                            Srm(
+                                200.0,
+                            ),
+                        ),
+                        carb_min: Some(
+                            Co2Volumes(
+                                1.6,
+                            ),
+                        ),
+                        carb_max: Some(
+                            Co2Volumes(
+                                2.1,
+                            ),
+                        ),
+                        abv_min: Some(
+                            Percent(
+                                3.0,
+                            ),
+                        ),
+                        abv_max: Some(
+                            Percent(
+                                5.5,
+                            ),
+                        ),
+                        notes: Some(
+                            "Famous Irish Stout (AKA Guiness). Dry roasted almost coffee like flavor. Irish versions\n\t\t\t\thave low starting gravity. Often mixed with soured, pasturized beer to give a slight acidity\n\t\t\t\tas well.",
+                        ),
+                        profile: Some(
+                            "Full body perception from Flaked Barley, thought starting gravity may be low. Dry\n\t\t\t\troasted flavor. Generous hops, though malt flavor will dominate. Complex fruity flavor.\n\t\t\t\tBlack opaque color.",
+                        ),
+                        ingredients: Some(
+                            "English malt. Roasted Barley and Flaked Barley for all grain. Some chocolate or\n\t\t\t\tblack patent used in extract recipes. Goldings or Fuggles hops. Low sulfate, high calcium\n\t\t\t\twater.",
+                        ),
+                        examples: Some(
+                            "Guiness Stout",
+                        ),
+                    },
+                ),
+                equipment: Some(
+                    Equipment {
+                        name: "Brew Pot (6+gal) and Igloo/Gott Cooler (5 Gal)",
+                        boil_size: Some(
+                            Litres(
+                                22.705669,
+                            ),
+                        ),
+                        batch_size: Some(
+                            Litres(
+                                18.927168,
+                            ),
+                        ),
+                        tun_volume: Some(
+                            Litres(
+                                18.927168,
+                            ),
+                        ),
+                        tun_weight: Some(
+                            Kilograms(
+                                1.814368,
+                            ),
+                        ),
+                        tun_specific_heat: Some(
+                            0.3,
+                        ),
+                        top_up_water: Some(
+                            Litres(
+                                0.0,
+                            ),
+                        ),
+                        trub_chiller_loss: Some(
+                            Litres(
+                                0.946358,
+                            ),
+                        ),
+                        evap_rate: Some(
+                            Percent(
+                                9.0,
+                            ),
+                        ),
+                        boil_time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        calc_boil_volume: Some(
+                            false,
+                        ),
+                        lauter_deadspace: Some(
+                            Litres(
+                                0.946358,
+                            ),
+                        ),
+                        top_up_kettle: Some(
+                            Litres(
+                                0.0,
+                            ),
+                        ),
+                        hop_utilization: Some(
+                            Percent(
+                                100.0,
+                            ),
+                        ),
+                        notes: Some(
+                            "Popular all grain setup. 5 Gallon Gott or Igloo cooler as mash tun with false bottom,\n\t\t\t\tand 7-9 gallon brewpot capable of boiling at least 6 gallons of wort. Primarily used for\n\t\t\t\tsingle infusion mashes.",
+                        ),
+                    },
+                ),
+                brewer: Some(
+                    "Brad Smith",
+                ),
+                asst_brewer: None,
                 batch_size: Some(
                     Litres(
                         18.927168,
@@ -620,16 +1186,6 @@ Read {
                 efficiency: Some(
                     Percent(
                         72.0,
-                    ),
-                ),
-                og: Some(
-                    SpecificGravity(
-                        1.038,
-                    ),
-                ),
-                fg: Some(
-                    SpecificGravity(
-                        1.012,
                     ),
                 ),
                 hops: [
@@ -885,6 +1441,62 @@ Read {
                         ),
                     },
                 ],
+                miscs: [
+                    Misc {
+                        name: "Irish Moss",
+                        kind: Some(
+                            Fining,
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                10.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.001232,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Clarity",
+                        ),
+                        notes: Some(
+                            "Fining agent that aids in the post-boil protein break. Reduces protein chill haze and\n\t\t\t\t\timproves beer clarity.",
+                        ),
+                    },
+                    Misc {
+                        name: "Gypsum (Calcium Sulfate)",
+                        kind: Some(
+                            WaterAgent,
+                        ),
+                        usage: Some(
+                            Mash,
+                        ),
+                        time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Weight(
+                                Kilograms(
+                                    0.01,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Water Agent",
+                        ),
+                        notes: Some(
+                            "Reduces PH of water for mashing and sparging. Alters water profile -- used to harden\n\t\t\t\t\tsoft water. Use the BeerSmith Water Profile tool to determine amount to add.",
+                        ),
+                    },
+                ],
                 yeasts: [
                     Yeast {
                         name: "Irish Ale",
@@ -948,62 +1560,6 @@ Read {
                         ),
                     },
                 ],
-                miscs: [
-                    Misc {
-                        name: "Irish Moss",
-                        kind: Some(
-                            Fining,
-                        ),
-                        usage: Some(
-                            Boil,
-                        ),
-                        time: Some(
-                            Minutes(
-                                10.0,
-                            ),
-                        ),
-                        amount: Some(
-                            Volume(
-                                Litres(
-                                    0.001232,
-                                ),
-                            ),
-                        ),
-                        use_for: Some(
-                            "Clarity",
-                        ),
-                        notes: Some(
-                            "Fining agent that aids in the post-boil protein break. Reduces protein chill haze and\n\t\t\t\t\timproves beer clarity.",
-                        ),
-                    },
-                    Misc {
-                        name: "Gypsum (Calcium Sulfate)",
-                        kind: Some(
-                            WaterAgent,
-                        ),
-                        usage: Some(
-                            Mash,
-                        ),
-                        time: Some(
-                            Minutes(
-                                60.0,
-                            ),
-                        ),
-                        amount: Some(
-                            Weight(
-                                Kilograms(
-                                    0.01,
-                                ),
-                            ),
-                        ),
-                        use_for: Some(
-                            "Water Agent",
-                        ),
-                        notes: Some(
-                            "Reduces PH of water for mashing and sparging. Alters water profile -- used to harden\n\t\t\t\t\tsoft water. Use the BeerSmith Water Profile tool to determine amount to add.",
-                        ),
-                    },
-                ],
                 waters: [
                     Water {
                         name: "Dublin, Ireland",
@@ -1050,9 +1606,419 @@ Read {
                         ),
                     },
                 ],
+                mash: Some(
+                    Mash {
+                        name: "Single Infusion, Medium Body",
+                        grain_temp: Some(
+                            Celsius(
+                                22.222222,
+                            ),
+                        ),
+                        mash_steps: [
+                            MashStep {
+                                name: "Mash In",
+                                kind: Some(
+                                    Infusion,
+                                ),
+                                infuse_amount: Some(
+                                    Litres(
+                                        9.463584,
+                                    ),
+                                ),
+                                step_temp: Some(
+                                    Celsius(
+                                        67.777778,
+                                    ),
+                                ),
+                                step_time: Some(
+                                    Minutes(
+                                        60.0,
+                                    ),
+                                ),
+                                ramp_time: Some(
+                                    Minutes(
+                                        2.0,
+                                    ),
+                                ),
+                                end_temp: Some(
+                                    Celsius(
+                                        67.777778,
+                                    ),
+                                ),
+                                description: Some(
+                                    "Add 10.00 qt of water at 165.9 F",
+                                ),
+                                water_grain_ratio: Some(
+                                    "1.25",
+                                ),
+                                decoction_amt: Some(
+                                    "0.00 qt",
+                                ),
+                                infuse_temp: Some(
+                                    "165.9 F",
+                                ),
+                            },
+                            MashStep {
+                                name: "Mash Out",
+                                kind: Some(
+                                    Infusion,
+                                ),
+                                infuse_amount: Some(
+                                    Litres(
+                                        6.056694,
+                                    ),
+                                ),
+                                step_temp: Some(
+                                    Celsius(
+                                        75.555556,
+                                    ),
+                                ),
+                                step_time: Some(
+                                    Minutes(
+                                        10.0,
+                                    ),
+                                ),
+                                ramp_time: Some(
+                                    Minutes(
+                                        2.0,
+                                    ),
+                                ),
+                                end_temp: Some(
+                                    Celsius(
+                                        75.555556,
+                                    ),
+                                ),
+                                description: Some(
+                                    "Add 6.40 qt of water at 193.1 F",
+                                ),
+                                water_grain_ratio: Some(
+                                    "2.05",
+                                ),
+                                decoction_amt: Some(
+                                    "0.00 qt",
+                                ),
+                                infuse_temp: Some(
+                                    "193.1 F",
+                                ),
+                            },
+                        ],
+                        notes: None,
+                        tun_temp: Some(
+                            Celsius(
+                                22.222222,
+                            ),
+                        ),
+                        sparge_temp: Some(
+                            Celsius(
+                                75.555556,
+                            ),
+                        ),
+                        ph: Some(
+                            5.4,
+                        ),
+                        tun_weight: Some(
+                            Kilograms(
+                                1.814368,
+                            ),
+                        ),
+                        tun_specific_heat: Some(
+                            0.3,
+                        ),
+                        equip_adjust: Some(
+                            false,
+                        ),
+                    },
+                ),
+                notes: Some(
+                    "A very simple all grain beer that produces a great Guiness-style taste every time. So\n\t\t\tlight in body that I have even made black and tans with it using a full body pale ale in the\n\t\t\tbottom of the glass.",
+                ),
+                taste_notes: Some(
+                    "One of my favorite stock beers - I always keep a keg on hand. Rich flavored dry\n\t\t\tIrish Stout that is very simple to make. Perfect every time!",
+                ),
+                taste_rating: Some(
+                    44.0,
+                ),
+                rating: None,
+                og: Some(
+                    SpecificGravity(
+                        1.038,
+                    ),
+                ),
+                fg: Some(
+                    SpecificGravity(
+                        1.012,
+                    ),
+                ),
+                fermentation_stages: Some(
+                    2,
+                ),
+                primary_age: Some(
+                    Days(
+                        4.0,
+                    ),
+                ),
+                primary_temp: Some(
+                    Celsius(
+                        20.0,
+                    ),
+                ),
+                secondary_age: Some(
+                    Days(
+                        7.0,
+                    ),
+                ),
+                secondary_temp: Some(
+                    Celsius(
+                        20.0,
+                    ),
+                ),
+                tertiary_age: Some(
+                    Days(
+                        0.0,
+                    ),
+                ),
+                tertiary_temp: None,
+                age: Some(
+                    Days(
+                        7.0,
+                    ),
+                ),
+                age_temp: Some(
+                    Celsius(
+                        5.0,
+                    ),
+                ),
+                date: Some(
+                    RecordDate {
+                        text: "4/1/2003",
+                        iso: None,
+                    },
+                ),
+                carbonation: Some(
+                    Co2Volumes(
+                        2.3,
+                    ),
+                ),
+                forced_carbonation: None,
+                priming_sugar_name: None,
+                carbonation_temp: None,
+                priming_sugar_equiv: None,
+                keg_priming_factor: None,
+                carbonation_used: Some(
+                    "-",
+                ),
+                est_og: Some(
+                    SpecificGravity(
+                        1.039,
+                    ),
+                ),
+                est_fg: Some(
+                    SpecificGravity(
+                        1.01,
+                    ),
+                ),
+                est_color: Some(
+                    Srm(
+                        35.9,
+                    ),
+                ),
+                ibu: Some(
+                    Ibu(
+                        44.2,
+                    ),
+                ),
+                ibu_method: Some(
+                    Tinseth,
+                ),
+                est_abv: Some(
+                    Percent(
+                        3.7,
+                    ),
+                ),
+                abv: Some(
+                    Percent(
+                        3.4,
+                    ),
+                ),
+                actual_efficiency: Some(
+                    Percent(
+                        70.6,
+                    ),
+                ),
+                calories: Some(
+                    168.0,
+                ),
             },
             Recipe {
                 name: "Porter",
+                kind: Some(
+                    AllGrain,
+                ),
+                style: Some(
+                    Style {
+                        name: "Robust Porter",
+                        category: Some(
+                            "Porter",
+                        ),
+                        category_number: Some(
+                            "15",
+                        ),
+                        style_letter: Some(
+                            "A",
+                        ),
+                        style_guide: Some(
+                            "BJCP 1999",
+                        ),
+                        kind: Some(
+                            Ale,
+                        ),
+                        og_min: Some(
+                            SpecificGravity(
+                                1.05,
+                            ),
+                        ),
+                        og_max: Some(
+                            SpecificGravity(
+                                1.065,
+                            ),
+                        ),
+                        fg_min: Some(
+                            SpecificGravity(
+                                1.012,
+                            ),
+                        ),
+                        fg_max: Some(
+                            SpecificGravity(
+                                1.016,
+                            ),
+                        ),
+                        ibu_min: Some(
+                            Ibu(
+                                25.0,
+                            ),
+                        ),
+                        ibu_max: Some(
+                            Ibu(
+                                45.0,
+                            ),
+                        ),
+                        color_min: Some(
+                            Srm(
+                                30.0,
+                            ),
+                        ),
+                        color_max: Some(
+                            Srm(
+                                60.0,
+                            ),
+                        ),
+                        carb_min: Some(
+                            Co2Volumes(
+                                1.8,
+                            ),
+                        ),
+                        carb_max: Some(
+                            Co2Volumes(
+                                2.5,
+                            ),
+                        ),
+                        abv_min: Some(
+                            Percent(
+                                4.8,
+                            ),
+                        ),
+                        abv_max: Some(
+                            Percent(
+                                6.0,
+                            ),
+                        ),
+                        notes: Some(
+                            "Stronger, darker version of porter with a slight dryness. Flavor derived from chocolate\n\t\t\t\tand black malts, but lacks the strong roasted flavor of a dry stout.",
+                        ),
+                        profile: Some(
+                            "Medium to full body, slightly dry. Well balanced, low to medium malt flavor and hop\n\t\t\t\tbitterness. Dark brown to black color. Medium to no hop flavor. Low ester, fruitiness,\n\t\t\t\tdiacytl. Low to med carbonation.",
+                        ),
+                        ingredients: Some(
+                            "English malt. Dark Crystal, chocolate and black or roast malt. Traditional\n\t\t\t\tenglish ale hops and yeast. Moderate carbonate water.",
+                        ),
+                        examples: Some(
+                            "Sierra Nevada Porter, Anchor Porter",
+                        ),
+                    },
+                ),
+                equipment: Some(
+                    Equipment {
+                        name: "Brew Pot (6+gal) and Igloo/Gott Cooler (5 Gal)",
+                        boil_size: Some(
+                            Litres(
+                                22.705669,
+                            ),
+                        ),
+                        batch_size: Some(
+                            Litres(
+                                18.927168,
+                            ),
+                        ),
+                        tun_volume: Some(
+                            Litres(
+                                18.927168,
+                            ),
+                        ),
+                        tun_weight: Some(
+                            Kilograms(
+                                1.814368,
+                            ),
+                        ),
+                        tun_specific_heat: Some(
+                            0.3,
+                        ),
+                        top_up_water: Some(
+                            Litres(
+                                0.0,
+                            ),
+                        ),
+                        trub_chiller_loss: Some(
+                            Litres(
+                                0.946358,
+                            ),
+                        ),
+                        evap_rate: Some(
+                            Percent(
+                                9.0,
+                            ),
+                        ),
+                        boil_time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        calc_boil_volume: Some(
+                            false,
+                        ),
+                        lauter_deadspace: Some(
+                            Litres(
+                                0.946358,
+                            ),
+                        ),
+                        top_up_kettle: Some(
+                            Litres(
+                                0.0,
+                            ),
+                        ),
+                        hop_utilization: Some(
+                            Percent(
+                                100.0,
+                            ),
+                        ),
+                        notes: Some(
+                            "Popular all grain setup. 5 Gallon Gott or Igloo cooler as mash tun with false bottom,\n\t\t\t\tand 7-9 gallon brewpot capable of boiling at least 6 gallons of wort. Primarily used for\n\t\t\t\tsingle infusion mashes.",
+                        ),
+                    },
+                ),
+                brewer: Some(
+                    "Brad Smith",
+                ),
+                asst_brewer: None,
                 batch_size: Some(
                     Litres(
                         18.927168,
@@ -1071,16 +2037,6 @@ Read {
                 efficiency: Some(
                     Percent(
                         72.0,
-                    ),
-                ),
-                og: Some(
-                    SpecificGravity(
-                        1.054,
-                    ),
-                ),
-                fg: Some(
-                    SpecificGravity(
-                        1.018,
                     ),
                 ),
                 hops: [
@@ -1470,6 +2426,62 @@ Read {
                         ),
                     },
                 ],
+                miscs: [
+                    Misc {
+                        name: "Irish Moss",
+                        kind: Some(
+                            Fining,
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                10.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.001232,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Clarity",
+                        ),
+                        notes: Some(
+                            "Fining agent that aids in the post-boil protein break. Reduces protein chill haze and\n\t\t\t\t\timproves beer clarity.",
+                        ),
+                    },
+                    Misc {
+                        name: "Gypsum (Calcium Sulfate)",
+                        kind: Some(
+                            WaterAgent,
+                        ),
+                        usage: Some(
+                            Mash,
+                        ),
+                        time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Weight(
+                                Kilograms(
+                                    0.01,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Water Agent",
+                        ),
+                        notes: Some(
+                            "Reduces PH of water for mashing and sparging. Alters water profile -- used to harden\n\t\t\t\t\tsoft water. Use the BeerSmith Water Profile tool to determine amount to add.",
+                        ),
+                    },
+                ],
                 yeasts: [
                     Yeast {
                         name: "English Ale",
@@ -1533,66 +2545,418 @@ Read {
                         ),
                     },
                 ],
-                miscs: [
-                    Misc {
-                        name: "Irish Moss",
-                        kind: Some(
-                            Fining,
-                        ),
-                        usage: Some(
-                            Boil,
-                        ),
-                        time: Some(
-                            Minutes(
-                                10.0,
+                waters: [],
+                mash: Some(
+                    Mash {
+                        name: "Single Infusion, Medium Body",
+                        grain_temp: Some(
+                            Celsius(
+                                22.222222,
                             ),
                         ),
-                        amount: Some(
-                            Volume(
-                                Litres(
-                                    0.001232,
+                        mash_steps: [
+                            MashStep {
+                                name: "Mash In",
+                                kind: Some(
+                                    Infusion,
                                 ),
+                                infuse_amount: Some(
+                                    Litres(
+                                        13.012428,
+                                    ),
+                                ),
+                                step_temp: Some(
+                                    Celsius(
+                                        67.777778,
+                                    ),
+                                ),
+                                step_time: Some(
+                                    Minutes(
+                                        60.0,
+                                    ),
+                                ),
+                                ramp_time: Some(
+                                    Minutes(
+                                        2.0,
+                                    ),
+                                ),
+                                end_temp: Some(
+                                    Celsius(
+                                        67.777778,
+                                    ),
+                                ),
+                                description: Some(
+                                    "Add 13.75 qt of water at 165.9 F",
+                                ),
+                                water_grain_ratio: Some(
+                                    "1.25",
+                                ),
+                                decoction_amt: Some(
+                                    "0.00 qt",
+                                ),
+                                infuse_temp: Some(
+                                    "165.9 F",
+                                ),
+                            },
+                            MashStep {
+                                name: "Mash Out",
+                                kind: Some(
+                                    Infusion,
+                                ),
+                                infuse_amount: Some(
+                                    Litres(
+                                        8.327954,
+                                    ),
+                                ),
+                                step_temp: Some(
+                                    Celsius(
+                                        75.555556,
+                                    ),
+                                ),
+                                step_time: Some(
+                                    Minutes(
+                                        10.0,
+                                    ),
+                                ),
+                                ramp_time: Some(
+                                    Minutes(
+                                        2.0,
+                                    ),
+                                ),
+                                end_temp: Some(
+                                    Celsius(
+                                        75.555556,
+                                    ),
+                                ),
+                                description: Some(
+                                    "Add 8.80 qt of water at 193.1 F",
+                                ),
+                                water_grain_ratio: Some(
+                                    "2.05",
+                                ),
+                                decoction_amt: Some(
+                                    "0.00 qt",
+                                ),
+                                infuse_temp: Some(
+                                    "193.1 F",
+                                ),
+                            },
+                        ],
+                        notes: None,
+                        tun_temp: Some(
+                            Celsius(
+                                22.222222,
                             ),
                         ),
-                        use_for: Some(
-                            "Clarity",
+                        sparge_temp: Some(
+                            Celsius(
+                                75.555556,
+                            ),
                         ),
-                        notes: Some(
-                            "Fining agent that aids in the post-boil protein break. Reduces protein chill haze and\n\t\t\t\t\timproves beer clarity.",
+                        ph: Some(
+                            5.4,
+                        ),
+                        tun_weight: Some(
+                            Kilograms(
+                                1.814368,
+                            ),
+                        ),
+                        tun_specific_heat: Some(
+                            0.3,
+                        ),
+                        equip_adjust: Some(
+                            false,
                         ),
                     },
-                    Misc {
-                        name: "Gypsum (Calcium Sulfate)",
+                ),
+                notes: None,
+                taste_notes: Some(
+                    "Smooth tasting complex English porter. A bit on the \"robust\" side.",
+                ),
+                taste_rating: Some(
+                    40.0,
+                ),
+                rating: None,
+                og: Some(
+                    SpecificGravity(
+                        1.054,
+                    ),
+                ),
+                fg: Some(
+                    SpecificGravity(
+                        1.018,
+                    ),
+                ),
+                fermentation_stages: Some(
+                    2,
+                ),
+                primary_age: Some(
+                    Days(
+                        4.0,
+                    ),
+                ),
+                primary_temp: Some(
+                    Celsius(
+                        20.0,
+                    ),
+                ),
+                secondary_age: Some(
+                    Days(
+                        7.0,
+                    ),
+                ),
+                secondary_temp: Some(
+                    Celsius(
+                        20.0,
+                    ),
+                ),
+                tertiary_age: Some(
+                    Days(
+                        0.0,
+                    ),
+                ),
+                tertiary_temp: None,
+                age: Some(
+                    Days(
+                        28.0,
+                    ),
+                ),
+                age_temp: Some(
+                    Celsius(
+                        11.111,
+                    ),
+                ),
+                date: Some(
+                    RecordDate {
+                        text: "4/16/2003",
+                        iso: None,
+                    },
+                ),
+                carbonation: Some(
+                    Co2Volumes(
+                        2.3,
+                    ),
+                ),
+                forced_carbonation: None,
+                priming_sugar_name: None,
+                carbonation_temp: None,
+                priming_sugar_equiv: None,
+                keg_priming_factor: None,
+                carbonation_used: Some(
+                    "-",
+                ),
+                est_og: Some(
+                    SpecificGravity(
+                        1.056,
+                    ),
+                ),
+                est_fg: Some(
+                    SpecificGravity(
+                        1.018,
+                    ),
+                ),
+                est_color: Some(
+                    Srm(
+                        44.9,
+                    ),
+                ),
+                ibu: Some(
+                    Ibu(
+                        29.5,
+                    ),
+                ),
+                ibu_method: Some(
+                    Tinseth,
+                ),
+                est_abv: Some(
+                    Percent(
+                        4.9,
+                    ),
+                ),
+                abv: Some(
+                    Percent(
+                        4.7,
+                    ),
+                ),
+                actual_efficiency: Some(
+                    Percent(
+                        70.0,
+                    ),
+                ),
+                calories: Some(
+                    244.0,
+                ),
+            },
+            Recipe {
+                name: "Wit",
+                kind: Some(
+                    AllGrain,
+                ),
+                style: Some(
+                    Style {
+                        name: "Witbier",
+                        category: Some(
+                            "Belgian & French Ale",
+                        ),
+                        category_number: Some(
+                            "1",
+                        ),
+                        style_letter: Some(
+                            "A",
+                        ),
+                        style_guide: Some(
+                            "BJCP 1999",
+                        ),
                         kind: Some(
-                            WaterAgent,
+                            Ale,
                         ),
-                        usage: Some(
-                            Mash,
+                        og_min: Some(
+                            SpecificGravity(
+                                1.044,
+                            ),
                         ),
-                        time: Some(
+                        og_max: Some(
+                            SpecificGravity(
+                                1.055,
+                            ),
+                        ),
+                        fg_min: Some(
+                            SpecificGravity(
+                                1.008,
+                            ),
+                        ),
+                        fg_max: Some(
+                            SpecificGravity(
+                                1.012,
+                            ),
+                        ),
+                        ibu_min: Some(
+                            Ibu(
+                                15.0,
+                            ),
+                        ),
+                        ibu_max: Some(
+                            Ibu(
+                                25.0,
+                            ),
+                        ),
+                        color_min: Some(
+                            Srm(
+                                2.0,
+                            ),
+                        ),
+                        color_max: Some(
+                            Srm(
+                                4.0,
+                            ),
+                        ),
+                        carb_min: Some(
+                            Co2Volumes(
+                                2.1,
+                            ),
+                        ),
+                        carb_max: Some(
+                            Co2Volumes(
+                                2.7,
+                            ),
+                        ),
+                        abv_min: Some(
+                            Percent(
+                                4.1,
+                            ),
+                        ),
+                        abv_max: Some(
+                            Percent(
+                                5.5,
+                            ),
+                        ),
+                        notes: Some(
+                            "Distinctive Wit or \"White\" beer spiced with bitter Curacao orange peel and coriander. A\n\t\t\t\tdistinctive yeast strain provides orange aroma/flavor.",
+                        ),
+                        profile: Some(
+                            "Light to medium body. Unmalted wheat adds body and disctinctive flavor. Large white\n\t\t\t\thead. Low hop bitterness and flavor. Pale yellow color. Moderate carbonation. Some chill\n\t\t\t\thaze is OK.",
+                        ),
+                        ingredients: Some(
+                            "Belgian pale malt. Up to 50% unmalted wheat (torrified or flaked often used).\n\t\t\t\t5-10% flaked or rolled oats. Noble hops (Hallertauer or Saaz). Wit yeast. Curaco bitter\n\t\t\t\torange peel and coriander. Soft water.",
+                        ),
+                        examples: Some(
+                            "Celis White, Wieckse Witte",
+                        ),
+                    },
+                ),
+                equipment: Some(
+                    Equipment {
+                        name: "Brew Pot (6+gal) and Igloo/Gott Cooler (5 Gal)",
+                        boil_size: Some(
+                            Litres(
+                                22.705669,
+                            ),
+                        ),
+                        batch_size: Some(
+                            Litres(
+                                18.927168,
+                            ),
+                        ),
+                        tun_volume: Some(
+                            Litres(
+                                18.927168,
+                            ),
+                        ),
+                        tun_weight: Some(
+                            Kilograms(
+                                1.814368,
+                            ),
+                        ),
+                        tun_specific_heat: Some(
+                            0.3,
+                        ),
+                        top_up_water: Some(
+                            Litres(
+                                0.0,
+                            ),
+                        ),
+                        trub_chiller_loss: Some(
+                            Litres(
+                                0.946358,
+                            ),
+                        ),
+                        evap_rate: Some(
+                            Percent(
+                                9.0,
+                            ),
+                        ),
+                        boil_time: Some(
                             Minutes(
                                 60.0,
                             ),
                         ),
-                        amount: Some(
-                            Weight(
-                                Kilograms(
-                                    0.01,
-                                ),
+                        calc_boil_volume: Some(
+                            false,
+                        ),
+                        lauter_deadspace: Some(
+                            Litres(
+                                0.946358,
                             ),
                         ),
-                        use_for: Some(
-                            "Water Agent",
+                        top_up_kettle: Some(
+                            Litres(
+                                0.0,
+                            ),
+                        ),
+                        hop_utilization: Some(
+                            Percent(
+                                100.0,
+                            ),
                         ),
                         notes: Some(
-                            "Reduces PH of water for mashing and sparging. Alters water profile -- used to harden\n\t\t\t\t\tsoft water. Use the BeerSmith Water Profile tool to determine amount to add.",
+                            "Popular all grain setup. 5 Gallon Gott or Igloo cooler as mash tun with false bottom,\n\t\t\t\tand 7-9 gallon brewpot capable of boiling at least 6 gallons of wort. Primarily used for\n\t\t\t\tsingle infusion mashes.",
                         ),
                     },
-                ],
-                waters: [],
-            },
-            Recipe {
-                name: "Wit",
+                ),
+                brewer: Some(
+                    "Brad Smith",
+                ),
+                asst_brewer: None,
                 batch_size: Some(
                     Litres(
                         19.684255,
@@ -1611,16 +2975,6 @@ Read {
                 efficiency: Some(
                     Percent(
                         75.0,
-                    ),
-                ),
-                og: Some(
-                    SpecificGravity(
-                        1.047,
-                    ),
-                ),
-                fg: Some(
-                    SpecificGravity(
-                        1.013,
                     ),
                 ),
                 hops: [
@@ -1809,6 +3163,62 @@ Read {
                         ),
                     },
                 ],
+                miscs: [
+                    Misc {
+                        name: "Coriander Seed",
+                        kind: Some(
+                            Spice,
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                5.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.02218,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Belgian Wit",
+                        ),
+                        notes: Some(
+                            "Used in Belgian Wit, Whites, and Holiday ales. Very good when used in light wheat\n\t\t\t\t\tales. Often used with Bitter Orange Peel.",
+                        ),
+                    },
+                    Misc {
+                        name: "Orange Peel, Bitter",
+                        kind: Some(
+                            Spice,
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                5.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.02218,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "Belgian Wit",
+                        ),
+                        notes: Some(
+                            "Made from the Curaco Orange Peel, peels are green-gray in color. Used to add a\n\t\t\t\t\tdistinctive flavor to Belgian Wits and White beers.",
+                        ),
+                    },
+                ],
                 yeasts: [
                     Yeast {
                         name: "Belgian Wit Ale",
@@ -1872,63 +3282,251 @@ Read {
                         ),
                     },
                 ],
-                miscs: [
-                    Misc {
-                        name: "Coriander Seed",
-                        kind: Some(
-                            Spice,
-                        ),
-                        usage: Some(
-                            Boil,
-                        ),
-                        time: Some(
-                            Minutes(
-                                5.0,
-                            ),
-                        ),
-                        amount: Some(
-                            Volume(
-                                Litres(
-                                    0.02218,
-                                ),
-                            ),
-                        ),
-                        use_for: Some(
-                            "Belgian Wit",
-                        ),
-                        notes: Some(
-                            "Used in Belgian Wit, Whites, and Holiday ales. Very good when used in light wheat\n\t\t\t\t\tales. Often used with Bitter Orange Peel.",
-                        ),
-                    },
-                    Misc {
-                        name: "Orange Peel, Bitter",
-                        kind: Some(
-                            Spice,
-                        ),
-                        usage: Some(
-                            Boil,
-                        ),
-                        time: Some(
-                            Minutes(
-                                5.0,
-                            ),
-                        ),
-                        amount: Some(
-                            Volume(
-                                Litres(
-                                    0.02218,
-                                ),
-                            ),
-                        ),
-                        use_for: Some(
-                            "Belgian Wit",
-                        ),
-                        notes: Some(
-                            "Made from the Curaco Orange Peel, peels are green-gray in color. Used to add a\n\t\t\t\t\tdistinctive flavor to Belgian Wits and White beers.",
-                        ),
-                    },
-                ],
                 waters: [],
+                mash: Some(
+                    Mash {
+                        name: "Single Infusion, Medium Body",
+                        grain_temp: Some(
+                            Celsius(
+                                22.222222,
+                            ),
+                        ),
+                        mash_steps: [
+                            MashStep {
+                                name: "Mash In",
+                                kind: Some(
+                                    Infusion,
+                                ),
+                                infuse_amount: Some(
+                                    Litres(
+                                        10.646532,
+                                    ),
+                                ),
+                                step_temp: Some(
+                                    Celsius(
+                                        67.777778,
+                                    ),
+                                ),
+                                step_time: Some(
+                                    Minutes(
+                                        60.0,
+                                    ),
+                                ),
+                                ramp_time: Some(
+                                    Minutes(
+                                        2.0,
+                                    ),
+                                ),
+                                end_temp: Some(
+                                    Celsius(
+                                        67.777778,
+                                    ),
+                                ),
+                                description: Some(
+                                    "Add 11.25 qt of water at 165.9 F",
+                                ),
+                                water_grain_ratio: Some(
+                                    "1.25",
+                                ),
+                                decoction_amt: Some(
+                                    "0.00 qt",
+                                ),
+                                infuse_temp: Some(
+                                    "165.9 F",
+                                ),
+                            },
+                            MashStep {
+                                name: "Mash Out",
+                                kind: Some(
+                                    Infusion,
+                                ),
+                                infuse_amount: Some(
+                                    Litres(
+                                        5.962058,
+                                    ),
+                                ),
+                                step_temp: Some(
+                                    Celsius(
+                                        75.555556,
+                                    ),
+                                ),
+                                step_time: Some(
+                                    Minutes(
+                                        10.0,
+                                    ),
+                                ),
+                                ramp_time: Some(
+                                    Minutes(
+                                        2.0,
+                                    ),
+                                ),
+                                end_temp: Some(
+                                    Celsius(
+                                        75.555556,
+                                    ),
+                                ),
+                                description: Some(
+                                    "Add 6.30 qt of water at 196.6 F",
+                                ),
+                                water_grain_ratio: Some(
+                                    "1.95",
+                                ),
+                                decoction_amt: Some(
+                                    "0.00 qt",
+                                ),
+                                infuse_temp: Some(
+                                    "196.6 F",
+                                ),
+                            },
+                        ],
+                        notes: Some(
+                            "Simple single infusion mash for use with most modern well modified grains (about 95% of\n\t\t\t\tthe time).",
+                        ),
+                        tun_temp: Some(
+                            Celsius(
+                                22.222222,
+                            ),
+                        ),
+                        sparge_temp: Some(
+                            Celsius(
+                                75.555556,
+                            ),
+                        ),
+                        ph: Some(
+                            5.4,
+                        ),
+                        tun_weight: Some(
+                            Kilograms(
+                                1.814368,
+                            ),
+                        ),
+                        tun_specific_heat: Some(
+                            0.3,
+                        ),
+                        equip_adjust: Some(
+                            false,
+                        ),
+                    },
+                ),
+                notes: Some(
+                    "Many thanks to Jay Russ for starting me on Wit - and providing some starter recipes from\n\t\t\twhich this one eventually evolved!",
+                ),
+                taste_notes: Some(
+                    "Great tasting Wit! A summer favorite! Lacy white head that lasts and lasts.\n\t\t\tDistinctive, light wheat beer with a hint of spice.",
+                ),
+                taste_rating: Some(
+                    47.0,
+                ),
+                rating: None,
+                og: Some(
+                    SpecificGravity(
+                        1.047,
+                    ),
+                ),
+                fg: Some(
+                    SpecificGravity(
+                        1.013,
+                    ),
+                ),
+                fermentation_stages: Some(
+                    2,
+                ),
+                primary_age: Some(
+                    Days(
+                        4.0,
+                    ),
+                ),
+                primary_temp: Some(
+                    Celsius(
+                        20.0,
+                    ),
+                ),
+                secondary_age: Some(
+                    Days(
+                        7.0,
+                    ),
+                ),
+                secondary_temp: Some(
+                    Celsius(
+                        20.0,
+                    ),
+                ),
+                tertiary_age: Some(
+                    Days(
+                        0.0,
+                    ),
+                ),
+                tertiary_temp: None,
+                age: Some(
+                    Days(
+                        28.0,
+                    ),
+                ),
+                age_temp: Some(
+                    Celsius(
+                        11.111,
+                    ),
+                ),
+                date: Some(
+                    RecordDate {
+                        text: "4/17/2003",
+                        iso: None,
+                    },
+                ),
+                carbonation: Some(
+                    Co2Volumes(
+                        2.4,
+                    ),
+                ),
+                forced_carbonation: None,
+                priming_sugar_name: None,
+                carbonation_temp: None,
+                priming_sugar_equiv: None,
+                keg_priming_factor: None,
+                carbonation_used: Some(
+                    "-",
+                ),
+                est_og: Some(
+                    SpecificGravity(
+                        1.047,
+                    ),
+                ),
+                est_fg: Some(
+                    SpecificGravity(
+                        1.011,
+                    ),
+                ),
+                est_color: Some(
+                    Srm(
+                        4.0,
+                    ),
+                ),
+                ibu: Some(
+                    Ibu(
+                        17.0,
+                    ),
+                ),
+                ibu_method: Some(
+                    Tinseth,
+                ),
+                est_abv: Some(
+                    Percent(
+                        4.7,
+                    ),
+                ),
+                abv: Some(
+                    Percent(
+                        4.4,
+                    ),
+                ),
+                actual_efficiency: Some(
+                    Percent(
+                        75.2,
+                    ),
+                ),
+                calories: Some(
+                    209.0,
+                ),
             },
         ],
         hops: [],
@@ -1936,6 +3534,10 @@ Read {
         yeasts: [],
         miscs: [],
         waters: [],
+        styles: [],
+        equipments: [],
+        mashes: [],
+        mash_steps: [],
     },
     version: V1_0,
     warnings: [],
