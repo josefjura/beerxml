@@ -7,6 +7,82 @@ Read {
         recipes: [
             Recipe {
                 name: "Únětický Vzor 10.7° (G70 30L)",
+                kind: Some(
+                    AllGrain,
+                ),
+                style: Some(
+                    Style {
+                        name: "Czech Premium Pale Lager",
+                        category: Some(
+                            "Pale Czech Lager",
+                        ),
+                        category_number: Some(
+                            "3B",
+                        ),
+                        style_letter: Some(
+                            "B",
+                        ),
+                        style_guide: Some(
+                            "BJCP 2015",
+                        ),
+                        kind: Some(
+                            Lager,
+                        ),
+                        og_min: Some(
+                            SpecificGravity(
+                                1.044,
+                            ),
+                        ),
+                        og_max: Some(
+                            SpecificGravity(
+                                1.06,
+                            ),
+                        ),
+                        fg_min: Some(
+                            SpecificGravity(
+                                1.013,
+                            ),
+                        ),
+                        fg_max: Some(
+                            SpecificGravity(
+                                1.017,
+                            ),
+                        ),
+                        ibu_min: Some(
+                            Ibu(
+                                30.0,
+                            ),
+                        ),
+                        ibu_max: Some(
+                            Ibu(
+                                45.0,
+                            ),
+                        ),
+                        color_min: Some(
+                            Srm(
+                                6.896,
+                            ),
+                        ),
+                        color_max: Some(
+                            Srm(
+                                11.82,
+                            ),
+                        ),
+                        carb_min: None,
+                        carb_max: None,
+                        abv_min: None,
+                        abv_max: None,
+                        notes: None,
+                        profile: None,
+                        ingredients: None,
+                        examples: None,
+                    },
+                ),
+                equipment: None,
+                brewer: Some(
+                    "Domácí Sládek",
+                ),
+                asst_brewer: None,
                 batch_size: Some(
                     Litres(
                         30.0,
@@ -25,16 +101,6 @@ Read {
                 efficiency: Some(
                     Percent(
                         75.0,
-                    ),
-                ),
-                og: Some(
-                    SpecificGravity(
-                        1.043,
-                    ),
-                ),
-                fg: Some(
-                    SpecificGravity(
-                        1.01,
                     ),
                 ),
                 hops: [
@@ -257,6 +323,31 @@ Read {
                         potential: None,
                     },
                 ],
+                miscs: [
+                    Misc {
+                        name: "Irish Moss",
+                        kind: Some(
+                            Fining,
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                10.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Weight(
+                                Kilograms(
+                                    0.005,
+                                ),
+                            ),
+                        ),
+                        use_for: None,
+                        notes: None,
+                    },
+                ],
                 yeasts: [
                     Yeast {
                         name: "NovaLager",
@@ -303,32 +394,186 @@ Read {
                         culture_date: None,
                     },
                 ],
-                miscs: [
-                    Misc {
-                        name: "Irish Moss",
-                        kind: Some(
-                            Fining,
-                        ),
-                        usage: Some(
-                            Boil,
-                        ),
-                        time: Some(
-                            Minutes(
-                                10.0,
-                            ),
-                        ),
-                        amount: Some(
-                            Weight(
-                                Kilograms(
-                                    0.005,
-                                ),
-                            ),
-                        ),
-                        use_for: None,
-                        notes: None,
-                    },
-                ],
                 waters: [],
+                mash: Some(
+                    Mash {
+                        name: "Dvojitá dekokce (Simulace krokem)",
+                        grain_temp: Some(
+                            Celsius(
+                                20.0,
+                            ),
+                        ),
+                        mash_steps: [
+                            MashStep {
+                                name: "Vystírka (Protein Rest)",
+                                kind: Some(
+                                    Infusion,
+                                ),
+                                infuse_amount: Some(
+                                    Litres(
+                                        0.0,
+                                    ),
+                                ),
+                                step_temp: Some(
+                                    Celsius(
+                                        52.0,
+                                    ),
+                                ),
+                                step_time: Some(
+                                    Minutes(
+                                        5.0,
+                                    ),
+                                ),
+                                ramp_time: None,
+                                end_temp: None,
+                                description: None,
+                                water_grain_ratio: None,
+                                decoction_amt: None,
+                                infuse_temp: None,
+                            },
+                            MashStep {
+                                name: "Nižší cukrotvorná (Maltose)",
+                                kind: Some(
+                                    Temperature,
+                                ),
+                                infuse_amount: Some(
+                                    Litres(
+                                        0.0,
+                                    ),
+                                ),
+                                step_temp: Some(
+                                    Celsius(
+                                        63.0,
+                                    ),
+                                ),
+                                step_time: Some(
+                                    Minutes(
+                                        40.0,
+                                    ),
+                                ),
+                                ramp_time: Some(
+                                    Minutes(
+                                        10.0,
+                                    ),
+                                ),
+                                end_temp: None,
+                                description: None,
+                                water_grain_ratio: None,
+                                decoction_amt: None,
+                                infuse_temp: None,
+                            },
+                            MashStep {
+                                name: "Vyšší cukrotvorná (Dextrin)",
+                                kind: Some(
+                                    Temperature,
+                                ),
+                                infuse_amount: Some(
+                                    Litres(
+                                        0.0,
+                                    ),
+                                ),
+                                step_temp: Some(
+                                    Celsius(
+                                        72.0,
+                                    ),
+                                ),
+                                step_time: Some(
+                                    Minutes(
+                                        25.0,
+                                    ),
+                                ),
+                                ramp_time: Some(
+                                    Minutes(
+                                        10.0,
+                                    ),
+                                ),
+                                end_temp: None,
+                                description: None,
+                                water_grain_ratio: None,
+                                decoction_amt: None,
+                                infuse_temp: None,
+                            },
+                            MashStep {
+                                name: "Odrmutování (Mash Out)",
+                                kind: Some(
+                                    Temperature,
+                                ),
+                                infuse_amount: Some(
+                                    Litres(
+                                        0.0,
+                                    ),
+                                ),
+                                step_temp: Some(
+                                    Celsius(
+                                        78.0,
+                                    ),
+                                ),
+                                step_time: Some(
+                                    Minutes(
+                                        10.0,
+                                    ),
+                                ),
+                                ramp_time: Some(
+                                    Minutes(
+                                        5.0,
+                                    ),
+                                ),
+                                end_temp: None,
+                                description: None,
+                                water_grain_ratio: None,
+                                decoction_amt: None,
+                                infuse_temp: None,
+                            },
+                        ],
+                        notes: None,
+                        tun_temp: None,
+                        sparge_temp: None,
+                        ph: None,
+                        tun_weight: None,
+                        tun_specific_heat: None,
+                        equip_adjust: None,
+                    },
+                ),
+                notes: None,
+                taste_notes: None,
+                taste_rating: None,
+                rating: None,
+                og: Some(
+                    SpecificGravity(
+                        1.043,
+                    ),
+                ),
+                fg: Some(
+                    SpecificGravity(
+                        1.01,
+                    ),
+                ),
+                fermentation_stages: None,
+                primary_age: None,
+                primary_temp: None,
+                secondary_age: None,
+                secondary_temp: None,
+                tertiary_age: None,
+                tertiary_temp: None,
+                age: None,
+                age_temp: None,
+                date: None,
+                carbonation: None,
+                forced_carbonation: None,
+                priming_sugar_name: None,
+                carbonation_temp: None,
+                priming_sugar_equiv: None,
+                keg_priming_factor: None,
+                carbonation_used: None,
+                est_og: None,
+                est_fg: None,
+                est_color: None,
+                ibu: None,
+                ibu_method: None,
+                est_abv: None,
+                abv: None,
+                actual_efficiency: None,
+                calories: None,
             },
         ],
         hops: [],
@@ -336,6 +581,10 @@ Read {
         yeasts: [],
         miscs: [],
         waters: [],
+        styles: [],
+        equipments: [],
+        mashes: [],
+        mash_steps: [],
     },
     version: V1_0,
     warnings: [],

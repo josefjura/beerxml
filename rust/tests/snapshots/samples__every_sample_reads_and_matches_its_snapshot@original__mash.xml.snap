@@ -10,6 +10,755 @@ Read {
         yeasts: [],
         miscs: [],
         waters: [],
+        styles: [],
+        equipments: [],
+        mashes: [
+            Mash {
+                name: "Temperature Mash, 1 Step, Light Body",
+                grain_temp: Some(
+                    Celsius(
+                        22.222222,
+                    ),
+                ),
+                mash_steps: [
+                    MashStep {
+                        name: "Saccharification",
+                        kind: Some(
+                            Infusion,
+                        ),
+                        infuse_amount: Some(
+                            Litres(
+                                11.82948,
+                            ),
+                        ),
+                        step_temp: Some(
+                            Celsius(
+                                65.555556,
+                            ),
+                        ),
+                        step_time: Some(
+                            Minutes(
+                                75.0,
+                            ),
+                        ),
+                        ramp_time: Some(
+                            Minutes(
+                                15.0,
+                            ),
+                        ),
+                        end_temp: Some(
+                            Celsius(
+                                65.555556,
+                            ),
+                        ),
+                        description: Some(
+                            "Add 12.50 qt of water at 161.4 F",
+                        ),
+                        water_grain_ratio: Some(
+                            "1.25",
+                        ),
+                        decoction_amt: Some(
+                            "0.00 qt",
+                        ),
+                        infuse_temp: Some(
+                            "161.4 F",
+                        ),
+                    },
+                    MashStep {
+                        name: "Mash Out",
+                        kind: Some(
+                            Temperature,
+                        ),
+                        infuse_amount: Some(
+                            Litres(
+                                0.0,
+                            ),
+                        ),
+                        step_temp: Some(
+                            Celsius(
+                                75.555556,
+                            ),
+                        ),
+                        step_time: Some(
+                            Minutes(
+                                10.0,
+                            ),
+                        ),
+                        ramp_time: Some(
+                            Minutes(
+                                10.0,
+                            ),
+                        ),
+                        end_temp: Some(
+                            Celsius(
+                                75.555556,
+                            ),
+                        ),
+                        description: Some(
+                            "Heat to 168.0 F over 10 min",
+                        ),
+                        water_grain_ratio: Some(
+                            "1.25",
+                        ),
+                        decoction_amt: Some(
+                            "0.00 qt",
+                        ),
+                        infuse_temp: Some(
+                            "182.0 F",
+                        ),
+                    },
+                ],
+                notes: Some(
+                    "Temperature mash for use when mashing in a brew pot over a heat source such as the stove.\n\t\t\tUse heat to maintain desired temperature during the mash.",
+                ),
+                tun_temp: Some(
+                    Celsius(
+                        22.222222,
+                    ),
+                ),
+                sparge_temp: Some(
+                    Celsius(
+                        75.555556,
+                    ),
+                ),
+                ph: Some(
+                    5.4,
+                ),
+                tun_weight: Some(
+                    Kilograms(
+                        0.0,
+                    ),
+                ),
+                tun_specific_heat: Some(
+                    0.12,
+                ),
+                equip_adjust: Some(
+                    false,
+                ),
+            },
+            Mash {
+                name: "Single Infusion, Light Body, No Mash Out",
+                grain_temp: Some(
+                    Celsius(
+                        22.222222,
+                    ),
+                ),
+                mash_steps: [
+                    MashStep {
+                        name: "Mash In",
+                        kind: Some(
+                            Infusion,
+                        ),
+                        infuse_amount: Some(
+                            Litres(
+                                11.82948,
+                            ),
+                        ),
+                        step_temp: Some(
+                            Celsius(
+                                65.555556,
+                            ),
+                        ),
+                        step_time: Some(
+                            Minutes(
+                                75.0,
+                            ),
+                        ),
+                        ramp_time: Some(
+                            Minutes(
+                                2.0,
+                            ),
+                        ),
+                        end_temp: Some(
+                            Celsius(
+                                65.555556,
+                            ),
+                        ),
+                        description: Some(
+                            "Add 12.50 qt of water at 161.4 F",
+                        ),
+                        water_grain_ratio: Some(
+                            "1.25",
+                        ),
+                        decoction_amt: Some(
+                            "0.00 qt",
+                        ),
+                        infuse_temp: Some(
+                            "161.4 F",
+                        ),
+                    },
+                ],
+                notes: Some(
+                    "Simple single infusion mash for use with most modern well modified grains (about 95% of\n\t\t\tthe time).",
+                ),
+                tun_temp: Some(
+                    Celsius(
+                        22.222222,
+                    ),
+                ),
+                sparge_temp: Some(
+                    Celsius(
+                        75.555556,
+                    ),
+                ),
+                ph: Some(
+                    5.4,
+                ),
+                tun_weight: Some(
+                    Kilograms(
+                        0.0,
+                    ),
+                ),
+                tun_specific_heat: Some(
+                    0.12,
+                ),
+                equip_adjust: Some(
+                    false,
+                ),
+            },
+            Mash {
+                name: "Single Infusion, Full Body",
+                grain_temp: Some(
+                    Celsius(
+                        22.222222,
+                    ),
+                ),
+                mash_steps: [
+                    MashStep {
+                        name: "Mash In",
+                        kind: Some(
+                            Infusion,
+                        ),
+                        infuse_amount: Some(
+                            Litres(
+                                11.82948,
+                            ),
+                        ),
+                        step_temp: Some(
+                            Celsius(
+                                70.0,
+                            ),
+                        ),
+                        step_time: Some(
+                            Minutes(
+                                45.0,
+                            ),
+                        ),
+                        ramp_time: Some(
+                            Minutes(
+                                2.0,
+                            ),
+                        ),
+                        end_temp: Some(
+                            Celsius(
+                                70.0,
+                            ),
+                        ),
+                        description: Some(
+                            "Add 12.50 qt of water at 170.5 F",
+                        ),
+                        water_grain_ratio: Some(
+                            "1.25",
+                        ),
+                        decoction_amt: Some(
+                            "0.00 qt",
+                        ),
+                        infuse_temp: Some(
+                            "170.5 F",
+                        ),
+                    },
+                    MashStep {
+                        name: "Mash Out",
+                        kind: Some(
+                            Infusion,
+                        ),
+                        infuse_amount: Some(
+                            Litres(
+                                4.731792,
+                            ),
+                        ),
+                        step_temp: Some(
+                            Celsius(
+                                75.555556,
+                            ),
+                        ),
+                        step_time: Some(
+                            Minutes(
+                                10.0,
+                            ),
+                        ),
+                        ramp_time: Some(
+                            Minutes(
+                                2.0,
+                            ),
+                        ),
+                        end_temp: Some(
+                            Celsius(
+                                75.555556,
+                            ),
+                        ),
+                        description: Some(
+                            "Add 5.00 qt of water at 196.6 F",
+                        ),
+                        water_grain_ratio: Some(
+                            "1.75",
+                        ),
+                        decoction_amt: Some(
+                            "0.00 qt",
+                        ),
+                        infuse_temp: Some(
+                            "196.6 F",
+                        ),
+                    },
+                ],
+                notes: Some(
+                    "Simple single infusion mash for use with most modern well modified grains (about 95% of\n\t\t\tthe time).",
+                ),
+                tun_temp: Some(
+                    Celsius(
+                        22.222222,
+                    ),
+                ),
+                sparge_temp: Some(
+                    Celsius(
+                        75.555556,
+                    ),
+                ),
+                ph: Some(
+                    5.4,
+                ),
+                tun_weight: Some(
+                    Kilograms(
+                        0.0,
+                    ),
+                ),
+                tun_specific_heat: Some(
+                    0.12,
+                ),
+                equip_adjust: Some(
+                    false,
+                ),
+            },
+            Mash {
+                name: "Double Infusion, Medium Body",
+                grain_temp: Some(
+                    Celsius(
+                        22.222222,
+                    ),
+                ),
+                mash_steps: [
+                    MashStep {
+                        name: "Protein Rest",
+                        kind: Some(
+                            Infusion,
+                        ),
+                        infuse_amount: Some(
+                            Litres(
+                                6.624509,
+                            ),
+                        ),
+                        step_temp: Some(
+                            Celsius(
+                                50.0,
+                            ),
+                        ),
+                        step_time: Some(
+                            Minutes(
+                                30.0,
+                            ),
+                        ),
+                        ramp_time: Some(
+                            Minutes(
+                                2.0,
+                            ),
+                        ),
+                        end_temp: Some(
+                            Celsius(
+                                50.0,
+                            ),
+                        ),
+                        description: Some(
+                            "Add 7.00 qt of water at 135.0 F",
+                        ),
+                        water_grain_ratio: Some(
+                            "0.70",
+                        ),
+                        decoction_amt: Some(
+                            "0.00 qt",
+                        ),
+                        infuse_temp: Some(
+                            "135.0 F",
+                        ),
+                    },
+                    MashStep {
+                        name: "Saccrification",
+                        kind: Some(
+                            Infusion,
+                        ),
+                        infuse_amount: Some(
+                            Litres(
+                                6.624509,
+                            ),
+                        ),
+                        step_temp: Some(
+                            Celsius(
+                                67.777778,
+                            ),
+                        ),
+                        step_time: Some(
+                            Minutes(
+                                30.0,
+                            ),
+                        ),
+                        ramp_time: Some(
+                            Minutes(
+                                2.0,
+                            ),
+                        ),
+                        end_temp: Some(
+                            Celsius(
+                                67.777778,
+                            ),
+                        ),
+                        description: Some(
+                            "Add 7.00 qt of water at 194.3 F",
+                        ),
+                        water_grain_ratio: Some(
+                            "1.40",
+                        ),
+                        decoction_amt: Some(
+                            "0.00 qt",
+                        ),
+                        infuse_temp: Some(
+                            "194.3 F",
+                        ),
+                    },
+                    MashStep {
+                        name: "Mash Out",
+                        kind: Some(
+                            Infusion,
+                        ),
+                        infuse_amount: Some(
+                            Litres(
+                                6.624509,
+                            ),
+                        ),
+                        step_temp: Some(
+                            Celsius(
+                                75.555556,
+                            ),
+                        ),
+                        step_time: Some(
+                            Minutes(
+                                10.0,
+                            ),
+                        ),
+                        ramp_time: Some(
+                            Minutes(
+                                2.0,
+                            ),
+                        ),
+                        end_temp: Some(
+                            Celsius(
+                                75.555556,
+                            ),
+                        ),
+                        description: Some(
+                            "Add 7.00 qt of water at 199.6 F",
+                        ),
+                        water_grain_ratio: Some(
+                            "2.10",
+                        ),
+                        decoction_amt: Some(
+                            "0.00 qt",
+                        ),
+                        infuse_temp: Some(
+                            "199.6 F",
+                        ),
+                    },
+                ],
+                notes: Some(
+                    "Double step infusion - for medium body beers requiring a protein rest. Used primarily in\n\t\t\tbeers high in unmodified grains or adjuncts.",
+                ),
+                tun_temp: Some(
+                    Celsius(
+                        22.222222,
+                    ),
+                ),
+                sparge_temp: Some(
+                    Celsius(
+                        75.555556,
+                    ),
+                ),
+                ph: Some(
+                    5.4,
+                ),
+                tun_weight: Some(
+                    Kilograms(
+                        0.0,
+                    ),
+                ),
+                tun_specific_heat: Some(
+                    0.12,
+                ),
+                equip_adjust: Some(
+                    false,
+                ),
+            },
+            Mash {
+                name: "Decoction Mash, Triple",
+                grain_temp: Some(
+                    Celsius(
+                        22.222222,
+                    ),
+                ),
+                mash_steps: [
+                    MashStep {
+                        name: "Acid Rest",
+                        kind: Some(
+                            Infusion,
+                        ),
+                        infuse_amount: Some(
+                            Litres(
+                                18.927168,
+                            ),
+                        ),
+                        step_temp: Some(
+                            Celsius(
+                                35.0,
+                            ),
+                        ),
+                        step_time: Some(
+                            Minutes(
+                                45.0,
+                            ),
+                        ),
+                        ramp_time: Some(
+                            Minutes(
+                                2.0,
+                            ),
+                        ),
+                        end_temp: Some(
+                            Celsius(
+                                35.0,
+                            ),
+                        ),
+                        description: Some(
+                            "Add 20.00 qt of water at 97.1 F",
+                        ),
+                        water_grain_ratio: Some(
+                            "2.00",
+                        ),
+                        decoction_amt: Some(
+                            "0.00 qt",
+                        ),
+                        infuse_temp: Some(
+                            "97.1 F",
+                        ),
+                    },
+                    MashStep {
+                        name: "Protein Rest",
+                        kind: Some(
+                            Decoction,
+                        ),
+                        infuse_amount: Some(
+                            Litres(
+                                0.0,
+                            ),
+                        ),
+                        step_temp: Some(
+                            Celsius(
+                                50.0,
+                            ),
+                        ),
+                        step_time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        ramp_time: Some(
+                            Minutes(
+                                2.0,
+                            ),
+                        ),
+                        end_temp: Some(
+                            Celsius(
+                                50.0,
+                            ),
+                        ),
+                        description: Some(
+                            "Decoct 5.34 qt of mash and boil it",
+                        ),
+                        water_grain_ratio: Some(
+                            "2.00",
+                        ),
+                        decoction_amt: Some(
+                            "5.34 qt",
+                        ),
+                        infuse_temp: Some(
+                            "0.0 F",
+                        ),
+                    },
+                    MashStep {
+                        name: "Saccharification",
+                        kind: Some(
+                            Decoction,
+                        ),
+                        infuse_amount: Some(
+                            Litres(
+                                0.0,
+                            ),
+                        ),
+                        step_temp: Some(
+                            Celsius(
+                                64.444444,
+                            ),
+                        ),
+                        step_time: Some(
+                            Minutes(
+                                15.0,
+                            ),
+                        ),
+                        ramp_time: Some(
+                            Minutes(
+                                2.0,
+                            ),
+                        ),
+                        end_temp: Some(
+                            Celsius(
+                                64.444444,
+                            ),
+                        ),
+                        description: Some(
+                            "Decoct 6.68 qt of mash and boil it",
+                        ),
+                        water_grain_ratio: Some(
+                            "2.00",
+                        ),
+                        decoction_amt: Some(
+                            "6.68 qt",
+                        ),
+                        infuse_temp: Some(
+                            "0.0 F",
+                        ),
+                    },
+                    MashStep {
+                        name: "Saccharification",
+                        kind: Some(
+                            Decoction,
+                        ),
+                        infuse_amount: Some(
+                            Litres(
+                                0.0,
+                            ),
+                        ),
+                        step_temp: Some(
+                            Celsius(
+                                70.0,
+                            ),
+                        ),
+                        step_time: Some(
+                            Minutes(
+                                15.0,
+                            ),
+                        ),
+                        ramp_time: Some(
+                            Minutes(
+                                2.0,
+                            ),
+                        ),
+                        end_temp: Some(
+                            Celsius(
+                                70.0,
+                            ),
+                        ),
+                        description: Some(
+                            "Decoct 3.61 qt of mash and boil it",
+                        ),
+                        water_grain_ratio: Some(
+                            "2.00",
+                        ),
+                        decoction_amt: Some(
+                            "3.61 qt",
+                        ),
+                        infuse_temp: Some(
+                            "0.0 F",
+                        ),
+                    },
+                    MashStep {
+                        name: "Mash Out",
+                        kind: Some(
+                            Temperature,
+                        ),
+                        infuse_amount: Some(
+                            Litres(
+                                0.0,
+                            ),
+                        ),
+                        step_temp: Some(
+                            Celsius(
+                                75.555556,
+                            ),
+                        ),
+                        step_time: Some(
+                            Minutes(
+                                10.0,
+                            ),
+                        ),
+                        ramp_time: Some(
+                            Minutes(
+                                10.0,
+                            ),
+                        ),
+                        end_temp: Some(
+                            Celsius(
+                                75.555556,
+                            ),
+                        ),
+                        description: Some(
+                            "Heat to 168.0 F over 10 min",
+                        ),
+                        water_grain_ratio: Some(
+                            "2.00",
+                        ),
+                        decoction_amt: Some(
+                            "0.00 qt",
+                        ),
+                        infuse_temp: Some(
+                            "170.0 F",
+                        ),
+                    },
+                ],
+                notes: Some(
+                    "Authentic Germany mash schedule. Attempt to draw decoction from the thickest portion of\n\t\t\tthe mash. Some sources recommend that each decoction amount be given a 15 minute\n\t\t\tsaccharification rest at 158 F (70 C) before boiling it.",
+                ),
+                tun_temp: Some(
+                    Celsius(
+                        22.222222,
+                    ),
+                ),
+                sparge_temp: Some(
+                    Celsius(
+                        75.555556,
+                    ),
+                ),
+                ph: Some(
+                    5.4,
+                ),
+                tun_weight: Some(
+                    Kilograms(
+                        0.0,
+                    ),
+                ),
+                tun_specific_heat: Some(
+                    0.12,
+                ),
+                equip_adjust: Some(
+                    false,
+                ),
+            },
+        ],
+        mash_steps: [],
     },
     version: V1_0,
     warnings: [],

@@ -10,6 +10,145 @@ Read {
         yeasts: [],
         miscs: [],
         waters: [],
+        styles: [],
+        equipments: [
+            Equipment {
+                name: "Brew Pot (4 Gallon)",
+                boil_size: Some(
+                    Litres(
+                        12.306126,
+                    ),
+                ),
+                batch_size: Some(
+                    Litres(
+                        18.927168,
+                    ),
+                ),
+                tun_volume: Some(
+                    Litres(
+                        15.141734,
+                    ),
+                ),
+                tun_weight: Some(
+                    Kilograms(
+                        1.814368,
+                    ),
+                ),
+                tun_specific_heat: Some(
+                    0.12,
+                ),
+                top_up_water: Some(
+                    Litres(
+                        8.517226,
+                    ),
+                ),
+                trub_chiller_loss: Some(
+                    Litres(
+                        0.0,
+                    ),
+                ),
+                evap_rate: Some(
+                    Percent(
+                        9.0,
+                    ),
+                ),
+                boil_time: Some(
+                    Minutes(
+                        60.0,
+                    ),
+                ),
+                calc_boil_volume: Some(
+                    true,
+                ),
+                lauter_deadspace: Some(
+                    Litres(
+                        0.946358,
+                    ),
+                ),
+                top_up_kettle: Some(
+                    Litres(
+                        0.0,
+                    ),
+                ),
+                hop_utilization: Some(
+                    Percent(
+                        100.0,
+                    ),
+                ),
+                notes: Some(
+                    "Simple Brew Pot with a 4 Gallon Capacity - leaving a workable boil volume of around 3.25\n\t\t\tgal. Used for extract or partial mash brewing.",
+                ),
+            },
+            Equipment {
+                name: "Brew Pot (6+gal) and Igloo/Gott Cooler (5 Gal)",
+                boil_size: Some(
+                    Litres(
+                        22.705669,
+                    ),
+                ),
+                batch_size: Some(
+                    Litres(
+                        18.927168,
+                    ),
+                ),
+                tun_volume: Some(
+                    Litres(
+                        18.927168,
+                    ),
+                ),
+                tun_weight: Some(
+                    Kilograms(
+                        1.814368,
+                    ),
+                ),
+                tun_specific_heat: Some(
+                    0.3,
+                ),
+                top_up_water: Some(
+                    Litres(
+                        0.0,
+                    ),
+                ),
+                trub_chiller_loss: Some(
+                    Litres(
+                        0.946358,
+                    ),
+                ),
+                evap_rate: Some(
+                    Percent(
+                        9.0,
+                    ),
+                ),
+                boil_time: Some(
+                    Minutes(
+                        60.0,
+                    ),
+                ),
+                calc_boil_volume: Some(
+                    true,
+                ),
+                lauter_deadspace: Some(
+                    Litres(
+                        0.946358,
+                    ),
+                ),
+                top_up_kettle: Some(
+                    Litres(
+                        0.0,
+                    ),
+                ),
+                hop_utilization: Some(
+                    Percent(
+                        100.0,
+                    ),
+                ),
+                notes: Some(
+                    "Popular all grain setup. 5 Gallon Gott or Igloo cooler as mash tun with false bottom, and\n\t\t\t7-9 gallon brewpot capable of boiling at least 6 gallons of wort. Primarily used for single\n\t\t\tinfusion mashes.",
+                ),
+            },
+        ],
+        mashes: [],
+        mash_steps: [],
     },
     version: V1_0,
     warnings: [],

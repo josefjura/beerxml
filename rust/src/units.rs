@@ -8,7 +8,7 @@
 //! let _ = Kilograms::new(1.0) + Litres::new(1.0);
 //! ```
 //!
-//! Every unit has conversions to common display units, and implements
+//! Units have conversions to common display units where they exist, and implement
 //! [`Display`](std::fmt::Display) with its symbol, honouring precision:
 //!
 //! ```
@@ -205,6 +205,33 @@ impl Lintner {
     }
 }
 
+unit!(
+    /// A duration in days, the BeerXML unit for fermentation and ageing
+    /// times (e.g. [`Recipe::primary_age`](crate::Recipe::primary_age)).
+    Days,
+    "d"
+);
+
+impl Days {
+    /// The duration in weeks.
+    #[must_use]
+    pub fn weeks(self) -> f64 {
+        self.0 / 7.0
+    }
+}
+
+unit!(
+    /// Bitterness in International Bitterness Units.
+    Ibu,
+    "IBU"
+);
+
+unit!(
+    /// Carbonation in volumes of CO₂ per volume of beer.
+    Co2Volumes,
+    "vol"
+);
+
 /// An amount that is a weight or a volume, as chosen by the record's
 /// `AMOUNT_IS_WEIGHT` flag (used by Misc and Yeast records).
 #[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
@@ -251,6 +278,7 @@ mod tests {
     fn time_percent_and_gravity_conversions() {
         assert!(close(Minutes::new(90.0).hours(), 1.5));
         assert!(close(Minutes::new(4320.0).days(), 3.0));
+        assert!(close(Days::new(14.0).weeks(), 2.0));
         assert!(close(Percent::new(75.0).fraction(), 0.75));
         assert!(close(SpecificGravity::new(1.043).points(), 43.0));
     }
@@ -281,5 +309,8 @@ mod tests {
         assert_eq!(Litres::new(30.0).to_string(), "30 L");
         assert_eq!(format!("{:.1}", Percent::new(4.75)), "4.8 %");
         assert_eq!(format!("{:.3}", SpecificGravity::new(1.05)), "1.050 SG");
+        assert_eq!(Ibu::new(32.4).to_string(), "32.4 IBU");
+        assert_eq!(Co2Volumes::new(2.4).to_string(), "2.4 vol");
+        assert_eq!(Days::new(7.0).to_string(), "7 d");
     }
 }

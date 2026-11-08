@@ -63,11 +63,13 @@ mod warning;
 
 pub use date::{IsoDate, RecordDate};
 pub use enums::{
-    FermentableType, HopForm, HopType, HopUse, MiscType, MiscUse, YeastFlocculation, YeastForm,
-    YeastType,
+    FermentableType, HopForm, HopType, HopUse, IbuMethod, MashStepType, MiscType, MiscUse,
+    RecipeType, StyleType, YeastFlocculation, YeastForm, YeastType,
 };
 pub use error::ReadError;
-pub use model::{Document, Fermentable, Hop, Misc, Recipe, Water, Yeast};
+pub use model::{
+    Document, Equipment, Fermentable, Hop, Mash, MashStep, Misc, Recipe, Style, Water, Yeast,
+};
 pub use reader::{Read, read};
 pub use version::Version;
 pub use warning::{Warning, WarningKind};
