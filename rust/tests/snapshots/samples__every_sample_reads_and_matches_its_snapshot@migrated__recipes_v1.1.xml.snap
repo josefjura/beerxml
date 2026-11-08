@@ -8,89 +8,511 @@ Read {
             Recipe {
                 name: "Burton Ale",
                 batch_size: Some(
-                    18.927168,
+                    Litres(
+                        18.927168,
+                    ),
                 ),
                 boil_size: Some(
-                    20.819885,
+                    Litres(
+                        20.819885,
+                    ),
                 ),
                 boil_time: Some(
-                    60.0,
+                    Minutes(
+                        60.0,
+                    ),
                 ),
                 efficiency: Some(
-                    72.0,
+                    Percent(
+                        72.0,
+                    ),
                 ),
                 og: Some(
-                    1.054,
+                    SpecificGravity(
+                        1.054,
+                    ),
                 ),
                 fg: Some(
-                    1.015,
+                    SpecificGravity(
+                        1.015,
+                    ),
                 ),
+                hops: [
+                    Hop {
+                        name: "Goldings, East Kent",
+                        alpha: Some(
+                            Percent(
+                                5.5,
+                            ),
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.02835,
+                            ),
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        notes: Some(
+                            "Used For: General purpose hops for bittering/finishing all British Ales Aroma:\n\t\t\t\t\tFloral, aromatic, earthy, slightly sweet spicy flavor Substitutes: Fuggles, BC Goldings\n\t\t\t\t\tExamples: Bass Pale Ale, Fullers ESB, Samual Smith's Pale Ale",
+                        ),
+                        kind: Some(
+                            Aroma,
+                        ),
+                        form: Some(
+                            Pellet,
+                        ),
+                        beta: Some(
+                            Percent(
+                                3.5,
+                            ),
+                        ),
+                        hsi: Some(
+                            Percent(
+                                35.0,
+                            ),
+                        ),
+                        origin: Some(
+                            "United Kingdom",
+                        ),
+                        substitutes: None,
+                        humulene: None,
+                        caryophyllene: None,
+                        cohumulone: None,
+                        myrcene: None,
+                    },
+                    Hop {
+                        name: "Northern Brewer",
+                        alpha: Some(
+                            Percent(
+                                7.5,
+                            ),
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.014175,
+                            ),
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        notes: Some(
+                            "Also called Hallertauer Northern Brewers Use for: Bittering and finishing both ales\n\t\t\t\t\tand lagers of all kinds Aroma: Fine, dry, clean bittering hop. Unique flavor. Substitute:\n\t\t\t\t\tHallertauer Mittelfrueh, Hallertauer Examples: Anchor Steam, Old Peculiar,",
+                        ),
+                        kind: Some(
+                            Both,
+                        ),
+                        form: Some(
+                            Pellet,
+                        ),
+                        beta: Some(
+                            Percent(
+                                4.0,
+                            ),
+                        ),
+                        hsi: Some(
+                            Percent(
+                                35.0,
+                            ),
+                        ),
+                        origin: Some(
+                            "Germany",
+                        ),
+                        substitutes: None,
+                        humulene: None,
+                        caryophyllene: None,
+                        cohumulone: None,
+                        myrcene: None,
+                    },
+                    Hop {
+                        name: "Fuggles",
+                        alpha: Some(
+                            Percent(
+                                5.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.014175,
+                            ),
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                2.0,
+                            ),
+                        ),
+                        notes: Some(
+                            "Used For: General purpose bittering/aroma for English Ales, Dark Lagers Aroma: Mild,\n\t\t\t\t\tsoft, grassy, floral aroma Substitute: East Kent Goldings, Williamette Examples: Samuel\n\t\t\t\t\tSmith's Pale Ale, Old Peculiar, Thomas Hardy's Ale",
+                        ),
+                        kind: Some(
+                            Aroma,
+                        ),
+                        form: Some(
+                            Pellet,
+                        ),
+                        beta: Some(
+                            Percent(
+                                2.0,
+                            ),
+                        ),
+                        hsi: Some(
+                            Percent(
+                                35.0,
+                            ),
+                        ),
+                        origin: Some(
+                            "United Kingdom",
+                        ),
+                        substitutes: None,
+                        humulene: None,
+                        caryophyllene: None,
+                        cohumulone: None,
+                        myrcene: None,
+                    },
+                    Hop {
+                        name: "Fuggles",
+                        alpha: Some(
+                            Percent(
+                                4.5,
+                            ),
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.021262,
+                            ),
+                        ),
+                        usage: Some(
+                            DryHop,
+                        ),
+                        time: Some(
+                            Minutes(
+                                4320.0,
+                            ),
+                        ),
+                        notes: Some(
+                            "Used For: General purpose bittering/aroma for English Ales, Dark Lagers Aroma: Mild,\n\t\t\t\t\tsoft, grassy, floral aroma Substitute: East Kent Goldings, Williamette Examples: Samuel\n\t\t\t\t\tSmith's Pale Ale, Old Peculiar, Thomas Hardy's Ale",
+                        ),
+                        kind: Some(
+                            Aroma,
+                        ),
+                        form: Some(
+                            Pellet,
+                        ),
+                        beta: Some(
+                            Percent(
+                                2.0,
+                            ),
+                        ),
+                        hsi: Some(
+                            Percent(
+                                35.0,
+                            ),
+                        ),
+                        origin: Some(
+                            "United Kingdom",
+                        ),
+                        substitutes: None,
+                        humulene: None,
+                        caryophyllene: None,
+                        cohumulone: None,
+                        myrcene: None,
+                    },
+                ],
             },
             Recipe {
                 name: "Dry Stout",
                 batch_size: Some(
-                    18.927168,
+                    Litres(
+                        18.927168,
+                    ),
                 ),
                 boil_size: Some(
-                    20.819885,
+                    Litres(
+                        20.819885,
+                    ),
                 ),
                 boil_time: Some(
-                    60.0,
+                    Minutes(
+                        60.0,
+                    ),
                 ),
                 efficiency: Some(
-                    72.0,
+                    Percent(
+                        72.0,
+                    ),
                 ),
                 og: Some(
-                    1.038,
+                    SpecificGravity(
+                        1.038,
+                    ),
                 ),
                 fg: Some(
-                    1.012,
+                    SpecificGravity(
+                        1.012,
+                    ),
                 ),
+                hops: [
+                    Hop {
+                        name: "Goldings, East Kent",
+                        alpha: Some(
+                            Percent(
+                                5.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.063786,
+                            ),
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        notes: Some(
+                            "Used For: General purpose hops for bittering/finishing all British Ales Aroma:\n\t\t\t\t\tFloral, aromatic, earthy, slightly sweet spicy flavor Substitutes: Fuggles, BC Goldings\n\t\t\t\t\tExamples: Bass Pale Ale, Fullers ESB, Samual Smith's Pale Ale",
+                        ),
+                        kind: Some(
+                            Aroma,
+                        ),
+                        form: Some(
+                            Pellet,
+                        ),
+                        beta: Some(
+                            Percent(
+                                3.5,
+                            ),
+                        ),
+                        hsi: Some(
+                            Percent(
+                                35.0,
+                            ),
+                        ),
+                        origin: Some(
+                            "United Kingdom",
+                        ),
+                        substitutes: None,
+                        humulene: None,
+                        caryophyllene: None,
+                        cohumulone: None,
+                        myrcene: None,
+                    },
+                ],
             },
             Recipe {
                 name: "Porter",
                 batch_size: Some(
-                    18.927168,
+                    Litres(
+                        18.927168,
+                    ),
                 ),
                 boil_size: Some(
-                    18.927168,
+                    Litres(
+                        18.927168,
+                    ),
                 ),
                 boil_time: Some(
-                    60.0,
+                    Minutes(
+                        60.0,
+                    ),
                 ),
                 efficiency: Some(
-                    72.0,
+                    Percent(
+                        72.0,
+                    ),
                 ),
                 og: Some(
-                    1.054,
+                    SpecificGravity(
+                        1.054,
+                    ),
                 ),
                 fg: Some(
-                    1.018,
+                    SpecificGravity(
+                        1.018,
+                    ),
                 ),
+                hops: [
+                    Hop {
+                        name: "Fuggles",
+                        alpha: Some(
+                            Percent(
+                                4.5,
+                            ),
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.056699,
+                            ),
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        notes: Some(
+                            "Used For: General purpose bittering/aroma for English Ales, Dark Lagers Aroma: Mild,\n\t\t\t\t\tsoft, grassy, floral aroma Substitute: East Kent Goldings, Williamette Examples: Samuel\n\t\t\t\t\tSmith's Pale Ale, Old Peculiar, Thomas Hardy's Ale",
+                        ),
+                        kind: Some(
+                            Aroma,
+                        ),
+                        form: Some(
+                            Pellet,
+                        ),
+                        beta: Some(
+                            Percent(
+                                2.0,
+                            ),
+                        ),
+                        hsi: Some(
+                            Percent(
+                                35.0,
+                            ),
+                        ),
+                        origin: Some(
+                            "United Kingdom",
+                        ),
+                        substitutes: None,
+                        humulene: None,
+                        caryophyllene: None,
+                        cohumulone: None,
+                        myrcene: None,
+                    },
+                ],
             },
             Recipe {
                 name: "Wit",
                 batch_size: Some(
-                    19.684255,
+                    Litres(
+                        19.684255,
+                    ),
                 ),
                 boil_size: Some(
-                    19.684255,
+                    Litres(
+                        19.684255,
+                    ),
                 ),
                 boil_time: Some(
-                    60.0,
+                    Minutes(
+                        60.0,
+                    ),
                 ),
                 efficiency: Some(
-                    75.0,
+                    Percent(
+                        75.0,
+                    ),
                 ),
                 og: Some(
-                    1.047,
+                    SpecificGravity(
+                        1.047,
+                    ),
                 ),
                 fg: Some(
-                    1.013,
+                    SpecificGravity(
+                        1.013,
+                    ),
                 ),
+                hops: [
+                    Hop {
+                        name: "Goldings, East Kent",
+                        alpha: Some(
+                            Percent(
+                                5.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.02835,
+                            ),
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        notes: Some(
+                            "Used For: General purpose hops for bittering/finishing all British Ales Aroma:\n\t\t\t\t\tFloral, aromatic, earthy, slightly sweet spicy flavor Substitutes: Fuggles, BC Goldings\n\t\t\t\t\tExamples: Bass Pale Ale, Fullers ESB, Samual Smith's Pale Ale",
+                        ),
+                        kind: Some(
+                            Aroma,
+                        ),
+                        form: Some(
+                            Pellet,
+                        ),
+                        beta: Some(
+                            Percent(
+                                3.5,
+                            ),
+                        ),
+                        hsi: Some(
+                            Percent(
+                                35.0,
+                            ),
+                        ),
+                        origin: Some(
+                            "United Kingdom",
+                        ),
+                        substitutes: None,
+                        humulene: None,
+                        caryophyllene: None,
+                        cohumulone: None,
+                        myrcene: None,
+                    },
+                ],
             },
         ],
+        hops: [],
     },
     version: V1_1,
-    warnings: [],
+    warnings: [
+        Warning {
+            path: "RECIPES/RECIPE[1]/HOPS/HOP[1]/INVENTORY",
+            kind: UnknownElement,
+        },
+        Warning {
+            path: "RECIPES/RECIPE[1]/HOPS/HOP[2]/INVENTORY",
+            kind: UnknownElement,
+        },
+        Warning {
+            path: "RECIPES/RECIPE[1]/HOPS/HOP[3]/INVENTORY",
+            kind: UnknownElement,
+        },
+        Warning {
+            path: "RECIPES/RECIPE[1]/HOPS/HOP[4]/INVENTORY",
+            kind: UnknownElement,
+        },
+        Warning {
+            path: "RECIPES/RECIPE[2]/HOPS/HOP[1]/INVENTORY",
+            kind: UnknownElement,
+        },
+        Warning {
+            path: "RECIPES/RECIPE[3]/HOPS/HOP[1]/INVENTORY",
+            kind: UnknownElement,
+        },
+        Warning {
+            path: "RECIPES/RECIPE[4]/HOPS/HOP[1]/INVENTORY",
+            kind: UnknownElement,
+        },
+    ],
 }

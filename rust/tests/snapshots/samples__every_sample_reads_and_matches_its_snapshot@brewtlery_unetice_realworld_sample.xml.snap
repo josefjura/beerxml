@@ -8,25 +8,186 @@ Read {
             Recipe {
                 name: "Únětický Vzor 10.7° (G70 30L)",
                 batch_size: Some(
-                    30.0,
+                    Litres(
+                        30.0,
+                    ),
                 ),
                 boil_size: Some(
-                    36.0,
+                    Litres(
+                        36.0,
+                    ),
                 ),
                 boil_time: Some(
-                    90.0,
+                    Minutes(
+                        90.0,
+                    ),
                 ),
                 efficiency: Some(
-                    75.0,
+                    Percent(
+                        75.0,
+                    ),
                 ),
                 og: Some(
-                    1.043,
+                    SpecificGravity(
+                        1.043,
+                    ),
                 ),
                 fg: Some(
-                    1.01,
+                    SpecificGravity(
+                        1.01,
+                    ),
                 ),
+                hops: [
+                    Hop {
+                        name: "Sladek",
+                        alpha: Some(
+                            Percent(
+                                6.5,
+                            ),
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.03,
+                            ),
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        notes: None,
+                        kind: None,
+                        form: Some(
+                            Pellet,
+                        ),
+                        beta: None,
+                        hsi: None,
+                        origin: Some(
+                            "Czech Republic",
+                        ),
+                        substitutes: None,
+                        humulene: None,
+                        caryophyllene: None,
+                        cohumulone: None,
+                        myrcene: None,
+                    },
+                    Hop {
+                        name: "Saaz",
+                        alpha: Some(
+                            Percent(
+                                3.5,
+                            ),
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.04,
+                            ),
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                20.0,
+                            ),
+                        ),
+                        notes: None,
+                        kind: None,
+                        form: Some(
+                            Pellet,
+                        ),
+                        beta: None,
+                        hsi: None,
+                        origin: Some(
+                            "Czech Republic",
+                        ),
+                        substitutes: None,
+                        humulene: None,
+                        caryophyllene: None,
+                        cohumulone: None,
+                        myrcene: None,
+                    },
+                    Hop {
+                        name: "Saaz",
+                        alpha: Some(
+                            Percent(
+                                3.5,
+                            ),
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.05,
+                            ),
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                5.0,
+                            ),
+                        ),
+                        notes: None,
+                        kind: None,
+                        form: Some(
+                            Pellet,
+                        ),
+                        beta: None,
+                        hsi: None,
+                        origin: Some(
+                            "Czech Republic",
+                        ),
+                        substitutes: None,
+                        humulene: None,
+                        caryophyllene: None,
+                        cohumulone: None,
+                        myrcene: None,
+                    },
+                    Hop {
+                        name: "Saaz",
+                        alpha: Some(
+                            Percent(
+                                3.5,
+                            ),
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.03,
+                            ),
+                        ),
+                        usage: Some(
+                            Aroma,
+                        ),
+                        time: Some(
+                            Minutes(
+                                15.0,
+                            ),
+                        ),
+                        notes: Some(
+                            "Whirlpool při 80°C",
+                        ),
+                        kind: None,
+                        form: Some(
+                            Pellet,
+                        ),
+                        beta: None,
+                        hsi: None,
+                        origin: Some(
+                            "Czech Republic",
+                        ),
+                        substitutes: None,
+                        humulene: None,
+                        caryophyllene: None,
+                        cohumulone: None,
+                        myrcene: None,
+                    },
+                ],
             },
         ],
+        hops: [],
     },
     version: V1_0,
     warnings: [],

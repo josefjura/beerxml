@@ -24,6 +24,12 @@ pub enum WarningKind {
         /// The full original text of the field.
         text: String,
     },
+    /// An enumerated field holds a value outside the spec's list. It was
+    /// kept as the enum's `Other` variant.
+    UnknownValue {
+        /// The full original text of the field.
+        text: String,
+    },
     /// An element that is not part of the BeerXML 1.1 schema was ignored.
     /// Only reported for 1.1 documents.
     UnknownElement,

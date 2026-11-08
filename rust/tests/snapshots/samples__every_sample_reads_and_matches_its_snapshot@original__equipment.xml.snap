@@ -5,6 +5,7 @@ expression: read
 Read {
     document: Document {
         recipes: [],
+        hops: [],
     },
     version: V1_0,
     warnings: [],
