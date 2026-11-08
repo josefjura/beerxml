@@ -4,7 +4,7 @@ use crate::enums::Lenient;
 use crate::number::{Leading, leading};
 use crate::units::{
     Amount, Celsius, Co2Volumes, Days, Ibu, Kilograms, Lintner, Litres, Minutes, Percent, Ppm,
-    SpecificGravity, Srm,
+    SpecificGravity, SpecificHeat, Srm,
 };
 use crate::{
     Document, Equipment, Fermentable, Hop, Mash, MashStep, Misc, ReadError, Recipe, RecordDate,
@@ -391,6 +391,8 @@ impl Reader {
 
     fn recipe(&mut self, node: Node<'_, '_>, path: &str) -> Recipe {
         let mut r = Recipe::default();
+        // `IBUS` is the 1.1 schema's alias; `IBU` wins when both are present.
+        let mut ibus = None;
         r.name = self.record(node, path, RECIPE_ELEMENTS, |s, f| {
             match f.name {
                 "TYPE" => r.kind = s.enumerated(f),
@@ -433,52 +435,54 @@ impl Reader {
                 "PRIMING_SUGAR_EQUIV" => r.priming_sugar_equiv = s.number(f),
                 "KEG_PRIMING_FACTOR" => r.keg_priming_factor = s.number(f),
                 "CARBONATION_USED" => r.carbonation_used = text(f),
-                "EST_OG" => r.est_og = s.number(f).map(SpecificGravity::new),
-                "EST_FG" => r.est_fg = s.number(f).map(SpecificGravity::new),
-                "EST_COLOR" => r.est_color = s.number(f).map(Srm::new),
-                "IBU" | "IBUS" => r.ibu = s.number(f).map(Ibu::new),
+                "EST_OG" => r.est_og = s.display_number(f).map(SpecificGravity::new),
+                "EST_FG" => r.est_fg = s.display_number(f).map(SpecificGravity::new),
+                "EST_COLOR" => r.est_color = s.display_number(f).map(Srm::new),
+                "IBU" => r.ibu = s.display_number(f).map(Ibu::new),
+                "IBUS" => ibus = s.number(f).map(Ibu::new),
                 "IBU_METHOD" => r.ibu_method = s.enumerated(f),
-                "EST_ABV" => r.est_abv = s.number(f).map(Percent::new),
-                "ABV" => r.abv = s.number(f).map(Percent::new),
-                "ACTUAL_EFFICIENCY" => r.actual_efficiency = s.number(f).map(Percent::new),
-                "CALORIES" => r.calories = s.number(f),
+                "EST_ABV" => r.est_abv = s.display_number(f).map(Percent::new),
+                "ABV" => r.abv = s.display_number(f).map(Percent::new),
+                "ACTUAL_EFFICIENCY" => r.actual_efficiency = s.display_number(f).map(Percent::new),
+                "CALORIES" => r.calories = s.display_number(f),
                 _ => return false,
             }
             true
         });
+        r.ibu = r.ibu.or(ibus);
         r
     }
 
     fn style(&mut self, node: Node<'_, '_>, path: &str) -> Style {
-        let mut st = Style::default();
-        st.name = self.record(node, path, STYLE_ELEMENTS, |s, f| {
+        let mut sty = Style::default();
+        sty.name = self.record(node, path, STYLE_ELEMENTS, |s, f| {
             match f.name {
-                "CATEGORY" => st.category = text(f),
-                "CATEGORY_NUMBER" => st.category_number = text(f),
-                "STYLE_LETTER" => st.style_letter = text(f),
-                "STYLE_GUIDE" => st.style_guide = text(f),
-                "TYPE" => st.kind = s.enumerated(f),
-                "OG_MIN" => st.og_min = s.number(f).map(SpecificGravity::new),
-                "OG_MAX" => st.og_max = s.number(f).map(SpecificGravity::new),
-                "FG_MIN" => st.fg_min = s.number(f).map(SpecificGravity::new),
-                "FG_MAX" => st.fg_max = s.number(f).map(SpecificGravity::new),
-                "IBU_MIN" => st.ibu_min = s.number(f).map(Ibu::new),
-                "IBU_MAX" => st.ibu_max = s.number(f).map(Ibu::new),
-                "COLOR_MIN" => st.color_min = s.number(f).map(Srm::new),
-                "COLOR_MAX" => st.color_max = s.number(f).map(Srm::new),
-                "CARB_MIN" => st.carb_min = s.number(f).map(Co2Volumes::new),
-                "CARB_MAX" => st.carb_max = s.number(f).map(Co2Volumes::new),
-                "ABV_MIN" => st.abv_min = s.number(f).map(Percent::new),
-                "ABV_MAX" => st.abv_max = s.number(f).map(Percent::new),
-                "NOTES" => st.notes = text(f),
-                "PROFILE" => st.profile = text(f),
-                "INGREDIENTS" => st.ingredients = text(f),
-                "EXAMPLES" => st.examples = text(f),
+                "CATEGORY" => sty.category = text(f),
+                "CATEGORY_NUMBER" => sty.category_number = text(f),
+                "STYLE_LETTER" => sty.style_letter = text(f),
+                "STYLE_GUIDE" => sty.style_guide = text(f),
+                "TYPE" => sty.kind = s.enumerated(f),
+                "OG_MIN" => sty.og_min = s.number(f).map(SpecificGravity::new),
+                "OG_MAX" => sty.og_max = s.number(f).map(SpecificGravity::new),
+                "FG_MIN" => sty.fg_min = s.number(f).map(SpecificGravity::new),
+                "FG_MAX" => sty.fg_max = s.number(f).map(SpecificGravity::new),
+                "IBU_MIN" => sty.ibu_min = s.number(f).map(Ibu::new),
+                "IBU_MAX" => sty.ibu_max = s.number(f).map(Ibu::new),
+                "COLOR_MIN" => sty.color_min = s.number(f).map(Srm::new),
+                "COLOR_MAX" => sty.color_max = s.number(f).map(Srm::new),
+                "CARB_MIN" => sty.carb_min = s.number(f).map(Co2Volumes::new),
+                "CARB_MAX" => sty.carb_max = s.number(f).map(Co2Volumes::new),
+                "ABV_MIN" => sty.abv_min = s.number(f).map(Percent::new),
+                "ABV_MAX" => sty.abv_max = s.number(f).map(Percent::new),
+                "NOTES" => sty.notes = text(f),
+                "PROFILE" => sty.profile = text(f),
+                "INGREDIENTS" => sty.ingredients = text(f),
+                "EXAMPLES" => sty.examples = text(f),
                 _ => return false,
             }
             true
         });
-        st
+        sty
     }
 
     fn equipment(&mut self, node: Node<'_, '_>, path: &str) -> Equipment {
@@ -489,7 +493,7 @@ impl Reader {
                 "BATCH_SIZE" => e.batch_size = s.number(f).map(Litres::new),
                 "TUN_VOLUME" => e.tun_volume = s.number(f).map(Litres::new),
                 "TUN_WEIGHT" => e.tun_weight = s.number(f).map(Kilograms::new),
-                "TUN_SPECIFIC_HEAT" => e.tun_specific_heat = s.number(f),
+                "TUN_SPECIFIC_HEAT" => e.tun_specific_heat = s.number(f).map(SpecificHeat::new),
                 "TOP_UP_WATER" => e.top_up_water = s.number(f).map(Litres::new),
                 "TRUB_CHILLER_LOSS" => e.trub_chiller_loss = s.number(f).map(Litres::new),
                 "EVAP_RATE" => e.evap_rate = s.number(f).map(Percent::new),
@@ -519,7 +523,7 @@ impl Reader {
                 "SPARGE_TEMP" => m.sparge_temp = s.number(f).map(Celsius::new),
                 "PH" => m.ph = s.number(f),
                 "TUN_WEIGHT" => m.tun_weight = s.number(f).map(Kilograms::new),
-                "TUN_SPECIFIC_HEAT" => m.tun_specific_heat = s.number(f),
+                "TUN_SPECIFIC_HEAT" => m.tun_specific_heat = s.number(f).map(SpecificHeat::new),
                 "EQUIP_ADJUST" => m.equip_adjust = s.boolean(f),
                 _ => return false,
             }
@@ -529,24 +533,24 @@ impl Reader {
     }
 
     fn mash_step(&mut self, node: Node<'_, '_>, path: &str) -> MashStep {
-        let mut st = MashStep::default();
-        st.name = self.record(node, path, MASH_STEP_ELEMENTS, |s, f| {
+        let mut step = MashStep::default();
+        step.name = self.record(node, path, MASH_STEP_ELEMENTS, |s, f| {
             match f.name {
-                "TYPE" => st.kind = s.enumerated(f),
-                "INFUSE_AMOUNT" => st.infuse_amount = s.number(f).map(Litres::new),
-                "STEP_TEMP" => st.step_temp = s.number(f).map(Celsius::new),
-                "STEP_TIME" => st.step_time = s.number(f).map(Minutes::new),
-                "RAMP_TIME" => st.ramp_time = s.number(f).map(Minutes::new),
-                "END_TEMP" => st.end_temp = s.number(f).map(Celsius::new),
-                "DESCRIPTION" => st.description = text(f),
-                "WATER_GRAIN_RATIO" => st.water_grain_ratio = text(f),
-                "DECOCTION_AMT" => st.decoction_amt = text(f),
-                "INFUSE_TEMP" => st.infuse_temp = text(f),
+                "TYPE" => step.kind = s.enumerated(f),
+                "INFUSE_AMOUNT" => step.infuse_amount = s.number(f).map(Litres::new),
+                "STEP_TEMP" => step.step_temp = s.number(f).map(Celsius::new),
+                "STEP_TIME" => step.step_time = s.number(f).map(Minutes::new),
+                "RAMP_TIME" => step.ramp_time = s.number(f).map(Minutes::new),
+                "END_TEMP" => step.end_temp = s.number(f).map(Celsius::new),
+                "DESCRIPTION" => step.description = text(f),
+                "WATER_GRAIN_RATIO" => step.water_grain_ratio = text(f),
+                "DECOCTION_AMT" => step.decoction_amt = text(f),
+                "INFUSE_TEMP" => step.infuse_temp = text(f),
                 _ => return false,
             }
             true
         });
-        st
+        step
     }
 
     fn hop(&mut self, node: Node<'_, '_>, path: &str) -> Hop {
@@ -712,12 +716,26 @@ impl Reader {
         }
     }
 
+    /// Reads a 1.0 display field (Appendix A of the 1.0 spec, e.g.
+    /// `IBU`): like [`number`](Self::number), but in 1.0 the unit text
+    /// writers put after the number (`32.4 IBU`) is expected, not reported.
+    /// In 1.1 these fields are plain numbers, so it is reported as usual.
+    fn display_number(&mut self, f: &Field<'_>) -> Option<f64> {
+        self.leading_number(f, self.version == Version::V1_1)
+    }
+
     /// Reads a numeric field by the leading-number rule.
     fn number(&mut self, f: &Field<'_>) -> Option<f64> {
+        self.leading_number(f, true)
+    }
+
+    /// Reads the leading number of a field, reporting trailing text only
+    /// when `report_trailing`.
+    fn leading_number(&mut self, f: &Field<'_>, report_trailing: bool) -> Option<f64> {
         match leading(f.text) {
             Leading::Empty => None,
             Leading::Number { value, trailing } => {
-                if trailing {
+                if trailing && report_trailing {
                     let text = f.text.to_owned();
                     self.warn(f.path.clone(), WarningKind::TrailingText { text });
                 }

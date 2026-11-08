@@ -24,6 +24,10 @@
 //!   reported as [`WarningKind::TrailingText`]. A field with no leading number
 //!   is `None` and reported as [`WarningKind::UnreadableNumber`]. An empty
 //!   element is treated as absent.
+//!   The exception is the 1.0 display fields of the spec's Appendix A on a
+//!   recipe (`EST_OG`, `EST_FG`, `EST_COLOR`, `IBU`, `EST_ABV`, `ABV`,
+//!   `ACTUAL_EFFICIENCY`, `CALORIES`): writers put units after the number
+//!   (`32.4 IBU`), so in 1.0 files that text is not reported.
 //! - **Units:** quantities are typed by their canonical BeerXML unit (see
 //!   [`units`]), so values of different units can't be mixed.
 //! - **Enumerated fields** (e.g. [`HopUse`]) match case- and

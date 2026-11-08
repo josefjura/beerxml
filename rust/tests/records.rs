@@ -4,7 +4,8 @@
 use std::path::Path;
 
 use beerxml::units::{
-    Celsius, Co2Volumes, Days, Ibu, Kilograms, Litres, Minutes, Percent, SpecificGravity, Srm,
+    Celsius, Co2Volumes, Days, Ibu, Kilograms, Litres, Minutes, Percent, SpecificGravity,
+    SpecificHeat, Srm,
 };
 use beerxml::{
     HopUse, IbuMethod, IsoDate, MashStepType, Read, RecipeType, RecordDate, StyleType, Warning,
@@ -126,7 +127,7 @@ fn equipment_list_reads_as_in_the_file() {
     assert_eq!(e.batch_size, Some(Litres::new(18.927_168)));
     assert_eq!(e.tun_volume, Some(Litres::new(15.141_734)));
     assert_eq!(e.tun_weight, Some(Kilograms::new(1.814_368)));
-    assert_eq!(e.tun_specific_heat, Some(0.12));
+    assert_eq!(e.tun_specific_heat, Some(SpecificHeat::new(0.12)));
     assert_eq!(e.top_up_water, Some(Litres::new(8.517_226)));
     assert_eq!(e.trub_chiller_loss, Some(Litres::new(0.0)));
     assert_eq!(e.evap_rate, Some(Percent::new(9.0)));
@@ -153,7 +154,7 @@ fn mash_list_reads_as_in_the_file_with_steps_in_order() {
     assert_eq!(m.sparge_temp, Some(Celsius::new(75.555_556)));
     assert_eq!(m.ph, Some(5.4));
     assert_eq!(m.tun_weight, Some(Kilograms::new(0.0)));
-    assert_eq!(m.tun_specific_heat, Some(0.12));
+    assert_eq!(m.tun_specific_heat, Some(SpecificHeat::new(0.12)));
     assert_eq!(m.equip_adjust, Some(false));
     assert!(m.notes.as_deref().unwrap().starts_with("Temperature mash"));
 
@@ -227,6 +228,13 @@ fn mash_step_warnings_carry_their_index() {
 #[test]
 fn recipe_reads_every_field_as_in_the_file() {
     let r = sample("original/recipes.xml");
+    assert!(
+        !r.warnings
+            .iter()
+            .any(|w| matches!(w.kind, WarningKind::TrailingText { .. })),
+        "{:?}",
+        r.warnings
+    );
     let burton = &r.document.recipes[0];
     assert_eq!(burton.name, "Burton Ale");
     assert_eq!(burton.kind, Some(RecipeType::AllGrain));
@@ -313,6 +321,91 @@ fn recipe_carbonation_and_priming_fields() {
 fn ibus_spelling_reads_into_ibu() {
     let r = read("<RECIPES><RECIPE><NAME>R</NAME><IBUS>21</IBUS></RECIPE></RECIPES>");
     assert_eq!(one(r.document.recipes).ibu, Some(Ibu::new(21.0)));
+}
+
+#[test]
+fn ibu_wins_over_ibus_in_either_order() {
+    for xml in [
+        "<RECIPES><RECIPE><NAME>R</NAME><IBU>30</IBU><IBUS>21</IBUS></RECIPE></RECIPES>",
+        "<RECIPES><RECIPE><NAME>R</NAME><IBUS>21</IBUS><IBU>30</IBU></RECIPE></RECIPES>",
+    ] {
+        assert_eq!(
+            one(read(xml).document.recipes).ibu,
+            Some(Ibu::new(30.0)),
+            "{xml}"
+        );
+    }
+}
+
+/// The 1.0 display fields of Appendix A as BeerSmith writes them, with units.
+const DISPLAY_FIELDS: &str = "<EST_OG>1.056 SG</EST_OG><EST_FG>1.015 SG</EST_FG>\
+    <EST_COLOR>7.0 SRM</EST_COLOR><IBU>32.4 IBU</IBU><EST_ABV>5.3 %</EST_ABV>\
+    <ABV>5.1 %</ABV><ACTUAL_EFFICIENCY>69.7 %</ACTUAL_EFFICIENCY>\
+    <CALORIES>242 cal/pint</CALORIES>";
+
+#[test]
+fn display_fields_with_units_read_without_warnings_in_1_0() {
+    let r = read(&format!(
+        "<RECIPES><RECIPE><NAME>R</NAME>{DISPLAY_FIELDS}</RECIPE></RECIPES>"
+    ));
+    assert!(r.warnings.is_empty(), "{:?}", r.warnings);
+    let recipe = one(r.document.recipes);
+    assert_eq!(recipe.est_og, Some(SpecificGravity::new(1.056)));
+    assert_eq!(recipe.ibu, Some(Ibu::new(32.4)));
+    assert_eq!(recipe.calories, Some(242.0));
+}
+
+#[test]
+fn display_fields_with_units_warn_in_1_1() {
+    let r = read(&format!(
+        "<RECIPES xmlns=\"http://beerxml.com/v1.1\"><RECIPE><NAME>R</NAME>\
+           {DISPLAY_FIELDS}</RECIPE></RECIPES>"
+    ));
+    let trailing: Vec<_> = r
+        .warnings
+        .iter()
+        .filter(|w| matches!(w.kind, WarningKind::TrailingText { .. }))
+        .map(|w| w.path.rsplit('/').next().unwrap())
+        .collect();
+    assert_eq!(
+        trailing,
+        [
+            "EST_OG",
+            "EST_FG",
+            "EST_COLOR",
+            "IBU",
+            "EST_ABV",
+            "ABV",
+            "ACTUAL_EFFICIENCY",
+            "CALORIES"
+        ]
+    );
+}
+
+#[test]
+fn display_fields_without_a_number_still_warn_in_1_0() {
+    let r = read("<RECIPES><RECIPE><NAME>R</NAME><IBU>n/a</IBU></RECIPE></RECIPES>");
+    assert_eq!(
+        r.warnings,
+        [warning(
+            "RECIPES/RECIPE[1]/IBU",
+            WarningKind::UnreadableNumber { text: "n/a".into() }
+        )]
+    );
+}
+
+#[test]
+fn spec_fields_with_units_still_warn_in_1_0() {
+    let r = read("<RECIPES><RECIPE><NAME>R</NAME><OG>1.050 SG</OG></RECIPE></RECIPES>");
+    assert_eq!(
+        r.warnings,
+        [warning(
+            "RECIPES/RECIPE[1]/OG",
+            WarningKind::TrailingText {
+                text: "1.050 SG".into()
+            }
+        )]
+    );
 }
 
 #[test]

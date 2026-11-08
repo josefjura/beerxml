@@ -126,7 +126,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         top_up_water: Some(
                             Litres(
@@ -873,7 +875,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         equip_adjust: Some(
                             false,
@@ -1119,7 +1123,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         top_up_water: Some(
                             Litres(
@@ -1722,7 +1728,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         equip_adjust: Some(
                             false,
@@ -1970,7 +1978,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         top_up_water: Some(
                             Litres(
@@ -2662,7 +2672,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         equip_adjust: Some(
                             false,
@@ -2908,7 +2920,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         top_up_water: Some(
                             Litres(
@@ -3401,7 +3415,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         equip_adjust: Some(
                             false,
