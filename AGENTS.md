@@ -3,6 +3,7 @@
 ## Project Structure & Module Organization
 - `docs/` holds the MkDocs site and the BeerXML specs (`docs/spec/v1.0/`, `docs/spec/v1.1/`).
 - `lib/` is the Python reference implementation (schema parsing + validation).
+- `rust/` is the Rust reference crate (lenient reading + strict validation), tested against `samples/`.
 - `tests/` contains validation runners (currently `validate_samples.py`).
 - `samples/` stores XML fixtures (`original/`, `corrected/`, `v1.1_sample.xml`).
 - `scripts/` includes migration and doc-generation utilities.
