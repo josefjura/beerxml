@@ -185,18 +185,10 @@ impl Srm {
 
 unit!(
     /// A concentration in parts per million (mg/L), the BeerXML unit for
-    /// water minerals.
+    /// water minerals. In water, ppm and mg/L are the same.
     Ppm,
     "ppm"
 );
-
-impl Ppm {
-    /// The concentration in milligrams per litre, equal to ppm in water.
-    #[must_use]
-    pub fn milligrams_per_litre(self) -> f64 {
-        self.0
-    }
-}
 
 unit!(
     /// Diastatic power in degrees Lintner.
@@ -270,7 +262,7 @@ mod tests {
         assert!(close(Celsius::new(20.0).fahrenheit(), 68.0));
         assert!(close(Srm::new(10.0).ebc(), 19.7));
         assert!(close(Srm::new(1.3546 * 4.0 - 0.76).lovibond(), 4.0));
-        assert!(close(Ppm::new(50.0).milligrams_per_litre(), 50.0));
+        assert_eq!(Ppm::new(295.0).to_string(), "295 ppm");
         assert!(close(Lintner::new(100.0).windisch_kolbach(), 334.0));
     }
 

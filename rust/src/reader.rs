@@ -376,32 +376,32 @@ impl Reader {
     }
 
     fn fermentable(&mut self, node: Node<'_, '_>, path: &str) -> Fermentable {
-        let mut x = Fermentable::default();
-        x.name = self.record(node, path, FERMENTABLE_ELEMENTS, |s, f| {
+        let mut ferm = Fermentable::default();
+        ferm.name = self.record(node, path, FERMENTABLE_ELEMENTS, |s, f| {
             match f.name {
-                "TYPE" => x.kind = s.enumerated(f),
-                "AMOUNT" => x.amount = s.number(f).map(Kilograms::new),
-                "YIELD" => x.yield_ = s.number(f).map(Percent::new),
-                "COLOR" => x.color = s.number(f).map(Srm::new),
-                "ADD_AFTER_BOIL" => x.add_after_boil = s.boolean(f),
-                "ORIGIN" => x.origin = text(f),
-                "SUPPLIER" => x.supplier = text(f),
-                "NOTES" => x.notes = text(f),
-                "COARSE_FINE_DIFF" => x.coarse_fine_diff = s.number(f).map(Percent::new),
-                "MOISTURE" => x.moisture = s.number(f).map(Percent::new),
+                "TYPE" => ferm.kind = s.enumerated(f),
+                "AMOUNT" => ferm.amount = s.number(f).map(Kilograms::new),
+                "YIELD" => ferm.yield_ = s.number(f).map(Percent::new),
+                "COLOR" => ferm.color = s.number(f).map(Srm::new),
+                "ADD_AFTER_BOIL" => ferm.add_after_boil = s.boolean(f),
+                "ORIGIN" => ferm.origin = text(f),
+                "SUPPLIER" => ferm.supplier = text(f),
+                "NOTES" => ferm.notes = text(f),
+                "COARSE_FINE_DIFF" => ferm.coarse_fine_diff = s.number(f).map(Percent::new),
+                "MOISTURE" => ferm.moisture = s.number(f).map(Percent::new),
                 "DIASTATIC_POWER" | "DISASTATIC_POWER" => {
-                    x.diastatic_power = s.number(f).map(Lintner::new);
+                    ferm.diastatic_power = s.number(f).map(Lintner::new);
                 }
-                "PROTEIN" => x.protein = s.number(f).map(Percent::new),
-                "MAX_IN_BATCH" => x.max_in_batch = s.number(f).map(Percent::new),
-                "RECOMMEND_MASH" => x.recommend_mash = s.boolean(f),
-                "IBU_GAL_PER_LB" => x.ibu_gal_per_lb = s.number(f),
-                "POTENTIAL" => x.potential = s.number(f).map(SpecificGravity::new),
+                "PROTEIN" => ferm.protein = s.number(f).map(Percent::new),
+                "MAX_IN_BATCH" => ferm.max_in_batch = s.number(f).map(Percent::new),
+                "RECOMMEND_MASH" => ferm.recommend_mash = s.boolean(f),
+                "IBU_GAL_PER_LB" => ferm.ibu_gal_per_lb = s.number(f),
+                "POTENTIAL" => ferm.potential = s.number(f).map(SpecificGravity::new),
                 _ => return false,
             }
             true
         });
-        x
+        ferm
     }
 
     fn yeast(&mut self, node: Node<'_, '_>, path: &str) -> Yeast {
@@ -490,18 +490,25 @@ impl Reader {
         }
     }
 
-    /// Reads an integer field by the leading-number rule; the number must be
-    /// whole, non-negative and fit a `u32`.
+    /// Reads an integer field: the whole text must be a whole,
+    /// non-negative number that fits a `u32` (surrounding whitespace aside).
+    /// Anything else is a single [`WarningKind::UnreadableNumber`].
     fn integer(&mut self, f: &Field<'_>) -> Option<u32> {
-        let value = self.number(f)?;
-        if value.fract() == 0.0 && (0.0..=f64::from(u32::MAX)).contains(&value) {
-            // Checked above: whole and in range, so the cast is exact.
-            #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)]
-            Some(value as u32)
-        } else {
-            let text = f.text.to_owned();
-            self.warn(f.path.clone(), WarningKind::UnreadableNumber { text });
-            None
+        match leading(f.text) {
+            Leading::Empty => None,
+            Leading::Number {
+                value,
+                trailing: false,
+            } if value.fract() == 0.0 && (0.0..=f64::from(u32::MAX)).contains(&value) => {
+                // Checked above: whole and in range, so the cast is exact.
+                #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)]
+                Some(value as u32)
+            }
+            Leading::Number { .. } | Leading::Unreadable => {
+                let text = f.text.to_owned();
+                self.warn(f.path.clone(), WarningKind::UnreadableNumber { text });
+                None
+            }
         }
     }
 

@@ -191,6 +191,23 @@ fn iso_culture_date_is_parsed() {
 }
 
 #[test]
+fn integer_fields_that_are_not_exactly_whole_get_one_warning() {
+    for text in ["-1", "3 times", "2.5 x"] {
+        let r = read(&format!(
+            "<YEASTS><YEAST><NAME>X</NAME><TIMES_CULTURED>{text}</TIMES_CULTURED></YEAST></YEASTS>"
+        ));
+        assert_eq!(one(r.document.yeasts).times_cultured, None, "{text:?}");
+        assert_eq!(
+            r.warnings,
+            [warning(
+                "YEASTS/YEAST[1]/TIMES_CULTURED",
+                WarningKind::UnreadableNumber { text: text.into() }
+            )]
+        );
+    }
+}
+
+#[test]
 fn integer_fields_with_a_fraction_are_unreadable() {
     let r = read("<YEASTS><YEAST><NAME>X</NAME><MAX_REUSE>2.5</MAX_REUSE></YEAST></YEASTS>");
     assert_eq!(one(r.document.yeasts).max_reuse, None);
@@ -270,6 +287,25 @@ fn misc_amount_flag_may_come_before_or_after_the_amount() {
 }
 
 #[test]
+fn unreadable_amount_flag_warns_and_falls_back_to_volume() {
+    let r = read(
+        "<MISCS><MISC><NAME>X</NAME><AMOUNT>0.5</AMOUNT>\
+         <AMOUNT_IS_WEIGHT>Y</AMOUNT_IS_WEIGHT></MISC></MISCS>",
+    );
+    assert_eq!(
+        one(r.document.miscs).amount,
+        Some(Amount::Volume(Litres::new(0.5)))
+    );
+    assert_eq!(
+        r.warnings,
+        [warning(
+            "MISCS/MISC[1]/AMOUNT_IS_WEIGHT",
+            WarningKind::UnreadableBoolean { text: "Y".into() }
+        )]
+    );
+}
+
+#[test]
 fn misc_amount_without_flag_is_a_volume_as_the_spec_defaults() {
     let r = read("<MISCS><MISC><NAME>X</NAME><AMOUNT>0.5</AMOUNT></MISC></MISCS>");
     assert_eq!(
@@ -332,8 +368,20 @@ fn recipes_in_the_samples_carry_their_ingredients() {
     let r = sample("original/recipes.xml");
     let burton = &r.document.recipes[0];
     assert_eq!(burton.name, "Burton Ale");
-    assert!(!burton.fermentables.is_empty(), "no fermentables");
-    assert!(!burton.yeasts.is_empty(), "no yeasts");
+    assert_eq!(
+        names(&burton.fermentables, |f| &f.name),
+        [
+            "Pale Malt (2 Row) UK",
+            "Caramel/Crystal Malt - 20L",
+            "Brown Sugar, Light"
+        ]
+    );
+    assert_eq!(
+        names(&burton.miscs, |m| &m.name),
+        ["Irish Moss", "Polyclar"]
+    );
+    assert_eq!(names(&burton.yeasts, |y| &y.name), ["Burton Ale"]);
+    assert_eq!(names(&burton.waters, |w| &w.name), ["Burton On Trent, UK"]);
 
     let r = sample("v1.1_sample.xml");
     let recipe = &r.document.recipes[0];
