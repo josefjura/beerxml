@@ -126,7 +126,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         top_up_water: Some(
                             Litres(
@@ -857,7 +859,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         equip_adjust: Some(
                             false,
@@ -1103,7 +1107,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         top_up_water: Some(
                             Litres(
@@ -1706,7 +1712,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         equip_adjust: Some(
                             false,
@@ -1954,7 +1962,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         top_up_water: Some(
                             Litres(
@@ -2646,7 +2656,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         equip_adjust: Some(
                             false,
@@ -2892,7 +2904,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         top_up_water: Some(
                             Litres(
@@ -3385,7 +3399,9 @@ Read {
                             ),
                         ),
                         tun_specific_heat: Some(
-                            0.3,
+                            SpecificHeat(
+                                0.3,
+                            ),
                         ),
                         equip_adjust: Some(
                             false,
@@ -3547,198 +3563,6 @@ Read {
             path: "RECIPES/RECIPE[1]/FERMENTABLES/FERMENTABLE[3]/PROTEIN",
             kind: UnreadableNumber {
                 text: "-",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[1]/EST_OG",
-            kind: TrailingText {
-                text: "1.056 SG",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[1]/EST_FG",
-            kind: TrailingText {
-                text: "1.015 SG",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[1]/EST_COLOR",
-            kind: TrailingText {
-                text: "7.0 SRM",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[1]/IBU",
-            kind: TrailingText {
-                text: "32.4 IBU",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[1]/EST_ABV",
-            kind: TrailingText {
-                text: "5.3 %",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[1]/ABV",
-            kind: TrailingText {
-                text: "5.1 %",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[1]/ACTUAL_EFFICIENCY",
-            kind: TrailingText {
-                text: "69.7 %",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[1]/CALORIES",
-            kind: TrailingText {
-                text: "242 cal/pint",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[2]/EST_OG",
-            kind: TrailingText {
-                text: "1.039 SG",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[2]/EST_FG",
-            kind: TrailingText {
-                text: "1.010 SG",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[2]/EST_COLOR",
-            kind: TrailingText {
-                text: "35.9 SRM",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[2]/IBU",
-            kind: TrailingText {
-                text: "44.2 IBU",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[2]/EST_ABV",
-            kind: TrailingText {
-                text: "3.7 %",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[2]/ABV",
-            kind: TrailingText {
-                text: "3.4 %",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[2]/ACTUAL_EFFICIENCY",
-            kind: TrailingText {
-                text: "70.6 %",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[2]/CALORIES",
-            kind: TrailingText {
-                text: "168 cal/pint",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[3]/EST_OG",
-            kind: TrailingText {
-                text: "1.056 SG",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[3]/EST_FG",
-            kind: TrailingText {
-                text: "1.018 SG",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[3]/EST_COLOR",
-            kind: TrailingText {
-                text: "44.9 SRM",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[3]/IBU",
-            kind: TrailingText {
-                text: "29.5 IBU",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[3]/EST_ABV",
-            kind: TrailingText {
-                text: "4.9 %",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[3]/ABV",
-            kind: TrailingText {
-                text: "4.7 %",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[3]/ACTUAL_EFFICIENCY",
-            kind: TrailingText {
-                text: "70.0 %",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[3]/CALORIES",
-            kind: TrailingText {
-                text: "244 cal/pint",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[4]/EST_OG",
-            kind: TrailingText {
-                text: "1.047 SG",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[4]/EST_FG",
-            kind: TrailingText {
-                text: "1.011 SG",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[4]/EST_COLOR",
-            kind: TrailingText {
-                text: "4.0 SRM",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[4]/IBU",
-            kind: TrailingText {
-                text: "17.0 IBU",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[4]/EST_ABV",
-            kind: TrailingText {
-                text: "4.7 %",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[4]/ABV",
-            kind: TrailingText {
-                text: "4.4 %",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[4]/ACTUAL_EFFICIENCY",
-            kind: TrailingText {
-                text: "75.2 %",
-            },
-        },
-        Warning {
-            path: "RECIPES/RECIPE[4]/CALORIES",
-            kind: TrailingText {
-                text: "209 cal/pint",
             },
         },
     ],
