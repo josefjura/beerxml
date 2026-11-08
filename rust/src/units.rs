@@ -8,7 +8,7 @@
 //! let _ = Kilograms::new(1.0) + Litres::new(1.0);
 //! ```
 //!
-//! Every unit has conversions to common display units, and implements
+//! Units have conversions to common display units where they exist, and implement
 //! [`Display`](std::fmt::Display) with its symbol, honouring precision:
 //!
 //! ```

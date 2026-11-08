@@ -43,58 +43,36 @@ pub fn read(bytes: &[u8]) -> Result<Read, ReadError> {
     })?;
 
     let root = doc.root_element();
-    let root_name = root.tag_name().name();
-    let Some(record_name) = record_name_of_list(root_name) else {
-        return Err(ReadError::NoBeerXmlRoot {
-            found: root_name.to_owned(),
-        });
-    };
-
+    let list = root.tag_name().name();
     let mut reader = Reader {
         version: Version::detect(&doc),
         warnings: Vec::new(),
     };
-    let mut document = Document::default();
-    match root_name {
-        "RECIPES" => document.recipes = reader.list(root, root_name, record_name, Reader::recipe),
-        "HOPS" => document.hops = reader.list(root, root_name, record_name, Reader::hop),
+    let mut d = Document::default();
+    // Each top-level list and the record element it holds.
+    match list {
+        "RECIPES" => d.recipes = reader.list(root, list, "RECIPE", Reader::recipe),
+        "HOPS" => d.hops = reader.list(root, list, "HOP", Reader::hop),
         "FERMENTABLES" => {
-            document.fermentables = reader.list(root, root_name, record_name, Reader::fermentable);
+            d.fermentables = reader.list(root, list, "FERMENTABLE", Reader::fermentable);
         }
-        "YEASTS" => document.yeasts = reader.list(root, root_name, record_name, Reader::yeast),
-        "MISCS" => document.miscs = reader.list(root, root_name, record_name, Reader::misc),
-        "WATERS" => document.waters = reader.list(root, root_name, record_name, Reader::water),
-        "STYLES" => document.styles = reader.list(root, root_name, record_name, Reader::style),
-        "EQUIPMENTS" => {
-            document.equipments = reader.list(root, root_name, record_name, Reader::equipment);
+        "YEASTS" => d.yeasts = reader.list(root, list, "YEAST", Reader::yeast),
+        "MISCS" => d.miscs = reader.list(root, list, "MISC", Reader::misc),
+        "WATERS" => d.waters = reader.list(root, list, "WATER", Reader::water),
+        "STYLES" => d.styles = reader.list(root, list, "STYLE", Reader::style),
+        "EQUIPMENTS" => d.equipments = reader.list(root, list, "EQUIPMENT", Reader::equipment),
+        "MASHS" => d.mashes = reader.list(root, list, "MASH", Reader::mash),
+        "MASH_STEPS" => d.mash_steps = reader.list(root, list, "MASH_STEP", Reader::mash_step),
+        _ => {
+            return Err(ReadError::NoBeerXmlRoot {
+                found: list.to_owned(),
+            });
         }
-        "MASHS" => document.mashes = reader.list(root, root_name, record_name, Reader::mash),
-        "MASH_STEPS" => {
-            document.mash_steps = reader.list(root, root_name, record_name, Reader::mash_step);
-        }
-        _ => unreachable!("record_name_of_list accepted {root_name}"),
     }
     Ok(Read {
-        document,
+        document: d,
         version: reader.version,
         warnings: reader.warnings,
-    })
-}
-
-/// The record element each BeerXML top-level list holds.
-fn record_name_of_list(list: &str) -> Option<&'static str> {
-    Some(match list {
-        "RECIPES" => "RECIPE",
-        "HOPS" => "HOP",
-        "FERMENTABLES" => "FERMENTABLE",
-        "YEASTS" => "YEAST",
-        "MISCS" => "MISC",
-        "WATERS" => "WATER",
-        "STYLES" => "STYLE",
-        "EQUIPMENTS" => "EQUIPMENT",
-        "MASHS" => "MASH",
-        "MASH_STEPS" => "MASH_STEP",
-        _ => return None,
     })
 }
 
