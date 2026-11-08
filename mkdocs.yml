@@ -11,6 +11,10 @@ theme:
     - navigation.sections
     - content.code.copy
 
+exclude_docs: |
+  agents/
+  adr/
+
 nav:
   - Home: index.md
   - Specifications:
