@@ -1,0 +1,55 @@
+name: Rust crate
+
+# Kept separate from ci-cd.yml: path filters apply to a whole workflow, and the
+# Pages build/deploy there must keep running on every push to master.
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - "rust/**"
+      - "samples/**"
+      - ".github/workflows/rust.yml"
+  pull_request:
+    paths:
+      - "rust/**"
+      - "samples/**"
+      - ".github/workflows/rust.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rust
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: rust
+
+      - name: Format
+        run: cargo fmt --check
+
+      - name: Clippy
+        run: cargo clippy --all-targets -- -D warnings
+
+      - name: Test
+        run: cargo test
+        env:
+          # Fail on missing or changed snapshots instead of writing new ones.
+          CI: "true"

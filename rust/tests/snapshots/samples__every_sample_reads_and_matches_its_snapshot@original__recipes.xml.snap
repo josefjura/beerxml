@@ -1,0 +1,96 @@
+---
+source: tests/samples.rs
+expression: read
+---
+Read {
+    document: Document {
+        recipes: [
+            Recipe {
+                name: "Burton Ale",
+                batch_size: Some(
+                    18.927168,
+                ),
+                boil_size: Some(
+                    20.819885,
+                ),
+                boil_time: Some(
+                    60.0,
+                ),
+                efficiency: Some(
+                    72.0,
+                ),
+                og: Some(
+                    1.054,
+                ),
+                fg: Some(
+                    1.015,
+                ),
+            },
+            Recipe {
+                name: "Dry Stout",
+                batch_size: Some(
+                    18.927168,
+                ),
+                boil_size: Some(
+                    20.819885,
+                ),
+                boil_time: Some(
+                    60.0,
+                ),
+                efficiency: Some(
+                    72.0,
+                ),
+                og: Some(
+                    1.038,
+                ),
+                fg: Some(
+                    1.012,
+                ),
+            },
+            Recipe {
+                name: "Porter",
+                batch_size: Some(
+                    18.927168,
+                ),
+                boil_size: Some(
+                    18.927168,
+                ),
+                boil_time: Some(
+                    60.0,
+                ),
+                efficiency: Some(
+                    72.0,
+                ),
+                og: Some(
+                    1.054,
+                ),
+                fg: Some(
+                    1.018,
+                ),
+            },
+            Recipe {
+                name: "Wit",
+                batch_size: Some(
+                    19.684255,
+                ),
+                boil_size: Some(
+                    19.684255,
+                ),
+                boil_time: Some(
+                    60.0,
+                ),
+                efficiency: Some(
+                    75.0,
+                ),
+                og: Some(
+                    1.047,
+                ),
+                fg: Some(
+                    1.013,
+                ),
+            },
+        ],
+    },
+    version: V1_0,
+    warnings: [],
+}

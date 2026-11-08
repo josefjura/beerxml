@@ -1,0 +1,33 @@
+---
+source: tests/samples.rs
+expression: read
+---
+Read {
+    document: Document {
+        recipes: [
+            Recipe {
+                name: "Únětický Vzor 10.7° (v1.1 Draft)",
+                batch_size: Some(
+                    30.0,
+                ),
+                boil_size: Some(
+                    36.0,
+                ),
+                boil_time: Some(
+                    90.0,
+                ),
+                efficiency: Some(
+                    75.0,
+                ),
+                og: Some(
+                    1.043,
+                ),
+                fg: Some(
+                    1.01,
+                ),
+            },
+        ],
+    },
+    version: V1_1,
+    warnings: [],
+}

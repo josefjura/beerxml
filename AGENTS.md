@@ -3,6 +3,7 @@
 ## Project Structure & Module Organization
 - `docs/` holds the MkDocs site and the BeerXML specs (`docs/spec/v1.0/`, `docs/spec/v1.1/`).
 - `lib/` is the Python reference implementation (schema parsing + validation).
+- `rust/` is the Rust reference crate (lenient reading + strict validation), tested against `samples/`.
 - `tests/` contains validation runners (currently `validate_samples.py`).
 - `samples/` stores XML fixtures (`original/`, `corrected/`, `v1.1_sample.xml`).
 - `scripts/` includes migration and doc-generation utilities.
@@ -13,6 +14,10 @@
   ```bash
   export PYTHONPATH=$PYTHONPATH:.
   python3 tests/validate_samples.py
+  ```
+- Rust crate (`rust/`): format, lint and test. Tests read every file in `samples/` and snapshot it with `insta`; review changed snapshots with `cargo insta review` (or rerun with `INSTA_UPDATE=always` and inspect the diff):
+  ```bash
+  cd rust && cargo fmt --check && cargo clippy --all-targets -- -D warnings && cargo test
   ```
 - Migrate legacy XML to v1.1:
   ```bash

@@ -1,0 +1,11 @@
+---
+source: tests/samples.rs
+expression: read
+---
+Read {
+    document: Document {
+        recipes: [],
+    },
+    version: V1_0,
+    warnings: [],
+}
