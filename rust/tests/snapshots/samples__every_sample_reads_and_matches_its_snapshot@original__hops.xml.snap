@@ -5,6 +5,248 @@ expression: read
 Read {
     document: Document {
         recipes: [],
+        hops: [
+            Hop {
+                name: "Cascade",
+                alpha: Some(
+                    Percent(
+                        5.5,
+                    ),
+                ),
+                amount: Some(
+                    Kilograms(
+                        0.0,
+                    ),
+                ),
+                usage: Some(
+                    Boil,
+                ),
+                time: Some(
+                    Minutes(
+                        0.0,
+                    ),
+                ),
+                notes: Some(
+                    "Use For: American ales and lagers Aroma: Strong spicy, floral, grapefriut character\n\t\t\tSubstitutes: Centennial Examples: Sierra Nevade Pale Ale, Anchor Liberty Ale A hops with\n\t\t\tNorthern Brewers Heritage",
+                ),
+                kind: Some(
+                    Both,
+                ),
+                form: Some(
+                    Pellet,
+                ),
+                beta: Some(
+                    Percent(
+                        6.0,
+                    ),
+                ),
+                hsi: Some(
+                    Percent(
+                        50.0,
+                    ),
+                ),
+                origin: Some(
+                    "US",
+                ),
+                substitutes: None,
+                humulene: None,
+                caryophyllene: None,
+                cohumulone: None,
+                myrcene: None,
+            },
+            Hop {
+                name: "Galena",
+                alpha: Some(
+                    Percent(
+                        13.0,
+                    ),
+                ),
+                amount: Some(
+                    Kilograms(
+                        0.0,
+                    ),
+                ),
+                usage: Some(
+                    Boil,
+                ),
+                time: Some(
+                    Minutes(
+                        0.0,
+                    ),
+                ),
+                notes: Some(
+                    "Use for: General bittering hops for all beers Aroma: Strong, clean, balanced bittering\n\t\t\tSubstitute: Eroica, Northern Brewer, Cluster, Chinook Examples: Catamount Porter",
+                ),
+                kind: Some(
+                    Bittering,
+                ),
+                form: Some(
+                    Pellet,
+                ),
+                beta: Some(
+                    Percent(
+                        7.5,
+                    ),
+                ),
+                hsi: Some(
+                    Percent(
+                        15.0,
+                    ),
+                ),
+                origin: Some(
+                    "US",
+                ),
+                substitutes: None,
+                humulene: None,
+                caryophyllene: None,
+                cohumulone: None,
+                myrcene: None,
+            },
+            Hop {
+                name: "Goldings, B.C.",
+                alpha: Some(
+                    Percent(
+                        5.0,
+                    ),
+                ),
+                amount: Some(
+                    Kilograms(
+                        0.0,
+                    ),
+                ),
+                usage: Some(
+                    Boil,
+                ),
+                time: Some(
+                    Minutes(
+                        0.0,
+                    ),
+                ),
+                notes: Some(
+                    "Used for: Bittering and finishing British ales, bitters, porters and stouts. Aroma:\n\t\t\tSpicy, floral, rounded mild aroma. Substitutes: East Kent Goldings, Fuggles",
+                ),
+                kind: Some(
+                    Aroma,
+                ),
+                form: Some(
+                    Pellet,
+                ),
+                beta: Some(
+                    Percent(
+                        3.2,
+                    ),
+                ),
+                hsi: Some(
+                    Percent(
+                        40.0,
+                    ),
+                ),
+                origin: Some(
+                    "Canada",
+                ),
+                substitutes: None,
+                humulene: None,
+                caryophyllene: None,
+                cohumulone: None,
+                myrcene: None,
+            },
+            Hop {
+                name: "Northern Brewer",
+                alpha: Some(
+                    Percent(
+                        8.5,
+                    ),
+                ),
+                amount: Some(
+                    Kilograms(
+                        0.0,
+                    ),
+                ),
+                usage: Some(
+                    Boil,
+                ),
+                time: Some(
+                    Minutes(
+                        0.0,
+                    ),
+                ),
+                notes: Some(
+                    "Also called Hallertauer Northern Brewers Use for: Bittering and finishing both ales and\n\t\t\tlagers of all kinds Aroma: Fine, dry, clean bittering hop. Unique flavor. Substitute:\n\t\t\tHallertauer Mittelfrueh, Hallertauer Examples: Anchor Steam, Old Peculiar,",
+                ),
+                kind: Some(
+                    Both,
+                ),
+                form: Some(
+                    Pellet,
+                ),
+                beta: Some(
+                    Percent(
+                        4.0,
+                    ),
+                ),
+                hsi: Some(
+                    Percent(
+                        35.0,
+                    ),
+                ),
+                origin: Some(
+                    "Germany",
+                ),
+                substitutes: None,
+                humulene: None,
+                caryophyllene: None,
+                cohumulone: None,
+                myrcene: None,
+            },
+            Hop {
+                name: "Tettnang",
+                alpha: Some(
+                    Percent(
+                        4.5,
+                    ),
+                ),
+                amount: Some(
+                    Kilograms(
+                        0.0,
+                    ),
+                ),
+                usage: Some(
+                    Boil,
+                ),
+                time: Some(
+                    Minutes(
+                        0.0,
+                    ),
+                ),
+                notes: Some(
+                    "Use for: German ales, lagers and wheat beer Aroma: Noble, mild, fine, slightly spicy\n\t\t\tSubstitutes: Saaz, Spalt Examples: Sam Adams Octoberfest, Anderson Valley ESB",
+                ),
+                kind: Some(
+                    Aroma,
+                ),
+                form: Some(
+                    Pellet,
+                ),
+                beta: Some(
+                    Percent(
+                        3.5,
+                    ),
+                ),
+                hsi: Some(
+                    Percent(
+                        40.0,
+                    ),
+                ),
+                origin: Some(
+                    "Germany",
+                ),
+                substitutes: None,
+                humulene: None,
+                caryophyllene: None,
+                cohumulone: None,
+                myrcene: None,
+            },
+        ],
     },
     version: V1_0,
     warnings: [],

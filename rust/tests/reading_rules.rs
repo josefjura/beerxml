@@ -1,5 +1,6 @@
 //! The lenient reading rules, each checked on a small inline document.
 
+use beerxml::units::{Litres, Minutes, SpecificGravity};
 use beerxml::{Read, ReadError, Version, Warning, WarningKind};
 
 const V1_1_NS: &str = r#" xmlns="http://beerxml.com/v1.1""#;
@@ -27,15 +28,15 @@ fn padded_numbers_are_read() {
         "<BATCH_SIZE>30.000000</BATCH_SIZE><OG> 1.043 </OG>",
     ));
     let recipe = &r.document.recipes[0];
-    assert_eq!(recipe.batch_size, Some(30.0));
-    assert_eq!(recipe.og, Some(1.043));
+    assert_eq!(recipe.batch_size, Some(Litres::new(30.0)));
+    assert_eq!(recipe.og, Some(SpecificGravity::new(1.043)));
     assert!(r.warnings.is_empty(), "{:?}", r.warnings);
 }
 
 #[test]
 fn trailing_text_after_a_number_is_ignored_with_a_warning() {
     let r = read(&recipe_doc("", "<BOIL_TIME>60 min</BOIL_TIME>"));
-    assert_eq!(r.document.recipes[0].boil_time, Some(60.0));
+    assert_eq!(r.document.recipes[0].boil_time, Some(Minutes::new(60.0)));
     assert_eq!(
         r.warnings,
         [warning(
@@ -89,7 +90,7 @@ fn display_fields_are_ignored() {
             attrs,
             "<DISPLAY_BATCH_SIZE>5.0 gal</DISPLAY_BATCH_SIZE><BATCH_SIZE>18.93</BATCH_SIZE>",
         ));
-        assert_eq!(r.document.recipes[0].batch_size, Some(18.93));
+        assert_eq!(r.document.recipes[0].batch_size, Some(Litres::new(18.93)));
         assert!(r.warnings.is_empty(), "{:?}", r.warnings);
     }
 }
