@@ -2,8 +2,13 @@ use roxmltree::Node;
 
 use crate::enums::Lenient;
 use crate::number::{Leading, leading};
-use crate::units::{Kilograms, Litres, Minutes, Percent, SpecificGravity};
-use crate::{Document, Hop, ReadError, Recipe, Version, Warning, WarningKind};
+use crate::units::{
+    Amount, Celsius, Kilograms, Lintner, Litres, Minutes, Percent, Ppm, SpecificGravity, Srm,
+};
+use crate::{
+    Document, Fermentable, Hop, Misc, ReadError, Recipe, RecordDate, Version, Warning, WarningKind,
+    Water, Yeast,
+};
 
 /// The result of reading a file leniently.
 #[derive(Debug, Clone, PartialEq)]
@@ -52,6 +57,12 @@ pub fn read(bytes: &[u8]) -> Result<Read, ReadError> {
     match root_name {
         "RECIPES" => document.recipes = reader.list(root, root_name, record_name, Reader::recipe),
         "HOPS" => document.hops = reader.list(root, root_name, record_name, Reader::hop),
+        "FERMENTABLES" => {
+            document.fermentables = reader.list(root, root_name, record_name, Reader::fermentable);
+        }
+        "YEASTS" => document.yeasts = reader.list(root, root_name, record_name, Reader::yeast),
+        "MISCS" => document.miscs = reader.list(root, root_name, record_name, Reader::misc),
+        "WATERS" => document.waters = reader.list(root, root_name, record_name, Reader::water),
         // Not modelled yet: still report unknown elements around the records.
         _ => {
             reader.list(root, root_name, record_name, |_, _, _| ());
@@ -154,6 +165,79 @@ const HOP_ELEMENTS: &[&str] = &[
     "MYRCENE",
 ];
 
+/// Every element a `FERMENTABLE` may contain in the BeerXML 1.1 schema.
+const FERMENTABLE_ELEMENTS: &[&str] = &[
+    "NAME",
+    "VERSION",
+    "TYPE",
+    "AMOUNT",
+    "YIELD",
+    "COLOR",
+    "ADD_AFTER_BOIL",
+    "ORIGIN",
+    "SUPPLIER",
+    "NOTES",
+    "COARSE_FINE_DIFF",
+    "MOISTURE",
+    "DIASTATIC_POWER",
+    "DISASTATIC_POWER",
+    "PROTEIN",
+    "MAX_IN_BATCH",
+    "RECOMMEND_MASH",
+    "IBU_GAL_PER_LB",
+    "POTENTIAL",
+];
+
+/// Every element a `YEAST` may contain in the BeerXML 1.1 schema.
+const YEAST_ELEMENTS: &[&str] = &[
+    "NAME",
+    "VERSION",
+    "TYPE",
+    "FORM",
+    "AMOUNT",
+    "AMOUNT_IS_WEIGHT",
+    "LABORATORY",
+    "PRODUCT_ID",
+    "MIN_TEMPERATURE",
+    "MAX_TEMPERATURE",
+    "FLOCCULATION",
+    "ATTENUATION",
+    "NOTES",
+    "BEST_FOR",
+    "TIMES_CULTURED",
+    "MAX_REUSE",
+    "ADD_TO_SECONDARY",
+    "CULTURE_DATE",
+];
+
+/// Every element a `MISC` may contain in the BeerXML 1.1 schema.
+const MISC_ELEMENTS: &[&str] = &[
+    "NAME",
+    "VERSION",
+    "TYPE",
+    "USE",
+    "TIME",
+    "AMOUNT",
+    "AMOUNT_IS_WEIGHT",
+    "USE_FOR",
+    "NOTES",
+];
+
+/// Every element a `WATER` may contain in the BeerXML 1.1 schema.
+const WATER_ELEMENTS: &[&str] = &[
+    "NAME",
+    "VERSION",
+    "AMOUNT",
+    "CALCIUM",
+    "BICARBONATE",
+    "SULFATE",
+    "CHLORIDE",
+    "SODIUM",
+    "MAGNESIUM",
+    "PH",
+    "NOTES",
+];
+
 /// A field of a record being read: its element name, text and path.
 struct Field<'a> {
     name: &'a str,
@@ -252,6 +336,12 @@ impl Reader {
                 "OG" => r.og = s.number(f).map(SpecificGravity::new),
                 "FG" => r.fg = s.number(f).map(SpecificGravity::new),
                 "HOPS" => r.hops = s.list(f.node, &f.path, "HOP", Self::hop),
+                "FERMENTABLES" => {
+                    r.fermentables = s.list(f.node, &f.path, "FERMENTABLE", Self::fermentable);
+                }
+                "YEASTS" => r.yeasts = s.list(f.node, &f.path, "YEAST", Self::yeast),
+                "MISCS" => r.miscs = s.list(f.node, &f.path, "MISC", Self::misc),
+                "WATERS" => r.waters = s.list(f.node, &f.path, "WATER", Self::water),
                 _ => return false,
             }
             true
@@ -285,6 +375,136 @@ impl Reader {
         h
     }
 
+    fn fermentable(&mut self, node: Node<'_, '_>, path: &str) -> Fermentable {
+        let mut x = Fermentable::default();
+        x.name = self.record(node, path, FERMENTABLE_ELEMENTS, |s, f| {
+            match f.name {
+                "TYPE" => x.kind = s.enumerated(f),
+                "AMOUNT" => x.amount = s.number(f).map(Kilograms::new),
+                "YIELD" => x.yield_ = s.number(f).map(Percent::new),
+                "COLOR" => x.color = s.number(f).map(Srm::new),
+                "ADD_AFTER_BOIL" => x.add_after_boil = s.boolean(f),
+                "ORIGIN" => x.origin = text(f),
+                "SUPPLIER" => x.supplier = text(f),
+                "NOTES" => x.notes = text(f),
+                "COARSE_FINE_DIFF" => x.coarse_fine_diff = s.number(f).map(Percent::new),
+                "MOISTURE" => x.moisture = s.number(f).map(Percent::new),
+                "DIASTATIC_POWER" | "DISASTATIC_POWER" => {
+                    x.diastatic_power = s.number(f).map(Lintner::new);
+                }
+                "PROTEIN" => x.protein = s.number(f).map(Percent::new),
+                "MAX_IN_BATCH" => x.max_in_batch = s.number(f).map(Percent::new),
+                "RECOMMEND_MASH" => x.recommend_mash = s.boolean(f),
+                "IBU_GAL_PER_LB" => x.ibu_gal_per_lb = s.number(f),
+                "POTENTIAL" => x.potential = s.number(f).map(SpecificGravity::new),
+                _ => return false,
+            }
+            true
+        });
+        x
+    }
+
+    fn yeast(&mut self, node: Node<'_, '_>, path: &str) -> Yeast {
+        let mut y = Yeast::default();
+        let mut amount = AmountFields::default();
+        y.name = self.record(node, path, YEAST_ELEMENTS, |s, f| {
+            match f.name {
+                "TYPE" => y.kind = s.enumerated(f),
+                "FORM" => y.form = s.enumerated(f),
+                "AMOUNT" => amount.value = s.number(f),
+                "AMOUNT_IS_WEIGHT" => amount.is_weight = s.boolean(f),
+                "LABORATORY" => y.laboratory = text(f),
+                "PRODUCT_ID" => y.product_id = text(f),
+                "MIN_TEMPERATURE" => y.min_temperature = s.number(f).map(Celsius::new),
+                "MAX_TEMPERATURE" => y.max_temperature = s.number(f).map(Celsius::new),
+                "FLOCCULATION" => y.flocculation = s.enumerated(f),
+                "ATTENUATION" => y.attenuation = s.number(f).map(Percent::new),
+                "NOTES" => y.notes = text(f),
+                "BEST_FOR" => y.best_for = text(f),
+                "TIMES_CULTURED" => y.times_cultured = s.integer(f),
+                "MAX_REUSE" => y.max_reuse = s.integer(f),
+                "ADD_TO_SECONDARY" => y.add_to_secondary = s.boolean(f),
+                "CULTURE_DATE" => y.culture_date = date(f),
+                _ => return false,
+            }
+            true
+        });
+        y.amount = amount.resolve();
+        y
+    }
+
+    fn misc(&mut self, node: Node<'_, '_>, path: &str) -> Misc {
+        let mut m = Misc::default();
+        let mut amount = AmountFields::default();
+        m.name = self.record(node, path, MISC_ELEMENTS, |s, f| {
+            match f.name {
+                "TYPE" => m.kind = s.enumerated(f),
+                "USE" => m.usage = s.enumerated(f),
+                "TIME" => m.time = s.number(f).map(Minutes::new),
+                "AMOUNT" => amount.value = s.number(f),
+                "AMOUNT_IS_WEIGHT" => amount.is_weight = s.boolean(f),
+                "USE_FOR" => m.use_for = text(f),
+                "NOTES" => m.notes = text(f),
+                _ => return false,
+            }
+            true
+        });
+        m.amount = amount.resolve();
+        m
+    }
+
+    fn water(&mut self, node: Node<'_, '_>, path: &str) -> Water {
+        let mut w = Water::default();
+        w.name = self.record(node, path, WATER_ELEMENTS, |s, f| {
+            match f.name {
+                "AMOUNT" => w.amount = s.number(f).map(Litres::new),
+                "CALCIUM" => w.calcium = s.number(f).map(Ppm::new),
+                "BICARBONATE" => w.bicarbonate = s.number(f).map(Ppm::new),
+                "SULFATE" => w.sulfate = s.number(f).map(Ppm::new),
+                "CHLORIDE" => w.chloride = s.number(f).map(Ppm::new),
+                "SODIUM" => w.sodium = s.number(f).map(Ppm::new),
+                "MAGNESIUM" => w.magnesium = s.number(f).map(Ppm::new),
+                "PH" => w.ph = s.number(f),
+                "NOTES" => w.notes = text(f),
+                _ => return false,
+            }
+            true
+        });
+        w
+    }
+
+    /// Reads a boolean field: `TRUE` or `FALSE` in any case. An empty field
+    /// is absent.
+    fn boolean(&mut self, f: &Field<'_>) -> Option<bool> {
+        let t = f.text.trim();
+        if t.is_empty() {
+            None
+        } else if t.eq_ignore_ascii_case("true") {
+            Some(true)
+        } else if t.eq_ignore_ascii_case("false") {
+            Some(false)
+        } else {
+            let text = f.text.to_owned();
+            self.warn(f.path.clone(), WarningKind::UnreadableBoolean { text });
+            None
+        }
+    }
+
+    /// Reads an integer field by the leading-number rule; the number must be
+    /// whole, non-negative and fit a `u32`.
+    fn integer(&mut self, f: &Field<'_>) -> Option<u32> {
+        let value = self.number(f)?;
+        if value.fract() == 0.0 && (0.0..=f64::from(u32::MAX)).contains(&value) {
+            // Checked above: whole and in range, so the cast is exact.
+            #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)]
+            Some(value as u32)
+        } else {
+            let text = f.text.to_owned();
+            self.warn(f.path.clone(), WarningKind::UnreadableNumber { text });
+            None
+        }
+    }
+
     /// Reads a numeric field by the leading-number rule.
     fn number(&mut self, f: &Field<'_>) -> Option<f64> {
         match leading(f.text) {
@@ -316,6 +536,31 @@ impl Reader {
         }
         Some(value)
     }
+}
+
+/// The `AMOUNT` and `AMOUNT_IS_WEIGHT` fields of a Misc or Yeast, collected
+/// while walking the record since either may come first.
+#[derive(Default)]
+struct AmountFields {
+    value: Option<f64>,
+    is_weight: Option<bool>,
+}
+
+impl AmountFields {
+    /// The amount, a volume unless flagged as a weight (the spec's default).
+    fn resolve(self) -> Option<Amount> {
+        let value = self.value?;
+        Some(if self.is_weight == Some(true) {
+            Amount::Weight(Kilograms::new(value))
+        } else {
+            Amount::Volume(Litres::new(value))
+        })
+    }
+}
+
+/// Reads a date field; an empty field is absent.
+fn date(f: &Field<'_>) -> Option<RecordDate> {
+    (!f.text.trim().is_empty()).then(|| RecordDate::parse(f.text))
 }
 
 /// Reads a text field, trimmed; an empty field is absent.

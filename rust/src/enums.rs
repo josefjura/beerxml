@@ -106,6 +106,75 @@ lenient_enum!(
     }
 );
 
+lenient_enum!(
+    /// `FERMENTABLE/TYPE`: what kind of fermentable an ingredient is.
+    FermentableType {
+        Grain => "Grain",
+        Sugar => "Sugar",
+        Extract => "Extract",
+        DryExtract => "Dry Extract",
+        Adjunct => "Adjunct",
+    }
+);
+
+lenient_enum!(
+    /// `YEAST/TYPE`: what a yeast is used for.
+    YeastType {
+        Ale => "Ale",
+        Lager => "Lager",
+        Wheat => "Wheat",
+        Wine => "Wine",
+        Champagne => "Champagne",
+    }
+);
+
+lenient_enum!(
+    /// `YEAST/FORM`: the physical form of a yeast.
+    YeastForm {
+        Liquid => "Liquid",
+        Dry => "Dry",
+        Slant => "Slant",
+        Culture => "Culture",
+    }
+);
+
+lenient_enum!(
+    /// `YEAST/FLOCCULATION`: how well a yeast settles.
+    YeastFlocculation {
+        Low => "Low",
+        Medium => "Medium",
+        High => "High",
+        VeryHigh => "Very High",
+    }
+);
+
+lenient_enum!(
+    /// `MISC/TYPE`: what kind of ingredient a misc is.
+    ///
+    /// The spec's own `Other` value is [`MiscType::OtherType`], since
+    /// [`MiscType::Other`] holds values outside the spec's list.
+    MiscType {
+        Spice => "Spice",
+        Fining => "Fining",
+        WaterAgent => "Water Agent",
+        Herb => "Herb",
+        Flavor => "Flavor",
+        /// The spec's catch-all type.
+        OtherType => "Other",
+    }
+);
+
+lenient_enum!(
+    /// `MISC/USE`: when a misc is added.
+    MiscUse {
+        Boil => "Boil",
+        Mash => "Mash",
+        Primary => "Primary",
+        Secondary => "Secondary",
+        Bottling => "Bottling",
+    }
+);
+
 #[cfg(test)]
 mod tests {
     use super::{HopForm, HopUse, Lenient};

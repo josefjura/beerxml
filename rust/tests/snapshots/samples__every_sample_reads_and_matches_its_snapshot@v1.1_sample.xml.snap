@@ -75,9 +75,116 @@ Read {
                         myrcene: None,
                     },
                 ],
+                fermentables: [
+                    Fermentable {
+                        name: "Pilsner (Weyermann)",
+                        kind: Some(
+                            Grain,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                5.4,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                82.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                3.0,
+                            ),
+                        ),
+                        add_after_boil: None,
+                        origin: Some(
+                            "Germany",
+                        ),
+                        supplier: None,
+                        notes: None,
+                        coarse_fine_diff: None,
+                        moisture: None,
+                        diastatic_power: None,
+                        protein: None,
+                        max_in_batch: None,
+                        recommend_mash: Some(
+                            true,
+                        ),
+                        ibu_gal_per_lb: None,
+                        potential: None,
+                    },
+                ],
+                yeasts: [
+                    Yeast {
+                        name: "NovaLager",
+                        kind: Some(
+                            Lager,
+                        ),
+                        form: Some(
+                            Dry,
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.022,
+                                ),
+                            ),
+                        ),
+                        laboratory: Some(
+                            "Lallemand",
+                        ),
+                        product_id: Some(
+                            "LalBrew NovaLager",
+                        ),
+                        min_temperature: None,
+                        max_temperature: None,
+                        flocculation: None,
+                        attenuation: Some(
+                            Percent(
+                                80.0,
+                            ),
+                        ),
+                        notes: None,
+                        best_for: None,
+                        times_cultured: None,
+                        max_reuse: None,
+                        add_to_secondary: None,
+                        culture_date: None,
+                    },
+                ],
+                miscs: [
+                    Misc {
+                        name: "Irish Moss",
+                        kind: Some(
+                            Fining,
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                10.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Weight(
+                                Kilograms(
+                                    0.005,
+                                ),
+                            ),
+                        ),
+                        use_for: None,
+                        notes: None,
+                    },
+                ],
+                waters: [],
             },
         ],
         hops: [],
+        fermentables: [],
+        yeasts: [],
+        miscs: [],
+        waters: [],
     },
     version: V1_1,
     warnings: [],

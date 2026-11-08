@@ -6,6 +6,316 @@ Read {
     document: Document {
         recipes: [],
         hops: [],
+        fermentables: [],
+        yeasts: [
+            Yeast {
+                name: "English Ale",
+                kind: Some(
+                    Ale,
+                ),
+                form: Some(
+                    Liquid,
+                ),
+                amount: Some(
+                    Volume(
+                        Litres(
+                            0.035,
+                        ),
+                    ),
+                ),
+                laboratory: Some(
+                    "White Labs",
+                ),
+                product_id: Some(
+                    "WLP002",
+                ),
+                min_temperature: Some(
+                    Celsius(
+                        18.3,
+                    ),
+                ),
+                max_temperature: Some(
+                    Celsius(
+                        20.0,
+                    ),
+                ),
+                flocculation: Some(
+                    VeryHigh,
+                ),
+                attenuation: Some(
+                    Percent(
+                        66.5,
+                    ),
+                ),
+                notes: Some(
+                    "Classic ESB strain best for English style milds, bitters, porters and English style\n\t\t\tstouts. Leaves a clear beer with some residual sweetness.",
+                ),
+                best_for: Some(
+                    "English Pale Ale, ESB, India Pale Ale, Brown Ale, Porter, Sweet Stouts and Strong Ales",
+                ),
+                times_cultured: Some(
+                    0,
+                ),
+                max_reuse: Some(
+                    5,
+                ),
+                add_to_secondary: Some(
+                    false,
+                ),
+                culture_date: Some(
+                    RecordDate {
+                        text: "8/31/2003",
+                        iso: None,
+                    },
+                ),
+            },
+            Yeast {
+                name: "European Ale",
+                kind: Some(
+                    Ale,
+                ),
+                form: Some(
+                    Liquid,
+                ),
+                amount: Some(
+                    Volume(
+                        Litres(
+                            0.035,
+                        ),
+                    ),
+                ),
+                laboratory: Some(
+                    "White Labs",
+                ),
+                product_id: Some(
+                    "WLP011",
+                ),
+                min_temperature: Some(
+                    Celsius(
+                        18.3,
+                    ),
+                ),
+                max_temperature: Some(
+                    Celsius(
+                        21.1,
+                    ),
+                ),
+                flocculation: Some(
+                    Medium,
+                ),
+                attenuation: Some(
+                    Percent(
+                        67.5,
+                    ),
+                ),
+                notes: Some(
+                    "Malty, Northern European ale yeast. Low ester production, low sulfer, gives a clean\n\t\t\tprofile. Low attenuation contributes to malty taste.",
+                ),
+                best_for: Some(
+                    "Alt, Kolsch, malty English Ales, Fruit beers",
+                ),
+                times_cultured: Some(
+                    0,
+                ),
+                max_reuse: Some(
+                    5,
+                ),
+                add_to_secondary: Some(
+                    false,
+                ),
+                culture_date: Some(
+                    RecordDate {
+                        text: "8/31/2003",
+                        iso: None,
+                    },
+                ),
+            },
+            Yeast {
+                name: "Irish Ale",
+                kind: Some(
+                    Ale,
+                ),
+                form: Some(
+                    Liquid,
+                ),
+                amount: Some(
+                    Volume(
+                        Litres(
+                            0.125,
+                        ),
+                    ),
+                ),
+                laboratory: Some(
+                    "Wyeast Labs",
+                ),
+                product_id: Some(
+                    "1084",
+                ),
+                min_temperature: Some(
+                    Celsius(
+                        16.7,
+                    ),
+                ),
+                max_temperature: Some(
+                    Celsius(
+                        22.2,
+                    ),
+                ),
+                flocculation: Some(
+                    Medium,
+                ),
+                attenuation: Some(
+                    Percent(
+                        73.0,
+                    ),
+                ),
+                notes: Some(
+                    "Dry diacetyl, fruity flavor characteristic of stouts. Full bodied, dry, clean flavor.",
+                ),
+                best_for: Some(
+                    "Irish Dry Stouts, Porter, Scottish Ale, Brown Ale, Imperial Stout, Barley Wine",
+                ),
+                times_cultured: Some(
+                    0,
+                ),
+                max_reuse: Some(
+                    5,
+                ),
+                add_to_secondary: Some(
+                    false,
+                ),
+                culture_date: Some(
+                    RecordDate {
+                        text: "8/31/2003",
+                        iso: None,
+                    },
+                ),
+            },
+            Yeast {
+                name: "Kolsch Yeast",
+                kind: Some(
+                    Ale,
+                ),
+                form: Some(
+                    Liquid,
+                ),
+                amount: Some(
+                    Volume(
+                        Litres(
+                            0.125,
+                        ),
+                    ),
+                ),
+                laboratory: Some(
+                    "Wyeast Labs",
+                ),
+                product_id: Some(
+                    "2565",
+                ),
+                min_temperature: Some(
+                    Celsius(
+                        13.3,
+                    ),
+                ),
+                max_temperature: Some(
+                    Celsius(
+                        17.8,
+                    ),
+                ),
+                flocculation: Some(
+                    Low,
+                ),
+                attenuation: Some(
+                    Percent(
+                        75.0,
+                    ),
+                ),
+                notes: Some(
+                    "Very malty flavor with mix of lager and ale character. Crisp, clean finish.",
+                ),
+                best_for: Some(
+                    "Kolsch, European Ales",
+                ),
+                times_cultured: Some(
+                    0,
+                ),
+                max_reuse: Some(
+                    5,
+                ),
+                add_to_secondary: Some(
+                    false,
+                ),
+                culture_date: Some(
+                    RecordDate {
+                        text: "8/31/2003",
+                        iso: None,
+                    },
+                ),
+            },
+            Yeast {
+                name: "Northwest Ale",
+                kind: Some(
+                    Ale,
+                ),
+                form: Some(
+                    Liquid,
+                ),
+                amount: Some(
+                    Volume(
+                        Litres(
+                            0.125,
+                        ),
+                    ),
+                ),
+                laboratory: Some(
+                    "Wyeast Labs",
+                ),
+                product_id: Some(
+                    "1332",
+                ),
+                min_temperature: Some(
+                    Celsius(
+                        18.3,
+                    ),
+                ),
+                max_temperature: Some(
+                    Celsius(
+                        23.9,
+                    ),
+                ),
+                flocculation: Some(
+                    High,
+                ),
+                attenuation: Some(
+                    Percent(
+                        69.0,
+                    ),
+                ),
+                notes: Some(
+                    "Classic Northwest US ale yeast. Slight fruit flavor, malty ale with good body and\n\t\t\tbalance.",
+                ),
+                best_for: Some(
+                    "Oregon Ales, All American Ale styles",
+                ),
+                times_cultured: Some(
+                    0,
+                ),
+                max_reuse: Some(
+                    5,
+                ),
+                add_to_secondary: Some(
+                    false,
+                ),
+                culture_date: Some(
+                    RecordDate {
+                        text: "8/31/2003",
+                        iso: None,
+                    },
+                ),
+            },
+        ],
+        miscs: [],
+        waters: [],
     },
     version: V1_0,
     warnings: [],

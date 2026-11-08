@@ -30,6 +30,16 @@
 //!   whitespace-insensitively. A value outside the spec's list is kept as
 //!   `Other` with its original text and reported as
 //!   [`WarningKind::UnknownValue`].
+//! - **Booleans** are `TRUE` or `FALSE` in any case. Anything else is `None`
+//!   and reported as [`WarningKind::UnreadableBoolean`].
+//! - **Integers** (e.g. [`Yeast::max_reuse`]) follow the number rule and
+//!   must be whole and non-negative; otherwise they are `None` and reported
+//!   as [`WarningKind::UnreadableNumber`].
+//! - **Dates** keep their original text, plus the date when it is ISO
+//!   `YYYY-MM-DD` (see [`RecordDate`]).
+//! - **Amounts** of Misc and Yeast records are a weight or a volume as their
+//!   `AMOUNT_IS_WEIGHT` flag says, wherever the flag sits in the record. An
+//!   absent (or unreadable) flag means a volume, the spec's default.
 //! - **Text fields** are trimmed; an empty text field is `None`.
 //! - **Missing optional fields** are `None`, never a made-up default.
 //! - **`DISPLAY_*` fields** are ignored: values are always read from the
@@ -41,6 +51,7 @@
 
 #![forbid(unsafe_code)]
 
+mod date;
 mod enums;
 mod error;
 mod model;
@@ -50,9 +61,13 @@ pub mod units;
 mod version;
 mod warning;
 
-pub use enums::{HopForm, HopType, HopUse};
+pub use date::{IsoDate, RecordDate};
+pub use enums::{
+    FermentableType, HopForm, HopType, HopUse, MiscType, MiscUse, YeastFlocculation, YeastForm,
+    YeastType,
+};
 pub use error::ReadError;
-pub use model::{Document, Hop, Recipe};
+pub use model::{Document, Fermentable, Hop, Misc, Recipe, Water, Yeast};
 pub use reader::{Read, read};
 pub use version::Version;
 pub use warning::{Warning, WarningKind};

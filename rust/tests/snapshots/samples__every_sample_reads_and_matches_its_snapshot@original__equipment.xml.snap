@@ -6,6 +6,10 @@ Read {
     document: Document {
         recipes: [],
         hops: [],
+        fermentables: [],
+        yeasts: [],
+        miscs: [],
+        waters: [],
     },
     version: V1_0,
     warnings: [],
