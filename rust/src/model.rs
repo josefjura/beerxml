@@ -5,7 +5,7 @@ use crate::enums::{
 };
 use crate::units::{
     Amount, Celsius, Co2Volumes, Days, Ibu, Kilograms, Lintner, Litres, Minutes, Percent, Ppm,
-    SpecificGravity, Srm,
+    SpecificGravity, SpecificHeat, Srm,
 };
 
 /// A BeerXML document: the records of its top-level list.
@@ -140,7 +140,7 @@ pub struct Recipe {
     /// `EST_COLOR`: estimated colour (a 1.0 display extension).
     pub est_color: Option<Srm>,
     /// `IBU`: estimated bitterness. The 1.1 schema also lists `IBUS`, which
-    /// is read into this field too.
+    /// is read into this field when `IBU` is absent.
     pub ibu: Option<Ibu>,
     /// `IBU_METHOD`: the formula used for [`ibu`](Self::ibu).
     pub ibu_method: Option<IbuMethod>,
@@ -393,9 +393,8 @@ pub struct Equipment {
     pub tun_volume: Option<Litres>,
     /// `TUN_WEIGHT`: mash tun weight, for heat calculations.
     pub tun_weight: Option<Kilograms>,
-    /// `TUN_SPECIFIC_HEAT`: specific heat of the tun material, in
-    /// cal / (g · °C).
-    pub tun_specific_heat: Option<f64>,
+    /// `TUN_SPECIFIC_HEAT`: specific heat of the tun material.
+    pub tun_specific_heat: Option<SpecificHeat>,
     /// `TOP_UP_WATER`: water added to the fermenter.
     pub top_up_water: Option<Litres>,
     /// `TRUB_CHILLER_LOSS`: wort lost to trub and the chiller.
@@ -437,9 +436,9 @@ pub struct Mash {
     pub ph: Option<f64>,
     /// `TUN_WEIGHT`: mash tun weight, overriding the equipment's.
     pub tun_weight: Option<Kilograms>,
-    /// `TUN_SPECIFIC_HEAT`: specific heat of the tun material, in
-    /// cal / (g · °C), overriding the equipment's.
-    pub tun_specific_heat: Option<f64>,
+    /// `TUN_SPECIFIC_HEAT`: specific heat of the tun material, overriding
+    /// the equipment's.
+    pub tun_specific_heat: Option<SpecificHeat>,
     /// `EQUIP_ADJUST`: whether temperatures are adjusted for the tun's
     /// thermal mass.
     pub equip_adjust: Option<bool>,

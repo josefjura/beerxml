@@ -232,6 +232,22 @@ unit!(
     "vol"
 );
 
+unit!(
+    /// A specific heat in calories per gram per degree Celsius, the BeerXML
+    /// unit for the specific heat of tun materials.
+    SpecificHeat,
+    "cal/(g·°C)"
+);
+
+impl SpecificHeat {
+    /// The specific heat in joules per kilogram per kelvin
+    /// (1 cal/(g·°C) = 4184 J/(kg·K), using the thermochemical calorie).
+    #[must_use]
+    pub fn joules_per_kg_kelvin(self) -> f64 {
+        self.0 * 4184.0
+    }
+}
+
 /// An amount that is a weight or a volume, as chosen by the record's
 /// `AMOUNT_IS_WEIGHT` flag (used by Misc and Yeast records).
 #[derive(Debug, Clone, Copy, PartialEq, PartialOrd)]
@@ -292,6 +308,10 @@ mod tests {
         assert!(close(Srm::new(1.3546 * 4.0 - 0.76).lovibond(), 4.0));
         assert_eq!(Ppm::new(295.0).to_string(), "295 ppm");
         assert!(close(Lintner::new(100.0).windisch_kolbach(), 334.0));
+        assert!(close(
+            SpecificHeat::new(0.12).joules_per_kg_kelvin(),
+            502.08
+        ));
     }
 
     #[test]
