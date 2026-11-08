@@ -1,3 +1,7 @@
 __pycache__/
 *.pyc
 debug.log
+
+# Rust
+rust/target/
+*.snap.new

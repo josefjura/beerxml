@@ -14,6 +14,10 @@
   export PYTHONPATH=$PYTHONPATH:.
   python3 tests/validate_samples.py
   ```
+- Rust crate (`rust/`): format, lint and test. Tests read every file in `samples/` and snapshot it with `insta`; review changed snapshots with `cargo insta review` (or rerun with `INSTA_UPDATE=always` and inspect the diff):
+  ```bash
+  cd rust && cargo fmt --check && cargo clippy --all-targets -- -D warnings && cargo test
+  ```
 - Migrate legacy XML to v1.1:
   ```bash
   python3 scripts/migrate_v1_to_v1.1.py <input_file_or_dir> <output_file_or_dir>

@@ -1,0 +1,25 @@
+[package]
+# Placeholder package name: `beerxml` is taken on crates.io by an abandoned
+# 2017 crate. The final name is decided before the first release.
+name = "beerxml-rs"
+version = "0.0.0"
+edition = "2024"
+description = "Reference implementation for reading and validating BeerXML 1.0 and 1.1"
+repository = "https://github.com/josefjura/beerxml"
+publish = false
+
+[lib]
+name = "beerxml"
+
+[dependencies]
+roxmltree = "0.20"
+thiserror = "2"
+
+[dev-dependencies]
+insta = { version = "1", features = ["glob"] }
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
