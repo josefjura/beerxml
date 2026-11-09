@@ -1,7 +1,18 @@
 //! Character encodings: UTF-8 (with or without a BOM) and ISO-8859-1 read;
 //! any other declared encoding is refused.
 
+use std::path::Path;
+
 use beerxml::ReadError;
+
+fn sample(name: &str) -> Vec<u8> {
+    std::fs::read(
+        Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("../samples")
+            .join(name),
+    )
+    .unwrap()
+}
 
 /// A `HOPS` document with one hop named `name`, after `prolog`. `name` is
 /// Latin-1 encoded, so it may only contain characters up to U+00FF.
@@ -57,11 +68,7 @@ fn latin1_file_can_carry_other_characters_as_references() {
 
 #[test]
 fn latin1_sample_reads_with_names_intact() {
-    let path = concat!(
-        env!("CARGO_MANIFEST_DIR"),
-        "/../samples/latin1_beersmith_sample.xml"
-    );
-    let read = beerxml::read(&std::fs::read(path).unwrap()).unwrap();
+    let read = beerxml::read(&sample("latin1_beersmith_sample.xml")).unwrap();
     let recipe = &read.document.recipes[0];
     assert_eq!(recipe.name, "Bayerisches Weißbier");
     assert_eq!(recipe.brewer.as_deref(), Some("Jörg Müller"));
@@ -165,6 +172,15 @@ fn utf16_byte_order_marks_are_refused() {
         .into_iter()
         .chain(xml.encode_utf16().flat_map(u16::to_be_bytes))
         .collect();
+    assert_eq!(beerxml::read(&le), Err(unsupported("UTF-16LE")));
+    assert_eq!(beerxml::read(&be), Err(unsupported("UTF-16BE")));
+}
+
+#[test]
+fn utf16_without_a_byte_order_mark_is_refused() {
+    let xml = "<?xml version=\"1.0\" encoding=\"UTF-16\"?><HOPS/>";
+    let le: Vec<u8> = xml.encode_utf16().flat_map(u16::to_le_bytes).collect();
+    let be: Vec<u8> = xml.encode_utf16().flat_map(u16::to_be_bytes).collect();
     assert_eq!(beerxml::read(&le), Err(unsupported("UTF-16LE")));
     assert_eq!(beerxml::read(&be), Err(unsupported("UTF-16BE")));
 }

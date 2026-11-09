@@ -17,8 +17,8 @@ pub enum ReadError {
     #[error("unsupported character encoding {encoding:?}: only UTF-8 and ISO-8859-1 are read")]
     UnsupportedEncoding {
         /// The encoding as the XML declaration names it (e.g.
-        /// `windows-1250`), or `UTF-16LE`/`UTF-16BE` for a file that starts
-        /// with a UTF-16 byte order mark.
+        /// `windows-1250`), or `UTF-16LE`/`UTF-16BE` for a file recognised
+        /// as UTF-16 from its first bytes.
         encoding: String,
     },
     /// The document's root element is not one of the BeerXML top-level lists

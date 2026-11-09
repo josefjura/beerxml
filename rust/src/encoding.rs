@@ -34,7 +34,8 @@ const LATIN1_NAMES: &[&str] = &[
 ///
 /// - A UTF-8 byte order mark means UTF-8, whatever the declaration says (XML
 ///   1.0, Appendix F.1); the mark itself is dropped.
-/// - A UTF-16 byte order mark is refused.
+/// - UTF-16 is refused, recognised by its byte order mark or, without one, by
+///   the leading `<` taking two bytes (XML 1.0, Appendix F.1).
 /// - Otherwise the `encoding` of the XML declaration decides, matched
 ///   case-insensitively. No declaration, or no `encoding` in it, means UTF-8
 ///   (XML 1.0, section 4.3.3).
@@ -49,8 +50,8 @@ pub(crate) fn decode(bytes: &[u8]) -> Result<Cow<'_, str>, ReadError> {
         return utf8(rest);
     }
     match bytes {
-        [0xFF, 0xFE, ..] => return Err(unsupported("UTF-16LE")),
-        [0xFE, 0xFF, ..] => return Err(unsupported("UTF-16BE")),
+        [0xFF, 0xFE, ..] | [b'<', 0, ..] => return Err(unsupported("UTF-16LE")),
+        [0xFE, 0xFF, ..] | [0, b'<', ..] => return Err(unsupported("UTF-16BE")),
         _ => {}
     }
     let Some(declared) = declared_encoding(bytes) else {
@@ -96,25 +97,18 @@ fn declared_encoding(bytes: &[u8]) -> Option<String> {
     let mut i = 0;
     while i < decl.len() {
         // Pseudo-attribute name.
-        while decl.get(i).is_some_and(|&b| is_space(b)) {
-            i += 1;
-        }
+        i = skip_space(decl, i);
         let name_start = i;
         while decl.get(i).is_some_and(|&b| b != b'=' && !is_space(b)) {
             i += 1;
         }
         let name = &decl[name_start..i];
         // `=`, with optional whitespace around it.
-        while decl.get(i).is_some_and(|&b| is_space(b)) {
-            i += 1;
-        }
+        i = skip_space(decl, i);
         if decl.get(i) != Some(&b'=') {
             return None;
         }
-        i += 1;
-        while decl.get(i).is_some_and(|&b| is_space(b)) {
-            i += 1;
-        }
+        i = skip_space(decl, i + 1);
         // Quoted value.
         let quote = *decl.get(i).filter(|&&b| b == b'"' || b == b'\'')?;
         let value_start = i + 1;
@@ -127,6 +121,14 @@ fn declared_encoding(bytes: &[u8]) -> Option<String> {
         }
     }
     None
+}
+
+/// The index of the first non-whitespace byte of `bytes` at or after `i`.
+fn skip_space(bytes: &[u8], mut i: usize) -> usize {
+    while bytes.get(i).is_some_and(|&b| is_space(b)) {
+        i += 1;
+    }
+    i
 }
 
 /// XML whitespace (XML 1.0, section 2.3 `S`).
