@@ -192,7 +192,7 @@ fn not_xml_is_refused() {
         &b"this is not xml"[..],
         b"<RECIPES><RECIPE>",
         b"",
-        b"\xFF\xFE<",
+        b"<RECIPES>\xFF</RECIPES>",
     ] {
         assert!(
             matches!(beerxml::read(input), Err(ReadError::NotXml { .. })),

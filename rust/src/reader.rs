@@ -1,5 +1,6 @@
 use roxmltree::Node;
 
+use crate::encoding;
 use crate::enums::Lenient;
 use crate::number::{Leading, leading};
 use crate::units::{
@@ -31,14 +32,12 @@ pub struct Read {
 ///
 /// # Errors
 ///
-/// Returns a [`ReadError`] only for fatal problems: the input is not XML, or
-/// its root element is not a BeerXML top-level list.
+/// Returns a [`ReadError`] only for fatal problems: the input is not XML, it
+/// is in an encoding other than UTF-8 or ISO-8859-1, or its root element is
+/// not a BeerXML top-level list.
 pub fn read(bytes: &[u8]) -> Result<Read, ReadError> {
-    let bytes = bytes.strip_prefix(b"\xEF\xBB\xBF").unwrap_or(bytes);
-    let text = std::str::from_utf8(bytes).map_err(|e| ReadError::NotXml {
-        message: format!("not valid UTF-8: {e}"),
-    })?;
-    let doc = roxmltree::Document::parse(text).map_err(|e| ReadError::NotXml {
+    let text = encoding::decode(bytes)?;
+    let doc = roxmltree::Document::parse(&text).map_err(|e| ReadError::NotXml {
         message: e.to_string(),
     })?;
 
