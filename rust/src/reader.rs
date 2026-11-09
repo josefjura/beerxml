@@ -37,9 +37,18 @@ pub struct Read {
 /// not a BeerXML top-level list.
 pub fn read(bytes: &[u8]) -> Result<Read, ReadError> {
     let text = encoding::decode(bytes)?;
-    let doc = roxmltree::Document::parse(&text).map_err(|e| ReadError::NotXml {
-        message: e.to_string(),
-    })?;
+    // Refusing every DTD is what keeps hostile uploads harmless (see the
+    // crate docs, "Untrusted input"): no entity can be declared, so none can
+    // expand or point outside the file. Spelled out rather than left to the
+    // parser's default so a dependency bump can't change it.
+    let options = roxmltree::ParsingOptions {
+        allow_dtd: false,
+        ..roxmltree::ParsingOptions::default()
+    };
+    let doc =
+        roxmltree::Document::parse_with_options(&text, options).map_err(|e| ReadError::NotXml {
+            message: e.to_string(),
+        })?;
 
     let root = doc.root_element();
     let list = root.tag_name().name();
