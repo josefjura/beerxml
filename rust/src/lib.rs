@@ -19,6 +19,13 @@
 //! repository and of the BeerXML 1.0 spec:
 //!
 //! - **Version:** see [`Version`].
+//! - **Encoding:** UTF-8 and ISO-8859-1 are read. A UTF-8 byte order mark
+//!   means UTF-8. Otherwise the `encoding` in the XML declaration decides,
+//!   matched case-insensitively (`ISO-8859-1`, `latin1` and the other IANA
+//!   aliases; `US-ASCII` reads as UTF-8). No declaration means UTF-8 (XML 1.0,
+//!   section 4.3.3 and Appendix F). Any other encoding, including UTF-16, is
+//!   refused with [`ReadError::UnsupportedEncoding`] rather than read as
+//!   garbled text.
 //! - **Numbers:** the leading decimal number is read, so `30.000000` and
 //!   `34.2 IBU` both work. Anything other than whitespace after the number is
 //!   reported as [`WarningKind::TrailingText`]. A field with no leading number
@@ -56,6 +63,7 @@
 #![forbid(unsafe_code)]
 
 mod date;
+mod encoding;
 mod enums;
 mod error;
 mod model;

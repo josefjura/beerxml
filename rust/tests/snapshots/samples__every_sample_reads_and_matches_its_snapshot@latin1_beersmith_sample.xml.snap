@@ -1,0 +1,496 @@
+---
+source: tests/samples.rs
+expression: read
+---
+Read {
+    document: Document {
+        recipes: [
+            Recipe {
+                name: "Bayerisches Weißbier",
+                kind: Some(
+                    AllGrain,
+                ),
+                style: Some(
+                    Style {
+                        name: "Weizen/Weißbier",
+                        category: Some(
+                            "German Wheat and Rye Beer",
+                        ),
+                        category_number: Some(
+                            "15",
+                        ),
+                        style_letter: Some(
+                            "A",
+                        ),
+                        style_guide: Some(
+                            "BJCP",
+                        ),
+                        kind: Some(
+                            Ale,
+                        ),
+                        og_min: Some(
+                            SpecificGravity(
+                                1.044,
+                            ),
+                        ),
+                        og_max: Some(
+                            SpecificGravity(
+                                1.052,
+                            ),
+                        ),
+                        fg_min: Some(
+                            SpecificGravity(
+                                1.01,
+                            ),
+                        ),
+                        fg_max: Some(
+                            SpecificGravity(
+                                1.014,
+                            ),
+                        ),
+                        ibu_min: Some(
+                            Ibu(
+                                8.0,
+                            ),
+                        ),
+                        ibu_max: Some(
+                            Ibu(
+                                15.0,
+                            ),
+                        ),
+                        color_min: Some(
+                            Srm(
+                                2.0,
+                            ),
+                        ),
+                        color_max: Some(
+                            Srm(
+                                8.0,
+                            ),
+                        ),
+                        carb_min: None,
+                        carb_max: None,
+                        abv_min: None,
+                        abv_max: None,
+                        notes: None,
+                        profile: None,
+                        ingredients: None,
+                        examples: Some(
+                            "Weihenstephaner Hefeweißbier, Schneider Weiße Original",
+                        ),
+                    },
+                ),
+                equipment: None,
+                brewer: Some(
+                    "Jörg Müller",
+                ),
+                asst_brewer: Some(
+                    "Tomáš Únětický",
+                ),
+                batch_size: Some(
+                    Litres(
+                        20.0,
+                    ),
+                ),
+                boil_size: Some(
+                    Litres(
+                        24.0,
+                    ),
+                ),
+                boil_time: Some(
+                    Minutes(
+                        60.0,
+                    ),
+                ),
+                efficiency: Some(
+                    Percent(
+                        72.0,
+                    ),
+                ),
+                hops: [
+                    Hop {
+                        name: "Hallertauer Mittelfrüh",
+                        alpha: Some(
+                            Percent(
+                                4.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.02,
+                            ),
+                        ),
+                        usage: Some(
+                            Boil,
+                        ),
+                        time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        notes: None,
+                        kind: Some(
+                            Aroma,
+                        ),
+                        form: Some(
+                            Pellet,
+                        ),
+                        beta: None,
+                        hsi: None,
+                        origin: Some(
+                            "Deutschland",
+                        ),
+                        substitutes: None,
+                        humulene: None,
+                        caryophyllene: None,
+                        cohumulone: None,
+                        myrcene: None,
+                    },
+                    Hop {
+                        name: "Žatecký poloraný červeňák",
+                        alpha: Some(
+                            Percent(
+                                3.5,
+                            ),
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                0.01,
+                            ),
+                        ),
+                        usage: Some(
+                            Aroma,
+                        ),
+                        time: Some(
+                            Minutes(
+                                5.0,
+                            ),
+                        ),
+                        notes: None,
+                        kind: Some(
+                            Aroma,
+                        ),
+                        form: Some(
+                            Pellet,
+                        ),
+                        beta: None,
+                        hsi: None,
+                        origin: Some(
+                            "Tschechien",
+                        ),
+                        substitutes: None,
+                        humulene: None,
+                        caryophyllene: None,
+                        cohumulone: None,
+                        myrcene: None,
+                    },
+                ],
+                fermentables: [
+                    Fermentable {
+                        name: "Weizenmalz, hell",
+                        kind: Some(
+                            Grain,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                2.5,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                81.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                2.0,
+                            ),
+                        ),
+                        add_after_boil: None,
+                        origin: Some(
+                            "Deutschland",
+                        ),
+                        supplier: Some(
+                            "Weyermann® Mälzerei",
+                        ),
+                        notes: None,
+                        coarse_fine_diff: None,
+                        moisture: None,
+                        diastatic_power: None,
+                        protein: None,
+                        max_in_batch: None,
+                        recommend_mash: None,
+                        ibu_gal_per_lb: None,
+                        potential: None,
+                    },
+                    Fermentable {
+                        name: "Pilsner Malz",
+                        kind: Some(
+                            Grain,
+                        ),
+                        amount: Some(
+                            Kilograms(
+                                1.8,
+                            ),
+                        ),
+                        yield_: Some(
+                            Percent(
+                                80.0,
+                            ),
+                        ),
+                        color: Some(
+                            Srm(
+                                1.8,
+                            ),
+                        ),
+                        add_after_boil: None,
+                        origin: Some(
+                            "Tschechien",
+                        ),
+                        supplier: None,
+                        notes: None,
+                        coarse_fine_diff: None,
+                        moisture: None,
+                        diastatic_power: None,
+                        protein: None,
+                        max_in_batch: None,
+                        recommend_mash: None,
+                        ibu_gal_per_lb: None,
+                        potential: None,
+                    },
+                ],
+                miscs: [
+                    Misc {
+                        name: "Milchsäure 80%",
+                        kind: Some(
+                            WaterAgent,
+                        ),
+                        usage: Some(
+                            Mash,
+                        ),
+                        time: Some(
+                            Minutes(
+                                60.0,
+                            ),
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.002,
+                                ),
+                            ),
+                        ),
+                        use_for: Some(
+                            "pH-Korrektur der Maische",
+                        ),
+                        notes: None,
+                    },
+                ],
+                yeasts: [
+                    Yeast {
+                        name: "Weißbier-Hefe",
+                        kind: Some(
+                            Wheat,
+                        ),
+                        form: Some(
+                            Liquid,
+                        ),
+                        amount: Some(
+                            Volume(
+                                Litres(
+                                    0.125,
+                                ),
+                            ),
+                        ),
+                        laboratory: Some(
+                            "Wyeast Labs",
+                        ),
+                        product_id: Some(
+                            "3068",
+                        ),
+                        min_temperature: Some(
+                            Celsius(
+                                18.0,
+                            ),
+                        ),
+                        max_temperature: Some(
+                            Celsius(
+                                24.0,
+                            ),
+                        ),
+                        flocculation: None,
+                        attenuation: None,
+                        notes: Some(
+                            "Bananen- und Nelkenaroma, typisch für bayerische Weißbiere.",
+                        ),
+                        best_for: None,
+                        times_cultured: None,
+                        max_reuse: None,
+                        add_to_secondary: None,
+                        culture_date: None,
+                    },
+                ],
+                waters: [
+                    Water {
+                        name: "Münchner Wasser",
+                        amount: Some(
+                            Litres(
+                                28.0,
+                            ),
+                        ),
+                        calcium: Some(
+                            Ppm(
+                                80.0,
+                            ),
+                        ),
+                        bicarbonate: Some(
+                            Ppm(
+                                250.0,
+                            ),
+                        ),
+                        sulfate: Some(
+                            Ppm(
+                                5.0,
+                            ),
+                        ),
+                        chloride: Some(
+                            Ppm(
+                                1.0,
+                            ),
+                        ),
+                        sodium: Some(
+                            Ppm(
+                                1.0,
+                            ),
+                        ),
+                        magnesium: Some(
+                            Ppm(
+                                19.0,
+                            ),
+                        ),
+                        ph: None,
+                        notes: None,
+                    },
+                ],
+                mash: Some(
+                    Mash {
+                        name: "Einmaischen, Einzelrast",
+                        grain_temp: Some(
+                            Celsius(
+                                20.0,
+                            ),
+                        ),
+                        mash_steps: [
+                            MashStep {
+                                name: "Verzuckerungsrast",
+                                kind: Some(
+                                    Infusion,
+                                ),
+                                infuse_amount: Some(
+                                    Litres(
+                                        14.0,
+                                    ),
+                                ),
+                                step_temp: Some(
+                                    Celsius(
+                                        67.0,
+                                    ),
+                                ),
+                                step_time: Some(
+                                    Minutes(
+                                        60.0,
+                                    ),
+                                ),
+                                ramp_time: None,
+                                end_temp: None,
+                                description: None,
+                                water_grain_ratio: None,
+                                decoction_amt: None,
+                                infuse_temp: None,
+                            },
+                        ],
+                        notes: None,
+                        tun_temp: None,
+                        sparge_temp: None,
+                        ph: None,
+                        tun_weight: None,
+                        tun_specific_heat: None,
+                        equip_adjust: None,
+                    },
+                ),
+                notes: Some(
+                    "Gebraut in Nürnberg. Grüße an die Brauerei Únětice - Pivovar Údolí.",
+                ),
+                taste_notes: None,
+                taste_rating: None,
+                rating: None,
+                og: Some(
+                    SpecificGravity(
+                        1.052,
+                    ),
+                ),
+                fg: Some(
+                    SpecificGravity(
+                        1.012,
+                    ),
+                ),
+                fermentation_stages: Some(
+                    1,
+                ),
+                primary_age: Some(
+                    Days(
+                        10.0,
+                    ),
+                ),
+                primary_temp: Some(
+                    Celsius(
+                        18.0,
+                    ),
+                ),
+                secondary_age: None,
+                secondary_temp: None,
+                tertiary_age: None,
+                tertiary_temp: None,
+                age: None,
+                age_temp: None,
+                date: Some(
+                    RecordDate {
+                        text: "12 März 2009",
+                        iso: None,
+                    },
+                ),
+                carbonation: Some(
+                    Co2Volumes(
+                        3.5,
+                    ),
+                ),
+                forced_carbonation: None,
+                priming_sugar_name: None,
+                carbonation_temp: None,
+                priming_sugar_equiv: None,
+                keg_priming_factor: None,
+                carbonation_used: None,
+                est_og: None,
+                est_fg: None,
+                est_color: None,
+                ibu: None,
+                ibu_method: None,
+                est_abv: None,
+                abv: None,
+                actual_efficiency: None,
+                calories: None,
+            },
+        ],
+        hops: [],
+        fermentables: [],
+        yeasts: [],
+        miscs: [],
+        waters: [],
+        styles: [],
+        equipments: [],
+        mashes: [],
+        mash_steps: [],
+    },
+    version: V1_0,
+    warnings: [],
+}

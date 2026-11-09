@@ -36,6 +36,7 @@ fn every_sample_reads_and_matches_its_snapshot() {
 const PYTHON_VERSIONS: &[(&str, Version)] = &[
     ("brewtlery_unetice_realworld_sample.xml", Version::V1_0),
     ("corrected/recipes.xml", Version::V1_0),
+    ("latin1_beersmith_sample.xml", Version::V1_0),
     ("migrated/recipes_v1.1.xml", Version::V1_1),
     ("original/equipment.xml", Version::V1_0),
     ("original/grain.xml", Version::V1_0),
