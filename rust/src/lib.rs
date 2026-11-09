@@ -75,9 +75,12 @@
 //!   external DTD or `SYSTEM` entity is refused, not fetched. The parser,
 //!   [`roxmltree`](https://docs.rs/roxmltree), has no I/O code at all.
 //! - **Linear cost.** With nothing to expand, time and memory grow with the
-//!   size of the input: the decoded text plus one tree node per element,
-//!   attribute and text run. A multi-MB ingredient library reads in well
-//!   under a second. Cap the upload size to cap the cost.
+//!   size of the input: the decoded text, the parsed tree (a node per
+//!   element, text run, comment and processing instruction, plus its
+//!   attributes) and the typed records. The tests read a generated 5 MB
+//!   ingredient library within a 10 s budget set for unoptimised builds; a
+//!   release build reads it in about a tenth of a second. Cap the upload
+//!   size to cap the cost.
 //! - **No `unsafe`** code in this crate (`#![forbid(unsafe_code)]`).
 //!
 //! These guarantees are tested in `tests/hostile_input.rs`.
