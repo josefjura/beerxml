@@ -59,6 +59,31 @@
 //!   them silently; in 1.1 each one is reported as
 //!   [`WarningKind::UnknownElement`].
 //! - **Records** are returned in document order.
+//!
+//! # Untrusted input
+//!
+//! [`read`] is safe to run on uploads from strangers, e.g. inside a request
+//! handler:
+//!
+//! - **No DTDs.** A document with a `<!DOCTYPE …>` is refused with
+//!   [`ReadError::NotXml`]. BeerXML defines no DTD and real exports carry
+//!   none, so this costs nothing. Without a DTD no entity can be declared,
+//!   which rules out entity-expansion attacks (billion laughs, quadratic
+//!   blowup) and external entities. Only XML's predefined entities (`&amp;`,
+//!   `&lt;`, …) and character references (`&#xFD;`) are read.
+//! - **No I/O.** The crate never opens files or network connections: an
+//!   external DTD or `SYSTEM` entity is refused, not fetched. The parser,
+//!   [`roxmltree`](https://docs.rs/roxmltree), has no I/O code at all.
+//! - **Linear cost.** With nothing to expand, time and memory grow with the
+//!   size of the input: the decoded text, the parsed tree (a node per
+//!   element, text run, comment and processing instruction, plus its
+//!   attributes) and the typed records. The tests read a generated 5 MB
+//!   ingredient library within a 10 s budget set for unoptimised builds; a
+//!   release build reads it in about a tenth of a second. Cap the upload
+//!   size to cap the cost.
+//! - **No `unsafe`** code in this crate (`#![forbid(unsafe_code)]`).
+//!
+//! These guarantees are tested in `tests/hostile_input.rs`.
 
 #![forbid(unsafe_code)]
 
