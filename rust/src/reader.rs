@@ -337,6 +337,9 @@ impl Reader {
 
     /// Reports an unknown element; only 1.1 documents report them, since the
     /// 1.0 spec requires readers to ignore unknown elements silently.
+    ///
+    /// Source: the original 1.0 spec (beerxml.com), "Non-Standard Tags"; the
+    /// 1.1 XSD for which elements 1.1 allows.
     fn unknown(&mut self, path: String) {
         if self.version == Version::V1_1 {
             self.warn(path, WarningKind::UnknownElement);
@@ -369,7 +372,8 @@ impl Reader {
     /// Walks the fields of a record and returns its `NAME`.
     ///
     /// `field` handles a modelled field and returns `true`. Unhandled fields
-    /// are skipped when they are `DISPLAY_*` or in `known` (part of the
+    /// are skipped when they are `DISPLAY_*` (1.0 spec, Appendix A: display
+    /// only; removed in 1.1 by RFC 01 §2) or in `known` (part of the
     /// schema but not modelled, such as `VERSION`), and reported as unknown
     /// otherwise.
     fn record(
@@ -692,6 +696,9 @@ impl Reader {
 
     /// Reads a boolean field: `TRUE` or `FALSE` in any case. An empty field
     /// is absent.
+    ///
+    /// Source: 1.0 spec, Data Formats (`TRUE` or `FALSE`); the 1.1 spec's
+    /// "Changes from v1.0" recommends lowercase, hence any case.
     fn boolean(&mut self, f: &Field<'_>) -> Option<bool> {
         let t = f.text.trim();
         if t.is_empty() {
@@ -710,6 +717,8 @@ impl Reader {
     /// Reads an integer field: the whole text must be a whole,
     /// non-negative number that fits a `u32` (surrounding whitespace aside).
     /// Anything else is a single [`WarningKind::UnreadableNumber`].
+    ///
+    /// Source: 1.0 spec, Data Formats ("Integer: Whole numbers").
     fn integer(&mut self, f: &Field<'_>) -> Option<u32> {
         match leading(f.text) {
             Leading::Empty => None,
@@ -733,6 +742,8 @@ impl Reader {
     /// `IBU`): like [`number`](Self::number), but in 1.0 the unit text
     /// writers put after the number (`32.4 IBU`) is expected, not reported.
     /// In 1.1 these fields are plain numbers, so it is reported as usual.
+    ///
+    /// Source: 1.0 spec, Appendix A; RFC 01 §1, Data Types & Strictness.
     fn display_number(&mut self, f: &Field<'_>) -> Option<f64> {
         self.leading_number(f, self.version == Version::V1_1)
     }

@@ -14,7 +14,8 @@ pub enum ReadError {
         message: String,
     },
     /// The document is in a character encoding other than UTF-8 or
-    /// ISO-8859-1, so it is refused rather than read as garbled text.
+    /// ISO-8859-1, so it is refused rather than read as garbled text. The
+    /// 1.0 spec (General) names only these two; RFC 01 §4 makes 1.1 UTF-8.
     #[error("unsupported character encoding {encoding:?}: only UTF-8 and ISO-8859-1 are read")]
     UnsupportedEncoding {
         /// The encoding as the XML declaration names it (e.g.

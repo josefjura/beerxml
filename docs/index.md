@@ -27,6 +27,9 @@ Right click and choose Save As to download. Each example includes a raw download
 - Andrew Perron, author of Drewbrew
 - David Johnson, author of [QBrew](http://www.usermode.org/code.html)
 
+## Libraries
+- Rust crate for reading and validating BeerXML 1.0 and 1.1: [Rust crate](rust.md)
+
 ## BeerXML Converters
 - BeerXML v1.0 to v1.1 migration script: [`scripts/migrate_v1_to_v1.1.py`](../scripts/migrate_v1_to_v1.1.py)
 

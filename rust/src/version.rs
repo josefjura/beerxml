@@ -13,6 +13,11 @@ use std::fmt;
 ///
 /// Otherwise it is 1.0.
 ///
+/// *Source:* [1.0 spec, General](https://josefjura.github.io/beerxml/spec/v1.0/v1.0/#general)
+/// (`VERSION` is `1`) and
+/// [RFC 01 §5, Namespaces & Versioning](https://josefjura.github.io/beerxml/spec/v1.1/RFC_01_goals/#5-namespaces-versioning)
+/// (the `http://beerxml.com/v1.1` namespace and `VERSION` 1.1).
+///
 /// Detection is looser than the 1.1 version marker that strict
 /// [`validate`](crate::validate) enforces (the namespace on the root plus
 /// `VERSION` 1.1 in every record), so every file that validates as 1.1 is

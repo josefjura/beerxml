@@ -12,6 +12,9 @@ pub(crate) enum Leading {
 /// Reads the leading decimal number of `text`, ignoring surrounding
 /// whitespace: an optional sign, digits with an optional fraction (or a bare
 /// fraction like `.5`), and an optional exponent.
+///
+/// Source: RFC 01 §1, Data Types & Strictness — 1.0 numeric fields hold
+/// units in practice (`34.2 IBU`), so only the leading number is the value.
 pub(crate) fn leading(text: &str) -> Leading {
     let s = text.trim();
     if s.is_empty() {
