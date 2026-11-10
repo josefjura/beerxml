@@ -14,7 +14,7 @@ pub struct Warning {
 #[non_exhaustive]
 pub enum WarningKind {
     /// A number was read, but non-whitespace text followed it and was
-    /// ignored (e.g. `34.2 IBU`).
+    /// ignored (e.g. `34.2 IBU`). See the crate's reading rules, "Numbers".
     TrailingText {
         /// The full original text of the field.
         text: String,
@@ -40,7 +40,8 @@ pub enum WarningKind {
         text: String,
     },
     /// An element that is not part of the BeerXML 1.1 schema was ignored.
-    /// Only reported for 1.1 documents.
+    /// Only reported for 1.1 documents: the original 1.0 spec ("Non-Standard
+    /// Tags") has readers ignore such elements silently.
     UnknownElement,
     /// A record has no `NAME` (or an empty one); its name was read as an
     /// empty string.

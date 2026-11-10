@@ -21,6 +21,8 @@ nav:
     - 'Version 1.1 (Modern)': spec/v1.1/v1.1.md
     - 'Version 1.0 (Legacy)': spec/v1.0/v1.0.md
   - Improvement Proposals: spec/v1.1/RFC_01_goals.md
+  - Libraries:
+    - 'Rust crate': rust.md
   - Contributing: contributing.md
 
 markdown_extensions:
@@ -28,3 +30,8 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  # Pulls rust/examples/read.rs into docs/rust.md, so the example on the page
+  # is the one the crate's tests compile. check_paths fails the build if the
+  # file moves.
+  - pymdownx.snippets:
+      check_paths: true

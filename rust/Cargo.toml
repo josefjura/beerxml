@@ -1,11 +1,17 @@
 [package]
-# Placeholder package name: `beerxml` is taken on crates.io by an abandoned
-# 2017 crate. The final name is decided before the first release.
+# `beerxml` is taken on crates.io by an abandoned 2017 crate, so the package
+# is `beerxml-rs`; the library is still imported as `beerxml` (see [lib]).
+# Recorded in docs/adr/0001-rust-crate-package-name.md.
 name = "beerxml-rs"
-version = "0.0.0"
+version = "0.1.0"
 edition = "2024"
 description = "Reference implementation for reading and validating BeerXML 1.0 and 1.1"
+license = "MIT"
 repository = "https://github.com/josefjura/beerxml"
+homepage = "https://josefjura.github.io/beerxml/rust/"
+keywords = ["beerxml", "brewing", "beer", "recipe", "xml"]
+categories = ["parser-implementations", "encoding"]
+# Depend on it by git tag (see the docs page); crates.io publishing comes later.
 publish = false
 
 [lib]

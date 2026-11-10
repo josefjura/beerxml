@@ -1,7 +1,8 @@
 //! Turning the raw bytes of a file into text, per its character encoding.
 //!
 //! Only UTF-8 and ISO-8859-1 are supported: BeerXML 1.0 writers (notably old
-//! BeerSmith versions) use one or the other. ISO-8859-1 is transcoded by
+//! BeerSmith versions) use one or the other, and the 1.0 spec (General) names
+//! exactly these two; RFC 01 §4 makes 1.1 UTF-8 only. ISO-8859-1 is transcoded by
 //! hand, since each of its bytes is the Unicode code point of the same value.
 
 use std::borrow::Cow;

@@ -9,6 +9,11 @@ use std::fmt;
 /// `2003-07-06` to `7/6/2003` or `3 Dec 04`. The text is always kept; only an
 /// unambiguous ISO date is parsed.
 ///
+/// *Source:* [1.0 spec, Recipe record](https://josefjura.github.io/beerxml/spec/v1.0/v1.0/#recipe-record-recipe)
+/// (`DATE` is text) and
+/// [RFC 01 §3, Date Format](https://josefjura.github.io/beerxml/spec/v1.1/RFC_01_goals/#3-date-format)
+/// (free text in 1.0, ISO 8601 `YYYY-MM-DD` in 1.1).
+///
 /// ```
 /// use beerxml::{IsoDate, RecordDate};
 /// let iso = RecordDate::parse("2003-07-06");
