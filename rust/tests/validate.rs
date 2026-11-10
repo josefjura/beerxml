@@ -262,6 +262,16 @@ fn a_non_negative_field_must_not_be_negative() {
         )]
     );
     assert_eq!(validate(&hop("<BETA>-0.0</BETA>")), []);
+    // Too small for an `f64`, but still below zero.
+    let tiny = format!("-0.{}1", "0".repeat(400));
+    assert_eq!(
+        validate(&hop(&format!("<BETA>{tiny}</BETA>"))),
+        [violation(
+            "HOPS/HOP[1]/BETA",
+            Rule::NonNegative,
+            Some(&tiny)
+        )]
+    );
     // A temperature may be below zero.
     let yeast = document(&RECORD_TYPES[2], None)
         .replace("</YEAST>", "<MIN_TEMPERATURE>-2</MIN_TEMPERATURE></YEAST>");
@@ -383,5 +393,14 @@ fn version_1_1_is_not_validated_yet() {
         Err(ReadError::UnsupportedVersion {
             version: Version::V1_1
         })
+    );
+}
+
+#[test]
+fn text_split_by_a_comment_is_checked_whole() {
+    assert_eq!(validate(&hop("<BETA>4<!-- x -->.5</BETA>")), []);
+    assert_eq!(
+        validate(&hop("<BETA>4<!-- x --> %</BETA>")),
+        [violation("HOPS/HOP[1]/BETA", Rule::Decimal, Some("4 %"))]
     );
 }

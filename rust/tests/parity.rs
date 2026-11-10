@@ -14,6 +14,10 @@
 //! - Python skips empty elements, so it accepts `<ALPHA></ALPHA>`.
 //! - Python reads numbers with `float()`/`int()`, so it accepts `1e3`, `NaN`,
 //!   `inf` and `1_000`, and does not check the XSD's `minInclusive="0"`.
+//!
+//! Where both depart from the XSD on purpose: its `xs:all` forbids unknown
+//! and repeated elements, but the 1.0 spec lets writers add their own, so
+//! neither validator flags them.
 
 use std::path::Path;
 

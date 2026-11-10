@@ -1,7 +1,8 @@
-/// A fatal problem that stops a file from being read at all.
+/// A fatal problem that stops a file from being read or validated at all.
 ///
 /// Anything less severe is repaired and reported as a
-/// [`Warning`](crate::Warning) instead.
+/// [`Warning`](crate::Warning) by [`read`](crate::read), or reported as a
+/// [`Violation`](crate::Violation) by [`validate`](crate::validate).
 #[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
 #[non_exhaustive]
 pub enum ReadError {

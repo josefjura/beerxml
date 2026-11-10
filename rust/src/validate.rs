@@ -192,7 +192,8 @@ fn check_record(node: Node<'_, '_>, path: &str, fields: &[Field], out: &mut Vec<
 }
 
 fn check_field(node: Node<'_, '_>, path: &str, kind: &Kind, out: &mut Vec<Violation>) {
-    let text = node.text().unwrap_or("");
+    let text = text_of(node);
+    let text = text.as_str();
     let rule = match kind {
         Kind::Text => None,
         Kind::Decimal => (!is_decimal(text)).then_some(Rule::Decimal),
@@ -212,6 +213,15 @@ fn check_field(node: Node<'_, '_>, path: &str, kind: &Kind, out: &mut Vec<Violat
             value: Some(text.to_owned()),
         });
     }
+}
+
+/// The element's text, joining the text around any comments or processing
+/// instructions inside it, as XML Schema does.
+fn text_of(node: Node<'_, '_>) -> String {
+    node.children()
+        .filter(Node::is_text)
+        .filter_map(|c| c.text())
+        .collect()
 }
 
 fn missing(path: String) -> Violation {
@@ -241,9 +251,12 @@ fn decimal_at_least_zero(text: &str) -> Option<Rule> {
     if !is_decimal(text) {
         return Some(Rule::Decimal);
     }
-    // Any `xs:decimal` parses as an `f64`; `-0` is zero, not negative.
-    let value: f64 = collapse(text).parse().unwrap_or_default();
-    (value < 0.0).then_some(Rule::NonNegative)
+    // Decided on the digits, not an `f64`, so a tiny negative value can't
+    // round to zero; `-0` and `-0.0` are zero, not negative.
+    let negative = collapse(text)
+        .strip_prefix('-')
+        .is_some_and(|digits| digits.bytes().any(|b| matches!(b, b'1'..=b'9')));
+    negative.then_some(Rule::NonNegative)
 }
 
 /// Whether `text` is an `xs:int`: a whole number in the 32-bit range.
