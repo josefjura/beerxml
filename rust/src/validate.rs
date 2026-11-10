@@ -11,6 +11,7 @@ use roxmltree::Node;
 use crate::encoding::{self, UTF8_BOM};
 use crate::{ReadError, Version, date::IsoDate, reader};
 
+mod shared;
 mod v1_0;
 mod v1_1;
 
@@ -143,14 +144,17 @@ impl fmt::Display for Rule {
 ///
 /// - Every numeric field is a number, the former Appendix A display fields
 ///   included (section 1).
-/// - No `DISPLAY_*` field may appear anywhere in a record (section 2), as
-///   [`Rule::DisplayField`].
+/// - No `DISPLAY_*` element may appear in a record or list (section 2), as
+///   [`Rule::DisplayField`]. Other 1.0 display extensions not named
+///   `DISPLAY_*` (`DISP_MIN_TEMP`, `INVENTORY`) are unknown elements.
 /// - `DATE` and `CULTURE_DATE` are ISO `YYYY-MM-DD` dates (section 3), as
-///   [`Rule::Date`].
+///   [`Rule::Date`]; like `xs:date`, there is no year 0000.
 /// - Booleans are `xs:boolean`: `true`, `false`, `1` or `0`
 ///   ([`Rule::LowercaseBoolean`]).
 /// - The file is UTF-8 (section 4): an XML declaration, if present, must
-///   name `UTF-8`, as [`Rule::Utf8`].
+///   name `UTF-8`, as [`Rule::Utf8`]. A file without a declaration is read
+///   as UTF-8, so bytes that aren't UTF-8 there are a
+///   [`ReadError::NotXml`], not a violation.
 /// - **The version marker** (section 5) is what the 1.1 XSD makes of it: the
 ///   root element is in the XSD's `targetNamespace` `http://beerxml.com/v1.1`
 ///   ([`Rule::Namespace`]), and every record's required `VERSION` is the
@@ -264,6 +268,8 @@ impl Walk {
                 count += 1;
                 let record_path = format!("{path}/{}[{count}]", list.record);
                 self.check_record(child, &record_path, list.fields);
+            } else {
+                self.check_unknown(child, path);
             }
         }
         if list.non_empty && count == 0 {
@@ -277,8 +283,8 @@ impl Walk {
             let child_path = format!("{path}/{name}");
             if let Some(field) = fields.iter().find(|f| f.name == name) {
                 self.check_field(child, &child_path, &field.kind);
-            } else if self.clean_xml && name.starts_with("DISPLAY_") {
-                self.push(&child_path, Rule::DisplayField, Some(text_of(child)));
+            } else {
+                self.check_unknown(child, path);
             }
         }
         for field in fields.iter().filter(|f| f.required) {
@@ -288,6 +294,19 @@ impl Walk {
             if !present {
                 self.push(&format!("{path}/{}", field.name), Rule::Required, None);
             }
+        }
+    }
+
+    /// An element the schema doesn't know, inside `path`: allowed, except a
+    /// `DISPLAY_*` field in 1.1.
+    fn check_unknown(&mut self, node: Node<'_, '_>, path: &str) {
+        let name = node.tag_name().name();
+        if self.clean_xml && name.starts_with("DISPLAY_") {
+            self.push(
+                &format!("{path}/{name}"),
+                Rule::DisplayField,
+                Some(text_of(node)),
+            );
         }
     }
 
@@ -301,8 +320,9 @@ impl Walk {
             Kind::Boolean => (!matches!(text.as_str(), "TRUE" | "FALSE")).then_some(Rule::Boolean),
             Kind::XsBoolean => (!matches!(collapse(&text), "true" | "false" | "1" | "0"))
                 .then_some(Rule::LowercaseBoolean),
+            // `xs:date` has no year 0000.
             Kind::Date => IsoDate::parse(collapse(&text))
-                .is_none()
+                .is_none_or(|d| d.year == 0)
                 .then_some(Rule::Date),
             Kind::Version1_1 => (!is_one_point_one(&text)).then_some(Rule::Version),
             Kind::Enumeration(allowed) => {

@@ -127,6 +127,14 @@ fn a_display_field_is_a_violation() {
 }
 
 #[test]
+fn a_display_field_directly_in_a_list_is_a_violation() {
+    assert_eq!(
+        validate(&hop("").replace("</HOPS>", "<DISPLAY_X>x</DISPLAY_X></HOPS>")),
+        [violation("HOPS/DISPLAY_X", Rule::DisplayField, Some("x"))]
+    );
+}
+
+#[test]
 fn other_unknown_elements_are_allowed() {
     // As in 1.0 and the Python validator; the reader reports them in 1.1.
     assert_eq!(validate(&hop("<INVENTORY>1.00 oz</INVENTORY>")), []);
@@ -141,7 +149,14 @@ fn a_date_must_be_iso() {
         validate(&yeast("<CULTURE_DATE> 2003-07-06 </CULTURE_DATE>")),
         []
     );
-    for bad in ["3 Jan 04", "1/3/2004", "2003-02-30", "2004-1-3", ""] {
+    for bad in [
+        "3 Jan 04",
+        "1/3/2004",
+        "2003-02-30",
+        "2004-1-3",
+        "0000-01-01",
+        "",
+    ] {
         assert_eq!(
             validate(&recipe(&format!("<DATE>{bad}</DATE>"))),
             [violation("RECIPES/RECIPE[1]/DATE", Rule::Date, Some(bad))],

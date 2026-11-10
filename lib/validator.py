@@ -9,6 +9,7 @@ from decimal import Decimal, InvalidOperation
 # no DISPLAY_* fields and the file is UTF-8.
 NAMESPACE_V11 = "http://beerxml.com/v1.1"
 XS_BOOLEANS = ['true', 'false', '1', '0']
+XS_DECIMAL = re.compile(r'[+-]?([0-9]+(\.[0-9]*)?|\.[0-9]+)')
 ENCODING_DECL = re.compile(rb"""^<\?xml\s[^>]*?encoding\s*=\s*["']([^"']*)["']""")
 
 
@@ -18,7 +19,7 @@ def validate_value(value, field_def, clean_xml=False):
     fixed = field_def.get('fixed')
     if fixed is not None:
         try:
-            if Decimal(value) == Decimal(fixed):
+            if XS_DECIMAL.fullmatch(value) and Decimal(value) == Decimal(fixed):
                 return True, None
         except InvalidOperation:
             pass
@@ -44,12 +45,12 @@ def validate_value(value, field_def, clean_xml=False):
         return False, f"Expected boolean (true/false/1/0), got '{value}'"
 
     elif vtype == 'boolean':
-        if value.lower() in ['true', 'false', '1', '0', 'TRUE', 'FALSE']:
+        if value.lower() in XS_BOOLEANS:
             return True, None
         return False, f"Expected boolean (true/false/1/0), got '{value}'"
         
     elif vtype == 'date' or field_def['original_type'] == 'xs:date':
-        if re.match(r'^\d{4}-\d{2}-\d{2}$', value):
+        if re.fullmatch(r'[0-9]{4}-[0-9]{2}-[0-9]{2}', value):
             try:
                 datetime.strptime(value, '%Y-%m-%d')
                 return True, None
