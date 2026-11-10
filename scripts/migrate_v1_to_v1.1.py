@@ -146,17 +146,11 @@ def migrate_tree(tree):
     # We iterate again or do it safely. Since we are iterating and modifying text in the first pass,
     # removing elements needs to be done carefully (iterating over a copy or using findall/remove).
     
-    # List of tags to REMOVE in v1.1
+    # Tags to REMOVE in v1.1: every DISPLAY_* field (RFC 01 section 2; the
+    # 1.1 validator rejects them), plus these.
     tags_to_remove = [
-        'DISPLAY_AMOUNT', 'DISPLAY_TIME', 'DISPLAY_BOIL_SIZE', 'DISPLAY_BATCH_SIZE',
-        'DISPLAY_TUN_VOLUME', 'DISPLAY_TUN_WEIGHT', 'DISPLAY_TOP_UP_WATER',
-        'DISPLAY_TRUB_CHILLER_LOSS', 'DISPLAY_LAUTER_DEADSPACE', 'DISPLAY_TOP_UP_KETTLE',
-        'DISPLAY_OG_MIN', 'DISPLAY_OG_MAX', 'DISPLAY_FG_MIN', 'DISPLAY_FG_MAX',
-        'DISPLAY_COLOR_MIN', 'DISPLAY_COLOR_MAX', 'OG_RANGE', 'FG_RANGE', 'IBU_RANGE',
-        'CARB_RANGE', 'COLOR_RANGE', 'ABV_RANGE', 'DISPLAY_GRAIN_TEMP', 'DISPLAY_TUN_TEMP',
-        'DISPLAY_SPARGE_TEMP', 'DISPLAY_STEP_TEMP', 'DISPLAY_INFUSE_AMT',
-        'DISPLAY_OG', 'DISPLAY_FG', 'DISPLAY_PRIMARY_TEMP', 'DISPLAY_SECONDARY_TEMP',
-        'DISPLAY_TERTIARY_TEMP', 'DISPLAY_AGE_TEMP', 'DISPLAY_CARB_TEMP',
+        'DISP_MIN_TEMP', 'DISP_MAX_TEMP', 'OG_RANGE', 'FG_RANGE', 'IBU_RANGE',
+        'CARB_RANGE', 'COLOR_RANGE', 'ABV_RANGE',
         'EST_OG', 'EST_FG', 'EST_COLOR' # These are often strings with units in v1.0, removing them enforces calculation or clean re-add later
     ]
     
@@ -165,12 +159,19 @@ def migrate_tree(tree):
         to_remove = []
         for child in element:
             local_tag = child.tag.split('}', 1)[1] if '}' in child.tag else child.tag
-            if local_tag in tags_to_remove:
+            if local_tag in tags_to_remove or local_tag.startswith('DISPLAY_'):
                 to_remove.append(child)
             else:
                 prune_elements(child)
         
         for child in to_remove:
+            # Keep the following element's indentation, which ElementTree
+            # stores as the tail of the element before it.
+            index = list(element).index(child)
+            if index > 0:
+                element[index - 1].tail = child.tail
+            else:
+                element.text = child.tail
             element.remove(child)
 
     prune_elements(root)

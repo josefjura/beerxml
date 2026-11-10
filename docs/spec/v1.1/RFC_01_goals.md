@@ -28,9 +28,10 @@ BeerXML 1.1 aims to be a **strict, modern, and unambiguous** revision of BeerXML
 
 ### 5. Namespaces & Versioning
 *   **Problem in v1.0:** No namespace protection.
-*   **Solution in v1.1:** 
-    *   Root element must specify version: `<RECIPES version="1.1">`
-    *   Consider XML Namespaces: `<RECIPES xmlns="http://beerxml.com/v1">`
+*   **Solution in v1.1:** settled by `beerxml-1.1.xsd`:
+    *   The root element is in the namespace `http://beerxml.com/v1.1` (the XSD's `targetNamespace`): `<RECIPES xmlns="http://beerxml.com/v1.1">`
+    *   Every record keeps its required `VERSION` element, fixed to `1.1`.
+    *   An earlier draft proposed a `version="1.1"` attribute on the root; the XSD declares no attributes, so it is not part of 1.1.
 
 ## Example Comparison
 
@@ -45,8 +46,9 @@ BeerXML 1.1 aims to be a **strict, modern, and unambiguous** revision of BeerXML
 
 **Proposed v1.1 (Clean):**
 ```xml
-<RECIPE version="1.1">
+<RECIPE xmlns="http://beerxml.com/v1.1">
   <NAME>My Stout</NAME>
+  <VERSION>1.1</VERSION>
   <DATE>2024-03-01</DATE>
   <IBU>35.5</IBU>
 </RECIPE>

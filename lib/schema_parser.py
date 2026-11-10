@@ -72,7 +72,8 @@ def parse_xsd(xsd_path):
                     'type': basic_type,
                     'original_type': field_type,
                     'required': required,
-                    'enum_values': enums.get(field_type)
+                    'enum_values': enums.get(field_type),
+                    'fixed': element.get('fixed'),
                 }
         
         complex_types[clean_name] = fields

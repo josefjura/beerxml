@@ -27,7 +27,7 @@
 				<BETA>3.50</BETA>
 				<HSI>35.0</HSI>
 				<INVENTORY>1.00 oz</INVENTORY>
-				</HOP>
+			</HOP>
 			<HOP>
 				<NAME>Northern Brewer</NAME>
 				<VERSION>1.1</VERSION>
@@ -44,7 +44,7 @@
 				<BETA>4.00</BETA>
 				<HSI>35.0</HSI>
 				<INVENTORY>0.50 oz</INVENTORY>
-				</HOP>
+			</HOP>
 			<HOP>
 				<NAME>Fuggles</NAME>
 				<VERSION>1.1</VERSION>
@@ -61,7 +61,7 @@
 				<BETA>2.00</BETA>
 				<HSI>35.0</HSI>
 				<INVENTORY>0.50 oz</INVENTORY>
-				</HOP>
+			</HOP>
 			<HOP>
 				<NAME>Fuggles</NAME>
 				<VERSION>1.1</VERSION>
@@ -78,7 +78,7 @@
 				<BETA>2.00</BETA>
 				<HSI>35.0</HSI>
 				<INVENTORY>0.75 oz</INVENTORY>
-				</HOP>
+			</HOP>
 		</HOPS>
 		<FERMENTABLES>
 			<FERMENTABLE>
@@ -102,7 +102,6 @@
 				<IBU_GAL_PER_LB>0.000</IBU_GAL_PER_LB>
 				<INVENTORY>8.00 lb</INVENTORY>
 				<POTENTIAL>1.036</POTENTIAL>
-				<DISPLAY_COLOR>2.5 SRM</DISPLAY_COLOR>
 			</FERMENTABLE>
 			<FERMENTABLE>
 				<NAME>Caramel/Crystal Malt - 20L</NAME>
@@ -124,7 +123,6 @@
 				<IBU_GAL_PER_LB>0.000</IBU_GAL_PER_LB>
 				<INVENTORY>1.00 lb</INVENTORY>
 				<POTENTIAL>1.035</POTENTIAL>
-				<DISPLAY_COLOR>20.0 SRM</DISPLAY_COLOR>
 			</FERMENTABLE>
 			<FERMENTABLE>
 				<NAME>Brown Sugar, Light</NAME>
@@ -146,7 +144,6 @@
 				<IBU_GAL_PER_LB>0.000</IBU_GAL_PER_LB>
 				<INVENTORY>1.00 lb</INVENTORY>
 				<POTENTIAL>1.046</POTENTIAL>
-				<DISPLAY_COLOR>8.0 SRM</DISPLAY_COLOR>
 			</FERMENTABLE>
 		</FERMENTABLES>
 		<MISCS>
@@ -200,8 +197,6 @@
 				<MAX_REUSE>5</MAX_REUSE>
 				<TIMES_CULTURED>0</TIMES_CULTURED>
 				<ADD_TO_SECONDARY>false</ADD_TO_SECONDARY>
-				<DISP_MIN_TEMP>68.0 F</DISP_MIN_TEMP>
-				<DISP_MAX_TEMP>73.0 F</DISP_MAX_TEMP>
 				<INVENTORY>0 Pkgs</INVENTORY>
 				<CULTURE_DATE>2003-07-06</CULTURE_DATE>
 			</YEAST>
@@ -220,7 +215,7 @@
 				<PH>8.0</PH>
 				<NOTES>Distinctive pale ales strongly hopped. Very hard water accentuates the hops flavor.
 					Example: Bass Ale</NOTES>
-				</WATER>
+			</WATER>
 		</WATERS>
 		<STYLE>
 			<NAME>English Pale Ale</NAME>
@@ -250,7 +245,7 @@
 			<INGREDIENTS>English malt. Crystal malt. English hops. Water with high Calcium Sulfate
 				(gypsum) profile enhances bitterness perception (i.e. famous Burton-on-Trent Water)</INGREDIENTS>
 			<EXAMPLES>Bass Pale Ale, Whitbread Pale Ale, Royal Oak</EXAMPLES>
-			</STYLE>
+		</STYLE>
 		<EQUIPMENT>
 			<NAME>Brew Pot (6+gal) and Igloo/Gott Cooler (5 Gal)</NAME>
 			<VERSION>1.1</VERSION>
@@ -270,7 +265,7 @@
 			<NOTES>Popular all grain setup. 5 Gallon Gott or Igloo cooler as mash tun with false bottom,
 				and 7-9 gallon brewpot capable of boiling at least 6 gallons of wort. Primarily used for
 				single infusion mashes.</NOTES>
-			</EQUIPMENT>
+		</EQUIPMENT>
 		<MASH>
 			<NAME>Single Infusion, Full Body</NAME>
 			<VERSION>1.1</VERSION>
@@ -296,7 +291,7 @@
 					<WATER_GRAIN_RATIO>1.25</WATER_GRAIN_RATIO>
 					<DECOCTION_AMT>0.00 qt</DECOCTION_AMT>
 					<INFUSE_TEMP>170.5 F</INFUSE_TEMP>
-					</MASH_STEP>
+				</MASH_STEP>
 				<MASH_STEP>
 					<NAME>Mash Out</NAME>
 					<VERSION>1.1</VERSION>
@@ -310,7 +305,7 @@
 					<WATER_GRAIN_RATIO>2.05</WATER_GRAIN_RATIO>
 					<DECOCTION_AMT>0.00 qt</DECOCTION_AMT>
 					<INFUSE_TEMP>185.9 F</INFUSE_TEMP>
-					</MASH_STEP>
+				</MASH_STEP>
 			</MASH_STEPS>
 		</MASH>
 		<NOTES />
@@ -337,7 +332,7 @@
 		<ABV>5.1</ABV>
 		<ACTUAL_EFFICIENCY>69.7</ACTUAL_EFFICIENCY>
 		<CALORIES>242</CALORIES>
-		</RECIPE>
+	</RECIPE>
 	<RECIPE>
 		<NAME>Dry Stout</NAME>
 		<VERSION>1.1</VERSION>
@@ -365,7 +360,7 @@
 				<BETA>3.50</BETA>
 				<HSI>35.0</HSI>
 				<INVENTORY>2.25 oz</INVENTORY>
-				</HOP>
+			</HOP>
 		</HOPS>
 		<FERMENTABLES>
 			<FERMENTABLE>
@@ -389,7 +384,6 @@
 				<IBU_GAL_PER_LB>0.000</IBU_GAL_PER_LB>
 				<INVENTORY>5.00 lb</INVENTORY>
 				<POTENTIAL>1.036</POTENTIAL>
-				<DISPLAY_COLOR>2.5 SRM</DISPLAY_COLOR>
 			</FERMENTABLE>
 			<FERMENTABLE>
 				<NAME>Barley, Flaked</NAME>
@@ -412,7 +406,6 @@
 				<IBU_GAL_PER_LB>0.000</IBU_GAL_PER_LB>
 				<INVENTORY>2.00 lb</INVENTORY>
 				<POTENTIAL>1.032</POTENTIAL>
-				<DISPLAY_COLOR>1.7 SRM</DISPLAY_COLOR>
 			</FERMENTABLE>
 			<FERMENTABLE>
 				<NAME>Black Barley (Stout)</NAME>
@@ -436,7 +429,6 @@
 				<IBU_GAL_PER_LB>0.000</IBU_GAL_PER_LB>
 				<INVENTORY>1.00 lb</INVENTORY>
 				<POTENTIAL>1.025</POTENTIAL>
-				<DISPLAY_COLOR>500.0 SRM</DISPLAY_COLOR>
 			</FERMENTABLE>
 		</FERMENTABLES>
 		<MISCS>
@@ -488,8 +480,6 @@
 				<MAX_REUSE>5</MAX_REUSE>
 				<TIMES_CULTURED>0</TIMES_CULTURED>
 				<ADD_TO_SECONDARY>false</ADD_TO_SECONDARY>
-				<DISP_MIN_TEMP>62.0 F</DISP_MIN_TEMP>
-				<DISP_MAX_TEMP>72.0 F</DISP_MAX_TEMP>
 				<INVENTORY>0 Pkgs</INVENTORY>
 				<CULTURE_DATE>2003-07-06</CULTURE_DATE>
 			</YEAST>
@@ -508,7 +498,7 @@
 				<PH>8.0</PH>
 				<NOTES>Irish ale water - used for dark, malty strong ales with medium bitterness. Famous for
 					dry stouts.</NOTES>
-				</WATER>
+			</WATER>
 		</WATERS>
 		<STYLE>
 			<NAME>Dry Stout (Irish)</NAME>
@@ -540,7 +530,7 @@
 				black patent used in extract recipes. Goldings or Fuggles hops. Low sulfate, high calcium
 				water.</INGREDIENTS>
 			<EXAMPLES>Guiness Stout</EXAMPLES>
-			</STYLE>
+		</STYLE>
 		<EQUIPMENT>
 			<NAME>Brew Pot (6+gal) and Igloo/Gott Cooler (5 Gal)</NAME>
 			<VERSION>1.1</VERSION>
@@ -560,7 +550,7 @@
 			<NOTES>Popular all grain setup. 5 Gallon Gott or Igloo cooler as mash tun with false bottom,
 				and 7-9 gallon brewpot capable of boiling at least 6 gallons of wort. Primarily used for
 				single infusion mashes.</NOTES>
-			</EQUIPMENT>
+		</EQUIPMENT>
 		<MASH>
 			<NAME>Single Infusion, Medium Body</NAME>
 			<VERSION>1.1</VERSION>
@@ -586,7 +576,7 @@
 					<WATER_GRAIN_RATIO>1.25</WATER_GRAIN_RATIO>
 					<DECOCTION_AMT>0.00 qt</DECOCTION_AMT>
 					<INFUSE_TEMP>165.9 F</INFUSE_TEMP>
-					</MASH_STEP>
+				</MASH_STEP>
 				<MASH_STEP>
 					<NAME>Mash Out</NAME>
 					<VERSION>1.1</VERSION>
@@ -600,7 +590,7 @@
 					<WATER_GRAIN_RATIO>2.05</WATER_GRAIN_RATIO>
 					<DECOCTION_AMT>0.00 qt</DECOCTION_AMT>
 					<INFUSE_TEMP>193.1 F</INFUSE_TEMP>
-					</MASH_STEP>
+				</MASH_STEP>
 			</MASH_STEPS>
 		</MASH>
 		<NOTES>A very simple all grain beer that produces a great Guiness-style taste every time. So
@@ -628,7 +618,7 @@
 		<ABV>3.4</ABV>
 		<ACTUAL_EFFICIENCY>70.6</ACTUAL_EFFICIENCY>
 		<CALORIES>168</CALORIES>
-		</RECIPE>
+	</RECIPE>
 	<RECIPE>
 		<NAME>Porter</NAME>
 		<VERSION>1.1</VERSION>
@@ -656,7 +646,7 @@
 				<BETA>2.00</BETA>
 				<HSI>35.0</HSI>
 				<INVENTORY>2.00 oz</INVENTORY>
-				</HOP>
+			</HOP>
 		</HOPS>
 		<FERMENTABLES>
 			<FERMENTABLE>
@@ -680,7 +670,6 @@
 				<IBU_GAL_PER_LB>0.000</IBU_GAL_PER_LB>
 				<INVENTORY>8.00 lb</INVENTORY>
 				<POTENTIAL>1.037</POTENTIAL>
-				<DISPLAY_COLOR>3.2 SRM</DISPLAY_COLOR>
 			</FERMENTABLE>
 			<FERMENTABLE>
 				<NAME>Black (Patent) Malt</NAME>
@@ -703,7 +692,6 @@
 				<IBU_GAL_PER_LB>0.000</IBU_GAL_PER_LB>
 				<INVENTORY>1.00 lb</INVENTORY>
 				<POTENTIAL>1.025</POTENTIAL>
-				<DISPLAY_COLOR>500.0 SRM</DISPLAY_COLOR>
 			</FERMENTABLE>
 			<FERMENTABLE>
 				<NAME>Caramel/Crystal Malt - 10L</NAME>
@@ -725,7 +713,6 @@
 				<IBU_GAL_PER_LB>0.000</IBU_GAL_PER_LB>
 				<INVENTORY>1.00 lb</INVENTORY>
 				<POTENTIAL>1.035</POTENTIAL>
-				<DISPLAY_COLOR>10.0 SRM</DISPLAY_COLOR>
 			</FERMENTABLE>
 			<FERMENTABLE>
 				<NAME>Chocolate Malt</NAME>
@@ -748,7 +735,6 @@
 				<IBU_GAL_PER_LB>0.000</IBU_GAL_PER_LB>
 				<INVENTORY>0.50 lb</INVENTORY>
 				<POTENTIAL>1.028</POTENTIAL>
-				<DISPLAY_COLOR>350.0 SRM</DISPLAY_COLOR>
 			</FERMENTABLE>
 			<FERMENTABLE>
 				<NAME>Munich Malt - 10L</NAME>
@@ -772,7 +758,6 @@
 				<IBU_GAL_PER_LB>0.000</IBU_GAL_PER_LB>
 				<INVENTORY>0.50 lb</INVENTORY>
 				<POTENTIAL>1.035</POTENTIAL>
-				<DISPLAY_COLOR>10.0 SRM</DISPLAY_COLOR>
 			</FERMENTABLE>
 		</FERMENTABLES>
 		<MISCS>
@@ -826,8 +811,6 @@
 				<MAX_REUSE>5</MAX_REUSE>
 				<TIMES_CULTURED>0</TIMES_CULTURED>
 				<ADD_TO_SECONDARY>false</ADD_TO_SECONDARY>
-				<DISP_MIN_TEMP>65.0 F</DISP_MIN_TEMP>
-				<DISP_MAX_TEMP>68.0 F</DISP_MAX_TEMP>
 				<INVENTORY>0 Pkgs</INVENTORY>
 				<CULTURE_DATE>2003-07-06</CULTURE_DATE>
 			</YEAST>
@@ -861,7 +844,7 @@
 			<INGREDIENTS>English malt. Dark Crystal, chocolate and black or roast malt. Traditional
 				english ale hops and yeast. Moderate carbonate water.</INGREDIENTS>
 			<EXAMPLES>Sierra Nevada Porter, Anchor Porter</EXAMPLES>
-			</STYLE>
+		</STYLE>
 		<EQUIPMENT>
 			<NAME>Brew Pot (6+gal) and Igloo/Gott Cooler (5 Gal)</NAME>
 			<VERSION>1.1</VERSION>
@@ -881,7 +864,7 @@
 			<NOTES>Popular all grain setup. 5 Gallon Gott or Igloo cooler as mash tun with false bottom,
 				and 7-9 gallon brewpot capable of boiling at least 6 gallons of wort. Primarily used for
 				single infusion mashes.</NOTES>
-			</EQUIPMENT>
+		</EQUIPMENT>
 		<MASH>
 			<NAME>Single Infusion, Medium Body</NAME>
 			<VERSION>1.1</VERSION>
@@ -907,7 +890,7 @@
 					<WATER_GRAIN_RATIO>1.25</WATER_GRAIN_RATIO>
 					<DECOCTION_AMT>0.00 qt</DECOCTION_AMT>
 					<INFUSE_TEMP>165.9 F</INFUSE_TEMP>
-					</MASH_STEP>
+				</MASH_STEP>
 				<MASH_STEP>
 					<NAME>Mash Out</NAME>
 					<VERSION>1.1</VERSION>
@@ -921,7 +904,7 @@
 					<WATER_GRAIN_RATIO>2.05</WATER_GRAIN_RATIO>
 					<DECOCTION_AMT>0.00 qt</DECOCTION_AMT>
 					<INFUSE_TEMP>193.1 F</INFUSE_TEMP>
-					</MASH_STEP>
+				</MASH_STEP>
 			</MASH_STEPS>
 		</MASH>
 		<NOTES />
@@ -946,7 +929,7 @@
 		<ABV>4.7</ABV>
 		<ACTUAL_EFFICIENCY>70.0</ACTUAL_EFFICIENCY>
 		<CALORIES>244</CALORIES>
-		</RECIPE>
+	</RECIPE>
 	<RECIPE>
 		<NAME>Wit</NAME>
 		<VERSION>1.1</VERSION>
@@ -974,7 +957,7 @@
 				<BETA>3.50</BETA>
 				<HSI>35.0</HSI>
 				<INVENTORY>1.00 oz</INVENTORY>
-				</HOP>
+			</HOP>
 		</HOPS>
 		<FERMENTABLES>
 			<FERMENTABLE>
@@ -998,7 +981,6 @@
 				<IBU_GAL_PER_LB>0.000</IBU_GAL_PER_LB>
 				<INVENTORY>4.50 lb</INVENTORY>
 				<POTENTIAL>1.037</POTENTIAL>
-				<DISPLAY_COLOR>3.2 SRM</DISPLAY_COLOR>
 			</FERMENTABLE>
 			<FERMENTABLE>
 				<NAME>Wheat, Flaked</NAME>
@@ -1022,7 +1004,6 @@
 				<IBU_GAL_PER_LB>0.000</IBU_GAL_PER_LB>
 				<INVENTORY>4.50 lb</INVENTORY>
 				<POTENTIAL>1.035</POTENTIAL>
-				<DISPLAY_COLOR>1.6 SRM</DISPLAY_COLOR>
 			</FERMENTABLE>
 		</FERMENTABLES>
 		<MISCS>
@@ -1074,8 +1055,6 @@
 				<MAX_REUSE>5</MAX_REUSE>
 				<TIMES_CULTURED>0</TIMES_CULTURED>
 				<ADD_TO_SECONDARY>false</ADD_TO_SECONDARY>
-				<DISP_MIN_TEMP>67.0 F</DISP_MIN_TEMP>
-				<DISP_MAX_TEMP>74.0 F</DISP_MAX_TEMP>
 				<INVENTORY>0 Pkgs</INVENTORY>
 				<CULTURE_DATE>2003-07-06</CULTURE_DATE>
 			</YEAST>
@@ -1110,7 +1089,7 @@
 				5-10% flaked or rolled oats. Noble hops (Hallertauer or Saaz). Wit yeast. Curaco bitter
 				orange peel and coriander. Soft water.</INGREDIENTS>
 			<EXAMPLES>Celis White, Wieckse Witte</EXAMPLES>
-			</STYLE>
+		</STYLE>
 		<EQUIPMENT>
 			<NAME>Brew Pot (6+gal) and Igloo/Gott Cooler (5 Gal)</NAME>
 			<VERSION>1.1</VERSION>
@@ -1130,7 +1109,7 @@
 			<NOTES>Popular all grain setup. 5 Gallon Gott or Igloo cooler as mash tun with false bottom,
 				and 7-9 gallon brewpot capable of boiling at least 6 gallons of wort. Primarily used for
 				single infusion mashes.</NOTES>
-			</EQUIPMENT>
+		</EQUIPMENT>
 		<MASH>
 			<NAME>Single Infusion, Medium Body</NAME>
 			<VERSION>1.1</VERSION>
@@ -1157,7 +1136,7 @@
 					<WATER_GRAIN_RATIO>1.25</WATER_GRAIN_RATIO>
 					<DECOCTION_AMT>0.00 qt</DECOCTION_AMT>
 					<INFUSE_TEMP>165.9 F</INFUSE_TEMP>
-					</MASH_STEP>
+				</MASH_STEP>
 				<MASH_STEP>
 					<NAME>Mash Out</NAME>
 					<VERSION>1.1</VERSION>
@@ -1171,7 +1150,7 @@
 					<WATER_GRAIN_RATIO>1.95</WATER_GRAIN_RATIO>
 					<DECOCTION_AMT>0.00 qt</DECOCTION_AMT>
 					<INFUSE_TEMP>196.6 F</INFUSE_TEMP>
-					</MASH_STEP>
+				</MASH_STEP>
 			</MASH_STEPS>
 		</MASH>
 		<NOTES>Many thanks to Jay Russ for starting me on Wit - and providing some starter recipes from
@@ -1198,5 +1177,5 @@
 		<ABV>4.4</ABV>
 		<ACTUAL_EFFICIENCY>75.2</ACTUAL_EFFICIENCY>
 		<CALORIES>209</CALORIES>
-		</RECIPE>
+	</RECIPE>
 </RECIPES>

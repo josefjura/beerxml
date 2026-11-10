@@ -12,37 +12,11 @@ use super::Kind::{
     Boolean, Decimal, Enumeration, Integer, List as ListOf, NonNegativeDecimal as NonNeg, Record,
     Text,
 };
-use super::{Field, Kind, List};
-
-const fn req(name: &'static str, kind: Kind) -> Field {
-    Field {
-        name,
-        required: true,
-        kind,
-    }
-}
-
-const fn opt(name: &'static str, kind: Kind) -> Field {
-    Field {
-        name,
-        required: false,
-        kind,
-    }
-}
-
-const HOP_USE: &[&str] = &["Boil", "Dry Hop", "Mash", "First Wort", "Aroma"];
-const HOP_TYPE: &[&str] = &["Bittering", "Aroma", "Both"];
-const HOP_FORM: &[&str] = &["Pellet", "Plug", "Leaf"];
-const FERMENTABLE_TYPE: &[&str] = &["Grain", "Sugar", "Extract", "Dry Extract", "Adjunct"];
-const YEAST_TYPE: &[&str] = &["Ale", "Lager", "Wheat", "Wine", "Champagne"];
-const YEAST_FORM: &[&str] = &["Liquid", "Dry", "Slant", "Culture"];
-const YEAST_FLOCCULATION: &[&str] = &["Low", "Medium", "High", "Very High"];
-const MISC_TYPE: &[&str] = &["Spice", "Fining", "Water Agent", "Herb", "Flavor", "Other"];
-const MISC_USE: &[&str] = &["Boil", "Mash", "Primary", "Secondary", "Bottling"];
-const STYLE_TYPE: &[&str] = &["Lager", "Ale", "Mead", "Wheat", "Mixed", "Cider"];
-const MASH_STEP_TYPE: &[&str] = &["Infusion", "Temperature", "Decoction"];
-const RECIPE_TYPE: &[&str] = &["Extract", "Partial Mash", "All Grain"];
-const IBU_METHOD: &[&str] = &["Rager", "Tinseth", "Garetz"];
+use super::shared::{
+    FERMENTABLE_TYPE, HOP_FORM, HOP_TYPE, HOP_USE, IBU_METHOD, MASH_STEP_TYPE, MISC_TYPE, MISC_USE,
+    RECIPE_TYPE, STYLE_TYPE, YEAST_FLOCCULATION, YEAST_FORM, YEAST_TYPE, opt, req,
+};
+use super::{Field, List};
 
 const HOP: &[Field] = &[
     req("NAME", Text),
