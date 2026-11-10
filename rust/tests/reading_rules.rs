@@ -210,3 +210,34 @@ fn non_beerxml_root_is_refused() {
         })
     );
 }
+
+#[test]
+fn one_and_zero_booleans_are_read_in_1_1() {
+    let r = read(&format!(
+        "<RECIPES{V1_1_NS}><RECIPE><NAME>One</NAME>\
+         <FORCED_CARBONATION> 1 </FORCED_CARBONATION></RECIPE>\
+         <RECIPE><NAME>Zero</NAME>\
+         <FORCED_CARBONATION>0</FORCED_CARBONATION></RECIPE></RECIPES>"
+    ));
+    assert_eq!(r.version, Version::V1_1);
+    assert_eq!(r.document.recipes[0].forced_carbonation, Some(true));
+    assert_eq!(r.document.recipes[1].forced_carbonation, Some(false));
+    assert!(r.warnings.is_empty(), "{:?}", r.warnings);
+}
+
+#[test]
+fn one_and_zero_booleans_are_unreadable_in_1_0() {
+    let r = read(&recipe_doc(
+        "",
+        "<FORCED_CARBONATION>1</FORCED_CARBONATION>",
+    ));
+    assert_eq!(r.version, Version::V1_0);
+    assert_eq!(r.document.recipes[0].forced_carbonation, None);
+    assert_eq!(
+        r.warnings,
+        [warning(
+            "RECIPES/RECIPE[1]/FORCED_CARBONATION",
+            WarningKind::UnreadableBoolean { text: "1".into() }
+        )]
+    );
+}
