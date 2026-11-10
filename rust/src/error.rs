@@ -1,7 +1,8 @@
-/// A fatal problem that stops a file from being read at all.
+/// A fatal problem that stops a file from being read or validated at all.
 ///
 /// Anything less severe is repaired and reported as a
-/// [`Warning`](crate::Warning) instead.
+/// [`Warning`](crate::Warning) by [`read`](crate::read), or reported as a
+/// [`Violation`](crate::Violation) by [`validate`](crate::validate).
 #[derive(Debug, Clone, PartialEq, Eq, thiserror::Error)]
 #[non_exhaustive]
 pub enum ReadError {
@@ -28,5 +29,12 @@ pub enum ReadError {
     NoBeerXmlRoot {
         /// The local name of the root element that was found.
         found: String,
+    },
+    /// [`validate`](crate::validate) has no rules for this version yet.
+    /// Strict 1.1 validation is tracked in issue #10.
+    #[error("strict validation of BeerXML {version} is not supported yet")]
+    UnsupportedVersion {
+        /// The version that was asked for.
+        version: crate::Version,
     },
 }

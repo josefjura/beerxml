@@ -37,18 +37,7 @@ pub struct Read {
 /// not a BeerXML top-level list.
 pub fn read(bytes: &[u8]) -> Result<Read, ReadError> {
     let text = encoding::decode(bytes)?;
-    // Refusing every DTD is what keeps hostile uploads harmless (see the
-    // crate docs, "Untrusted input"): no entity can be declared, so none can
-    // expand or point outside the file. Spelled out rather than left to the
-    // parser's default so a dependency bump can't change it.
-    let options = roxmltree::ParsingOptions {
-        allow_dtd: false,
-        ..roxmltree::ParsingOptions::default()
-    };
-    let doc =
-        roxmltree::Document::parse_with_options(&text, options).map_err(|e| ReadError::NotXml {
-            message: e.to_string(),
-        })?;
+    let doc = parse(&text)?;
 
     let root = doc.root_element();
     let list = root.tag_name().name();
@@ -81,6 +70,22 @@ pub fn read(bytes: &[u8]) -> Result<Read, ReadError> {
         document: d,
         version: reader.version,
         warnings: reader.warnings,
+    })
+}
+
+/// Parses decoded text into an XML tree, refusing DTDs.
+///
+/// Refusing every DTD is what keeps hostile uploads harmless (see the crate
+/// docs, "Untrusted input"): no entity can be declared, so none can expand or
+/// point outside the file. Spelled out rather than left to the parser's
+/// default so a dependency bump can't change it.
+pub(crate) fn parse(text: &str) -> Result<roxmltree::Document<'_>, ReadError> {
+    let options = roxmltree::ParsingOptions {
+        allow_dtd: false,
+        ..roxmltree::ParsingOptions::default()
+    };
+    roxmltree::Document::parse_with_options(text, options).map_err(|e| ReadError::NotXml {
+        message: e.to_string(),
     })
 }
 

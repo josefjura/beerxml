@@ -8,11 +8,17 @@ on:
     paths:
       - "rust/**"
       - "samples/**"
+      - "lib/**"
+      - "docs/spec/**/*.xsd"
+      - "scripts/python_verdicts.py"
       - ".github/workflows/rust.yml"
   pull_request:
     paths:
       - "rust/**"
       - "samples/**"
+      - "lib/**"
+      - "docs/spec/**/*.xsd"
+      - "scripts/python_verdicts.py"
       - ".github/workflows/rust.yml"
   workflow_dispatch:
 
@@ -41,6 +47,12 @@ jobs:
         uses: Swatinem/rust-cache@v2
         with:
           workspaces: rust
+
+      # The parity test asserts Rust's validate() agrees with this table, so
+      # it must match what the Python validator says today.
+      - name: Python verdicts are up to date
+        working-directory: .
+        run: python3 scripts/python_verdicts.py --check
 
       - name: Format
         run: cargo fmt --check

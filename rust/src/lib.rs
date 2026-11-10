@@ -1,4 +1,4 @@
-//! Reference implementation for reading BeerXML 1.0 and 1.1.
+//! Reference implementation for reading and validating BeerXML 1.0 and 1.1.
 //!
 //! The entry point is [`read`]: it takes the raw bytes of a BeerXML file,
 //! detects its [`Version`] and returns a typed [`Document`] together with
@@ -10,6 +10,20 @@
 //! assert_eq!(read.version, beerxml::Version::V1_0);
 //! assert_eq!(read.document.recipes[0].name, "Pale Ale");
 //! assert_eq!(read.document.recipes[0].og.map(|og| og.get()), Some(1.050));
+//! # Ok::<(), beerxml::ReadError>(())
+//! ```
+//!
+//! To check a file you wrote yourself, [`validate`] it strictly against the
+//! schema instead: it returns every [`Violation`], and none means valid.
+//!
+//! ```
+//! use beerxml::{Rule, Version};
+//!
+//! let xml = br#"<HOPS><HOP><NAME>Saaz</NAME><VERSION>1</VERSION><AMOUNT>0.05</AMOUNT>
+//!     <USE>Boil</USE><TIME>60</TIME></HOP></HOPS>"#;
+//! let violations = beerxml::validate(xml, Version::V1_0)?;
+//! assert_eq!(violations[0].path, "HOPS/HOP[1]/ALPHA");
+//! assert_eq!(violations[0].rule, Rule::Required);
 //! # Ok::<(), beerxml::ReadError>(())
 //! ```
 //!
@@ -95,6 +109,7 @@ mod model;
 mod number;
 mod reader;
 pub mod units;
+mod validate;
 mod version;
 mod warning;
 
@@ -108,5 +123,6 @@ pub use model::{
     Document, Equipment, Fermentable, Hop, Mash, MashStep, Misc, Recipe, Style, Water, Yeast,
 };
 pub use reader::{Read, read};
+pub use validate::{Rule, Violation, validate};
 pub use version::Version;
 pub use warning::{Warning, WarningKind};
