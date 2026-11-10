@@ -41,7 +41,7 @@ The crate isn't on crates.io yet. Depend on it from git, pinned to a tag:
 
 ```toml
 [dependencies]
-beerxml = { package = "beerxml-rs", git = "https://github.com/josefjura/beerxml", tag = "rust-v0.1.0" }
+beerxml = { package = "beerxml-rs", git = "https://github.com/josefjura/beerxml", tag = "rust-v0.1.1" }
 ```
 
 Cargo finds the package in the `rust/` directory by itself. The `package`
