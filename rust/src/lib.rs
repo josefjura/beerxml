@@ -14,7 +14,8 @@
 //! ```
 //!
 //! To check a file you wrote yourself, [`validate`] it strictly against the
-//! schema instead: it returns every [`Violation`], and none means valid.
+//! schema of a version instead: it returns every [`Violation`], and none
+//! means valid. For 1.1 that includes RFC 01's "Clean XML" rules.
 //!
 //! ```
 //! use beerxml::{Rule, Version};

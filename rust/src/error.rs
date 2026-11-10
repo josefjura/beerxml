@@ -30,11 +30,4 @@ pub enum ReadError {
         /// The local name of the root element that was found.
         found: String,
     },
-    /// [`validate`](crate::validate) has no rules for this version yet.
-    /// Strict 1.1 validation is tracked in issue #10.
-    #[error("strict validation of BeerXML {version} is not supported yet")]
-    UnsupportedVersion {
-        /// The version that was asked for.
-        version: crate::Version,
-    },
 }

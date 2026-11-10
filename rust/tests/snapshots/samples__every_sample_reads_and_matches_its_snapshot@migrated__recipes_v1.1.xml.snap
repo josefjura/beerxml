@@ -3602,14 +3602,6 @@ Read {
             kind: UnknownElement,
         },
         Warning {
-            path: "RECIPES/RECIPE[1]/YEASTS/YEAST[1]/DISP_MIN_TEMP",
-            kind: UnknownElement,
-        },
-        Warning {
-            path: "RECIPES/RECIPE[1]/YEASTS/YEAST[1]/DISP_MAX_TEMP",
-            kind: UnknownElement,
-        },
-        Warning {
             path: "RECIPES/RECIPE[1]/YEASTS/YEAST[1]/INVENTORY",
             kind: UnknownElement,
         },
@@ -3643,14 +3635,6 @@ Read {
         },
         Warning {
             path: "RECIPES/RECIPE[2]/MISCS/MISC[2]/BATCH_SIZE",
-            kind: UnknownElement,
-        },
-        Warning {
-            path: "RECIPES/RECIPE[2]/YEASTS/YEAST[1]/DISP_MIN_TEMP",
-            kind: UnknownElement,
-        },
-        Warning {
-            path: "RECIPES/RECIPE[2]/YEASTS/YEAST[1]/DISP_MAX_TEMP",
             kind: UnknownElement,
         },
         Warning {
@@ -3698,14 +3682,6 @@ Read {
             kind: UnknownElement,
         },
         Warning {
-            path: "RECIPES/RECIPE[3]/YEASTS/YEAST[1]/DISP_MIN_TEMP",
-            kind: UnknownElement,
-        },
-        Warning {
-            path: "RECIPES/RECIPE[3]/YEASTS/YEAST[1]/DISP_MAX_TEMP",
-            kind: UnknownElement,
-        },
-        Warning {
             path: "RECIPES/RECIPE[3]/YEASTS/YEAST[1]/INVENTORY",
             kind: UnknownElement,
         },
@@ -3735,14 +3711,6 @@ Read {
         },
         Warning {
             path: "RECIPES/RECIPE[4]/MISCS/MISC[2]/BATCH_SIZE",
-            kind: UnknownElement,
-        },
-        Warning {
-            path: "RECIPES/RECIPE[4]/YEASTS/YEAST[1]/DISP_MIN_TEMP",
-            kind: UnknownElement,
-        },
-        Warning {
-            path: "RECIPES/RECIPE[4]/YEASTS/YEAST[1]/DISP_MAX_TEMP",
             kind: UnknownElement,
         },
         Warning {

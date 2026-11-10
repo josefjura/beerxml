@@ -47,7 +47,8 @@ def table():
     ]
     for sample in samples():
         for version, schema in schemas.items():
-            errors = validate_file(os.path.join(REPO, SAMPLES, sample), schema)
+            path = os.path.join(REPO, SAMPLES, sample)
+            errors = validate_file(path, schema, clean_xml=version == "1.1")
             verdict = "invalid" if errors else "valid"
             lines.append(f"{sample}\t{version}\t{verdict}\t{len(errors)}")
     return "\n".join(lines) + "\n"

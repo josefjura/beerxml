@@ -12,6 +12,11 @@ use std::fmt;
 ///   exact text `1.1`.
 ///
 /// Otherwise it is 1.0.
+///
+/// Detection is looser than the 1.1 version marker that strict
+/// [`validate`](crate::validate) enforces (the namespace on the root plus
+/// `VERSION` 1.1 in every record), so every file that validates as 1.1 is
+/// also detected as 1.1.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Version {
     /// BeerXML 1.0 (1.0 spec, legacy files from BeerSmith, Brewfather, …).

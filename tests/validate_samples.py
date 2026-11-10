@@ -43,7 +43,7 @@ def run_tests():
             schema = schema_v11 if is_v11 else schema_v10
             version_str = "v1.1" if is_v11 else "v1.0"
             
-            errors = validate_file(file_path, schema)
+            errors = validate_file(file_path, schema, clean_xml=is_v11)
             
             if not errors:
                 print(f"OK ({version_str})")

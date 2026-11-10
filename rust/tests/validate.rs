@@ -387,16 +387,6 @@ fn fatal_problems_are_still_read_errors() {
 }
 
 #[test]
-fn version_1_1_is_not_validated_yet() {
-    assert_eq!(
-        beerxml::validate(b"<HOPS/>", Version::V1_1),
-        Err(ReadError::UnsupportedVersion {
-            version: Version::V1_1
-        })
-    );
-}
-
-#[test]
 fn text_split_by_a_comment_is_checked_whole() {
     assert_eq!(validate(&hop("<BETA>4<!-- x -->.5</BETA>")), []);
     assert_eq!(

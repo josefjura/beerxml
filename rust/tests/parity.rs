@@ -3,8 +3,9 @@
 //!
 //! `fixtures/python_verdicts.tsv` records whether `lib/validator.py` accepts
 //! each sample under each version; regenerate it with
-//! `python3 scripts/python_verdicts.py`. Only 1.0 rows are asserted until
-//! strict 1.1 validation exists (issue #10).
+//! `python3 scripts/python_verdicts.py`. Both versions are asserted: for
+//! 1.1 the Python validator applies the same Clean XML rules
+//! (`clean_xml=True`).
 //!
 //! Known disagreements on files outside `samples/` (the Python validator is
 //! looser than the XSD; Rust follows the XSD):
@@ -14,6 +15,9 @@
 //! - Python skips empty elements, so it accepts `<ALPHA></ALPHA>`.
 //! - Python reads numbers with `float()`/`int()`, so it accepts `1e3`, `NaN`,
 //!   `inf` and `1_000`, and does not check the XSD's `minInclusive="0"`.
+//!
+//! - In 1.1 too, Python skips empty elements, so it accepts an empty `DATE`
+//!   or boolean, and only reads an element's text up to its first comment.
 //!
 //! Where both depart from the XSD on purpose: its `xs:all` forbids unknown
 //! and repeated elements, but the 1.0 spec lets writers add their own, so
@@ -85,24 +89,34 @@ fn every_sample_has_a_python_verdict_for_each_version() {
     assert_eq!(table.len(), samples * 2, "the table lists a removed sample");
 }
 
-#[test]
-fn validate_1_0_agrees_with_python_on_every_sample() {
+fn agrees_with_python_on_every_sample(version: Version) {
     let table = verdicts();
+    let label = version.to_string();
     insta::glob!("../../samples", "**/*.xml", |path| {
         let name = sample_name(path);
         let python = table
             .iter()
-            .find(|v| v.sample == name && v.version == "1.0")
-            .unwrap_or_else(|| panic!("{name} has no 1.0 verdict"));
-        let violations = beerxml::validate(&std::fs::read(path).unwrap(), Version::V1_0)
+            .find(|v| v.sample == name && v.version == label)
+            .unwrap_or_else(|| panic!("{name} has no {label} verdict"));
+        let violations = beerxml::validate(&std::fs::read(path).unwrap(), version)
             .unwrap_or_else(|e| panic!("{name}: {e}"));
         let shown: Vec<_> = violations.iter().take(5).map(ToString::to_string).collect();
         assert_eq!(
             violations.is_empty(),
             python.valid,
-            "{name}: Python says {}, Rust found {} violations, e.g. {shown:#?}",
+            "{name} as {label}: Python says {}, Rust found {} violations, e.g. {shown:#?}",
             if python.valid { "valid" } else { "invalid" },
             violations.len(),
         );
     });
+}
+
+#[test]
+fn validate_1_0_agrees_with_python_on_every_sample() {
+    agrees_with_python_on_every_sample(Version::V1_0);
+}
+
+#[test]
+fn validate_1_1_agrees_with_python_on_every_sample() {
+    agrees_with_python_on_every_sample(Version::V1_1);
 }

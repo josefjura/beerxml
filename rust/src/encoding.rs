@@ -8,7 +8,7 @@ use std::borrow::Cow;
 
 use crate::ReadError;
 
-const UTF8_BOM: &[u8] = b"\xEF\xBB\xBF";
+pub(crate) const UTF8_BOM: &[u8] = b"\xEF\xBB\xBF";
 
 /// Declared encoding names read as UTF-8, lower-cased. US-ASCII is a subset of
 /// UTF-8, so an ASCII file reads unchanged.
@@ -86,7 +86,7 @@ fn unsupported(encoding: &str) -> ReadError {
 ///
 /// A malformed declaration yields `None`, so the file is read as UTF-8 and
 /// the XML parser reports the problem.
-fn declared_encoding(bytes: &[u8]) -> Option<String> {
+pub(crate) fn declared_encoding(bytes: &[u8]) -> Option<String> {
     let rest = bytes.strip_prefix(b"<?xml")?;
     if !rest.first().is_some_and(|&b| is_space(b)) {
         return None;

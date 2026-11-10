@@ -146,8 +146,10 @@ def migrate_tree(tree):
     # We iterate again or do it safely. Since we are iterating and modifying text in the first pass,
     # removing elements needs to be done carefully (iterating over a copy or using findall/remove).
     
-    # List of tags to REMOVE in v1.1
+    # Tags to REMOVE in v1.1: every DISPLAY_* field (RFC 01 section 2; the
+    # 1.1 validator rejects them), plus these.
     tags_to_remove = [
+        'DISP_MIN_TEMP', 'DISP_MAX_TEMP',
         'DISPLAY_AMOUNT', 'DISPLAY_TIME', 'DISPLAY_BOIL_SIZE', 'DISPLAY_BATCH_SIZE',
         'DISPLAY_TUN_VOLUME', 'DISPLAY_TUN_WEIGHT', 'DISPLAY_TOP_UP_WATER',
         'DISPLAY_TRUB_CHILLER_LOSS', 'DISPLAY_LAUTER_DEADSPACE', 'DISPLAY_TOP_UP_KETTLE',
@@ -165,7 +167,7 @@ def migrate_tree(tree):
         to_remove = []
         for child in element:
             local_tag = child.tag.split('}', 1)[1] if '}' in child.tag else child.tag
-            if local_tag in tags_to_remove:
+            if local_tag in tags_to_remove or local_tag.startswith('DISPLAY_'):
                 to_remove.append(child)
             else:
                 prune_elements(child)
