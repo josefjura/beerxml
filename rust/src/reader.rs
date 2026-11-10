@@ -694,19 +694,21 @@ impl Reader {
         w
     }
 
-    /// Reads a boolean field: `TRUE` or `FALSE` in any case. An empty field
-    /// is absent.
+    /// Reads a boolean field: `TRUE` or `FALSE` in any case, and in 1.1
+    /// also `1` or `0`. An empty field is absent.
     ///
     /// Source: 1.0 spec, Data Formats (`TRUE` or `FALSE`); the 1.1 spec's
-    /// "Changes from v1.0" recommends lowercase, hence any case. Its `1`/`0`
-    /// are not read yet (strict validation accepts them).
+    /// "Changes from v1.0" recommends lowercase, hence any case, and allows
+    /// XML Schema's `1`/`0`. The 1.0 spec has no `1`/`0`, so in 1.0 they
+    /// are unreadable (strict 1.0 validation rejects them too).
     fn boolean(&mut self, f: &Field<'_>) -> Option<bool> {
         let t = f.text.trim();
+        let v1_1 = self.version == Version::V1_1;
         if t.is_empty() {
             None
-        } else if t.eq_ignore_ascii_case("true") {
+        } else if t.eq_ignore_ascii_case("true") || (v1_1 && t == "1") {
             Some(true)
-        } else if t.eq_ignore_ascii_case("false") {
+        } else if t.eq_ignore_ascii_case("false") || (v1_1 && t == "0") {
             Some(false)
         } else {
             let text = f.text.to_owned();

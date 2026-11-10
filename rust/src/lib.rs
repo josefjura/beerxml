@@ -78,13 +78,13 @@
 //!   *Source:* [1.0 spec, Data Formats][spec-1.0-formats] ("List") and the
 //!   values listed in each [record table][spec-1.0-records]; matching
 //!   loosely and keeping unknown values is this crate's choice.
-//! - **Booleans** are `TRUE` or `FALSE` in any case. Anything else is `None`
-//!   and reported as [`WarningKind::UnreadableBoolean`].
+//! - **Booleans** are `TRUE` or `FALSE` in any case; in 1.1 files, `1` and
+//!   `0` are also `true` and `false`. Anything else, including `1`/`0` in a
+//!   1.0 file, is `None` and reported as [`WarningKind::UnreadableBoolean`].
 //!   *Source:* [1.0 spec, Data Formats][spec-1.0-formats] ("Boolean:
 //!   `TRUE` or `FALSE`"); [1.1 spec, Changes from v1.0][spec-1.1-changes]
-//!   (lowercase `true`/`false`), hence any case. That section also allows
-//!   XML Schema's `1`/`0`, which strict [`validate`] accepts but lenient
-//!   reading does not yet: they are reported as unreadable.
+//!   (lowercase `true`/`false`, and XML Schema's `1`/`0`), hence any case.
+//!   The 1.0 spec has no `1`/`0`, and strict [`validate`] rejects them there.
 //! - **Integers** (e.g. [`Yeast::max_reuse`]) follow the number rule and
 //!   must be whole and non-negative; otherwise they are `None` and reported
 //!   as [`WarningKind::UnreadableNumber`].
