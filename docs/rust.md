@@ -21,9 +21,10 @@ an abandoned crate), but the library is imported as `beerxml`.
 **Lenient reading** takes what real writers produce and repairs it: it reads
 the number in `<IBU>34.2 IBU</IBU>`, matches `boil` to `Boil`, reads
 ISO-8859-1 files, and skips `DISPLAY_*` and unknown elements. Each repair is
-reported, so nothing is changed silently. Every rule, and the part of the
-[1.0 spec](spec/v1.0/v1.0.md) or [RFC 01](spec/v1.1/RFC_01_goals.md) it comes
-from, is listed in the crate's rustdoc under "Reading rules".
+reported, so nothing is changed silently. The crate's rustdoc lists every
+rule under "Reading rules" with its source: a section of the
+[1.0 spec](spec/v1.0/v1.0.md), [RFC 01](spec/v1.1/RFC_01_goals.md), the 1.1
+XSD or XML 1.0, or a note that the rule is the crate's own choice.
 
 **Strict validation** checks a file against the
 [1.0](spec/v1.0/beerxml-1.0.xsd) or [1.1](spec/v1.1/beerxml-1.1.xsd) XSD:
@@ -62,14 +63,8 @@ cargo run --example read -- ../samples/original/recipes.xml
 
 ## Validate a file
 
-```rust
-use beerxml::Version;
-
-let violations = beerxml::validate(&bytes, Version::V1_1)?;
-for violation in &violations {
-    println!("{violation}");
-}
-```
+`beerxml::validate(&bytes, Version::V1_1)` returns every `Violation`; an empty
+list means the file is valid. The crate docs show a full example.
 
 ## API documentation
 

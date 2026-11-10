@@ -14,7 +14,7 @@ use std::fmt;
 /// Otherwise it is 1.0.
 ///
 /// *Source:* [1.0 spec, General](https://josefjura.github.io/beerxml/spec/v1.0/v1.0/#general)
-/// (`VERSION` is `1`) and
+/// (`VERSION` is `1` or `1.0`) and
 /// [RFC 01 §5, Namespaces & Versioning](https://josefjura.github.io/beerxml/spec/v1.1/RFC_01_goals/#5-namespaces-versioning)
 /// (the `http://beerxml.com/v1.1` namespace and `VERSION` 1.1).
 ///

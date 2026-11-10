@@ -9,7 +9,6 @@ description = "Reference implementation for reading and validating BeerXML 1.0 a
 license = "MIT"
 repository = "https://github.com/josefjura/beerxml"
 homepage = "https://josefjura.github.io/beerxml/rust/"
-documentation = "https://josefjura.github.io/beerxml/rust/"
 keywords = ["beerxml", "brewing", "beer", "recipe", "xml"]
 categories = ["parser-implementations", "encoding"]
 # Depend on it by git tag (see the docs page); crates.io publishing comes later.

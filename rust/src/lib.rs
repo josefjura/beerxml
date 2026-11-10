@@ -38,7 +38,8 @@
 //! the spec says nothing, the rule is this crate's own choice and says so.
 //!
 //! - **Version:** see [`Version`].
-//!   *Source:* [1.0 spec, General][spec-1.0-general] (`VERSION` is `1`);
+//!   *Source:* [1.0 spec, General][spec-1.0-general] (`VERSION` is `1` or
+//!   `1.0`);
 //!   [RFC 01 §5, Namespaces & Versioning][rfc-01-versioning] (the 1.1
 //!   namespace and `VERSION` 1.1).
 //! - **Encoding:** UTF-8 and ISO-8859-1 are read. A UTF-8 byte order mark
@@ -51,7 +52,9 @@
 //!   *Source:* [1.0 spec, General][spec-1.0-general] (ISO-8859-1 and UTF-8);
 //!   [RFC 01 §4, Character Encoding][rfc-01-encoding] (1.1 is UTF-8);
 //!   [XML 1.0 §4.3.3][xml-encoding] and [Appendix F][xml-autodetect]
-//!   (declaration, byte order mark, default).
+//!   (declaration, byte order mark, default). The 1.0 spec makes ISO-8859-1
+//!   the default; this crate follows XML 1.0 instead, since an undeclared
+//!   ISO-8859-1 file is not well-formed XML.
 //! - **Numbers:** the leading decimal number is read, so `30.000000` and
 //!   `34.2 IBU` both work. Anything other than whitespace after the number is
 //!   reported as [`WarningKind::TrailingText`]. A field with no leading number
@@ -79,7 +82,9 @@
 //!   and reported as [`WarningKind::UnreadableBoolean`].
 //!   *Source:* [1.0 spec, Data Formats][spec-1.0-formats] ("Boolean:
 //!   `TRUE` or `FALSE`"); [1.1 spec, Changes from v1.0][spec-1.1-changes]
-//!   (lowercase `true`/`false`), hence any case.
+//!   (lowercase `true`/`false`), hence any case. That section also allows
+//!   XML Schema's `1`/`0`, which strict [`validate`] accepts but lenient
+//!   reading does not yet: they are reported as unreadable.
 //! - **Integers** (e.g. [`Yeast::max_reuse`]) follow the number rule and
 //!   must be whole and non-negative; otherwise they are `None` and reported
 //!   as [`WarningKind::UnreadableNumber`].
@@ -87,8 +92,9 @@
 //!   numbers").
 //! - **Dates** keep their original text, plus the date when it is ISO
 //!   `YYYY-MM-DD` (see [`RecordDate`]).
-//!   *Source:* [1.0 spec, Recipe record][spec-1.0-recipe] (`DATE` is free
-//!   text); [RFC 01 §3, Date Format][rfc-01-dates] (ISO 8601 in 1.1).
+//!   *Source:* [1.0 spec, Recipe record][spec-1.0-recipe] (`DATE` is
+//!   text); [RFC 01 §3, Date Format][rfc-01-dates] (free text in 1.0, ISO
+//!   8601 in 1.1).
 //! - **Amounts** of Misc and Yeast records are a weight or a volume as their
 //!   `AMOUNT_IS_WEIGHT` flag says, wherever the flag sits in the record. An
 //!   absent (or unreadable) flag means a volume, the spec's default.
@@ -163,6 +169,7 @@
 //! These guarantees are tested in `tests/hostile_input.rs`.
 
 #![forbid(unsafe_code)]
+#![warn(missing_docs)]
 
 mod date;
 mod encoding;

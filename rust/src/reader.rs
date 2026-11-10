@@ -698,7 +698,8 @@ impl Reader {
     /// is absent.
     ///
     /// Source: 1.0 spec, Data Formats (`TRUE` or `FALSE`); the 1.1 spec's
-    /// "Changes from v1.0" recommends lowercase, hence any case.
+    /// "Changes from v1.0" recommends lowercase, hence any case. Its `1`/`0`
+    /// are not read yet (strict validation accepts them).
     fn boolean(&mut self, f: &Field<'_>) -> Option<bool> {
         let t = f.text.trim();
         if t.is_empty() {

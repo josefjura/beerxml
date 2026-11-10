@@ -12,7 +12,7 @@ use std::fmt;
 /// *Source:* [1.0 spec, Recipe record](https://josefjura.github.io/beerxml/spec/v1.0/v1.0/#recipe-record-recipe)
 /// (`DATE` is text) and
 /// [RFC 01 §3, Date Format](https://josefjura.github.io/beerxml/spec/v1.1/RFC_01_goals/#3-date-format)
-/// (ISO 8601 `YYYY-MM-DD` in 1.1).
+/// (free text in 1.0, ISO 8601 `YYYY-MM-DD` in 1.1).
 ///
 /// ```
 /// use beerxml::{IsoDate, RecordDate};
