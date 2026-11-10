@@ -19,6 +19,10 @@
   ```bash
   cd rust && cargo fmt --check && cargo clippy --all-targets -- -D warnings && cargo test
   ```
+- Refresh the Python verdict table that the Rust parity test (`rust/tests/parity.rs`) checks against, after changing `lib/`, an XSD or `samples/` (CI runs it with `--check`):
+  ```bash
+  python3 scripts/python_verdicts.py
+  ```
 - Migrate legacy XML to v1.1:
   ```bash
   python3 scripts/migrate_v1_to_v1.1.py <input_file_or_dir> <output_file_or_dir>
